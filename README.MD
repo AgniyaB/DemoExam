@@ -12,3 +12,7 @@
 - cd DemoExam/
 - git checkout <НАЗВАНИЕ ВАШЕЙ ВЕТКИ>
 - git reset <ИНДЕФИКАТОР КОММИТА>
+
+## Что можно почитать самостоятельно
+- https://metanit.com/java/tutorial/ - основы на русском
+- https://o7planning.org/ru/10973/java-basic - более подробно (лучше в оригинале читать на EN)
