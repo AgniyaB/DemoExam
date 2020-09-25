@@ -4,49 +4,63 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*int intValue = 0;
-        float floatValue = 2.34324234F; //32b
-        double doubleValue = 3232423432.34234D; //64b
-        boolean booleanValue = true;
-        char charValue = 'a';
-        Integer integer = null;
-        String nullString;
-        String stringValue = "sdfwsedfdsfwefw";
-        System.out.println(stringValue.substring(3, 7));
-        if(floatValue > intValue) {
-            System.out.println("true");
-        }
-        System.out.println("rewerrgtew".equals(stringValue));
+        /*
+        все поля в классах приватные
+        + геттеры и сеттеры
 
-        int[] intArr = new int[10];
-        System.out.println(intArr[0]);
-        Integer[] integers = new Integer[10];
-        System.out.println(integers[0]);
+        School
+        - int number
+        - String title
+        - Teacher[2]
+        - Student[4]
+        - toString()
 
-        for(int i=0; i<intArr.length; i++) {
-            intArr[i] = i;
-        }
+        Teacher
+        - String name
+        - String subject
+        - toString()
 
-        for(int i : intArr) {
-            System.out.printf(i + " ");
-        }*/
+        Student
+        - String name
+        - String surname
+        - int level (class)
+        - toString()
+         */
 
-        Student student = new Student("Данила", 23, "Филипов");
-        System.out.println(student);
-        System.out.println(student.getName() + " " + student.getSurname());
-        student.print("3245324", "fweewffew", "fewfew");
-        //PrivateStudent privateStudent = new PrivateStudent();
+        /*Teacher teacher = new Teacher("teacher", "матан");
+        Student student1 = new Student("Vasya", 5);
+        Student student2 = new Student("Petya", 11);
 
-        //Scanner in = new Scanner(System.in);
-        //System.out.println(5 + in.nextInt(16));
-        //Integer v = 15;
-        //System.out.println(v.toString());
-        //in.close();
+        School school = new School(1, "school");
+        school.getTeachers()[0] = teacher;
+        school.getStudents()[0] = student1;
+        school.getStudents()[1] = student2;*/
+
+        /*Teacher[] teachers = {
+                new Teacher("teacher", "матан")
+        };
+
+        Student[] students = {
+                new Student("Vasya", 5),
+                new Student("Petya", 11)
+        };
+        School school = new School(1, "school", teachers, students);*/
+
+        /*School school = new School(
+                1,
+                "school",
+                new Teacher[] {
+                        new Teacher("teacher", "матан")
+                },
+                new Student[] {
+                        new Student("Vasya", 5),
+                        new Student("Petya", 11)
+                }
+        );
+
+        System.out.println(school);*/
+
+        //System.out.println(Math.PI);
+        //System.out.println(Math.cos(Math.PI));
     }
-}
-
-//область видимости - этот файл и файлы в 1 пакете
-class TestMain
-{
-
 }

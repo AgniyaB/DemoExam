@@ -1,22 +1,20 @@
 package ru.pa4ok.demoexam;
 
-public class Student
+public class Teacher
 {
-    public static final String CITY = "SPB";
-
     private String name;
-    private int level;
+    private String subject;
 
-    public Student(String name, int level) {
+    public Teacher(String name, String subject) {
         this.name = name;
-        this.level = level;
+        this.subject = subject;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Teacher{" +
                 "name='" + name + '\'' +
-                ", level=" + level +
+                ", subject='" + subject + '\'' +
                 '}';
     }
 
@@ -28,11 +26,11 @@ public class Student
         this.name = name;
     }
 
-    public int getLevel() {
-        return level;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }
