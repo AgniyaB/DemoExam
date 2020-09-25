@@ -2,8 +2,6 @@ package ru.pa4ok.demoexam;
 
 public class Student
 {
-    public static int GLOBAL_ID = 123123;
-
     private int id;
     private String name;
 
@@ -24,8 +22,6 @@ public class Student
                 ", name='" + name + '\'' +
                 '}';
     }
-
-
 
     public int getId() {
         return id;

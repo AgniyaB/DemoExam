@@ -1,83 +1,81 @@
 package ru.pa4ok.demoexam;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        /*int intValue = 1;
-        float floatValue = 3.24242F;
-        double doubleValue = 325423532.054354D;
-        boolean booleanValue = true;
-        char charValue = ' ';
-        Integer integer; //null
-        //Float
-        //Double
-        //Bolean
-        String string = "efwefwfewf";
-        System.out.println(string.substring(2, 7));
-        System.out.println(5 + Integer.parseInt("13"));
+        /*int[] intArr = new int[10];
+        intArr = new int[100];
 
-        int[] intArr = new int[10];
-        System.out.println(intArr[0]);
+        List<Integer> list = new ArrayList<>();
 
-        Integer[] integers = new Integer[10];
-        System.out.println(integers[0]);
-
-        for(int i=0; i<intArr.length; i++) {
-            intArr[i] = i + 3;
+        Random rand = new Random();
+        for(int i=0; i<12; i++) {
+            list.add(rand.nextInt(10000));
         }
-        for(int i : intArr) {
-            System.out.printf(i + " ");
+        list.add(1337);
+        System.out.println(list);
+
+        System.out.println(list.contains(1337));*/
+
+        Student student1 = new Student(1, "Vasya");
+        Student student2 = new Student(2, "Petya");
+        Student student3 = new Student(3, "Kolya");
+
+        /*List<Student> list = new ArrayList<>();
+        list.add(student1);
+        list.add(student2);
+        list.add(student3);*/
+
+        /*System.out.println(list);
+        System.out.println(list.get(2));
+        System.out.println(list.contains(student2));
+        list.remove(student2);
+        System.out.println(list);
+        System.out.println(list.isEmpty());
+        System.out.println(list.size());
+        list.clear();
+        System.out.println(list.isEmpty());*/
+
+        /*for(Student s : list) {
+            System.out.println(s);
+        }*/
+
+        /*Student[] students = new Student[3];
+        students[0] = student1;
+        students[1] = student2;
+        students[2] = student3;
+
+        List<Student> list = Arrays.asList(students);
+        Student[] newStudents = (Student[])list.toArray();*/
+
+        /*Map<Integer, Student> map = new HashMap<>();
+        map.put(student1.getId(), student1);
+        map.put(student2.getId(), student2);
+        map.put(student3.getId(), student3);
+
+        System.out.println(map.containsKey(3));
+        System.out.println(map.containsKey(4));
+        System.out.println(map.containsValue(student2));
+        System.out.println(map.containsValue(new Student(5, "Anton")));
+
+        System.out.println(map);
+        for(Student s : map.values()) {
+            System.out.println(s);
         }
+        List<Student> list = new ArrayList<>(map.values());
+        System.out.println(list);*/
 
-        if(doubleValue > intValue) {
-            System.out.println("mark1");
-        }
-
-        String s1 = "23423432a";
-        String s2 = "23423432A";
-        System.out.println(s1.equals(s2));
-        System.out.println(s1.equalsIgnoreCase(s2));*/
-
-       /* Student student = new Student(1, "Vasya");
-        System.out.println(student);
-        test1(student);
-        System.out.println(student);
-        student = test2(student);
-        System.out.println(student);*/
-
-        //System.out.println(Math.cos(Math.PI));
-
-        //Student.GLOBAL_ID
-
-        /*Scanner in = new Scanner(System.in);
-
-        System.out.println(in.next());
-        System.out.println(5 + Integer.parseInt(in.next()));
-        System.out.println(5 + in.nextInt());
-
-        in.close();*/
+        //во 2 листе будут скопированные значения, которые можно менять
+        //List<Student> list1 = new ArrayList<>();
+        //List<Student> list2 = new ArrayList<>(list1);
     }
 
-    private static void test1(Student student) {
-        student.setName("new name");
-    }
-
-    private static Student test2(Student student) {
-        student.setName("new name 2");
-        return student;
-    }
-
-    public static class TestStaticClass
-    {
-
-    }
+    /*
+    Создать класс описывающий предмет (Subject)
+    id, название, имя преподавателя, List<Integer> с оценками, переопределить вывод, геттеры, сеттеры
+    Добавить поле List<Subject> в поле студента
+     */
 }
-
-/*
-class PrivateClass
-{
-
-}*/
