@@ -1,66 +1,96 @@
 package ru.pa4ok.demoexam;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main
 {
     public static void main(String[] args)
     {
-        /*
-        все поля в классах приватные
-        + геттеры и сеттеры
+        //Exceptiom обрабатывать надо всегда
+        //RuntimeException по желанию
 
-        School
-        - int number
-        - String title
-        - Teacher[2]
-        - Student[4]
-        - toString()
+        //необязательное исключение
+        /*int i = 10;
+        try {
+            i += Integer.parseInt("2");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            i = 0;
+        }
+        System.out.println(i); */
 
-        Teacher
-        - String name
-        - String subject
-        - toString()
+        //обязательное исключение
+        /*File file = new File("test.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
-        Student
-        - String name
-        - String surname
-        - int level (class)
-        - toString()
-         */
+        /*try {
+            //блок с возможной ошибкой
+        } catch (Exception e) {
+            e.printStackTrace();
+            //действия по ошибке
+        } finally {
+            //вызывается вне зависимости от ошибки
+        }*/
 
-        /*Teacher teacher = new Teacher("teacher", "матан");
-        Student student1 = new Student("Vasya", 5);
-        Student student2 = new Student("Petya", 11);
+        /*try {
+            createFile("4324324");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }*/
 
-        School school = new School(1, "school");
-        school.getTeachers()[0] = teacher;
-        school.getStudents()[0] = student1;
-        school.getStudents()[1] = student2;*/
+        /*canner scanner = null;
+        int i = 10;
+        try {
+            scanner = new Scanner(System.in);
+            i += scanner.nextInt();
+        } catch(Exception e) {
+            i = 0;
+        } finally { //в основном блок finaly служит для закрытия ресурсов
+            scanner.close();
+        }
+        System.out.println(i);*/
 
-        /*Teacher[] teachers = {
-                new Teacher("teacher", "матан")
-        };
+        System.out.println(readStudent());
+    }
 
-        Student[] students = {
-                new Student("Vasya", 5),
-                new Student("Petya", 11)
-        };
-        School school = new School(1, "school", teachers, students);*/
+    /*private static void createFile(String fileName) throws IOException, NumberFormatException
+    {
+        File file = new File(fileName);
+        if(!file.exists()) {
+            file.createNewFile();
+        }
 
-        /*School school = new School(
-                1,
-                "school",
-                new Teacher[] {
-                        new Teacher("teacher", "матан")
-                },
-                new Student[] {
-                        new Student("Vasya", 5),
-                        new Student("Petya", 11)
-                }
-        );
+        Integer.parseInt("ewoergre");
 
-        System.out.println(school);*/
+    }
+*/
+    public static Student readStudent()
+    {
+        Scanner scanner = new Scanner(System.in);
 
-        //System.out.println(Math.PI);
-        //System.out.println(Math.cos(Math.PI));
+        String name = scanner.nextLine();
+        int age;
+
+        while(true) {
+            try {
+                age = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Возраст введен неверно");
+            }
+        }
+
+        scanner.close();
+
+        return new Student(name, age);
     }
 }
