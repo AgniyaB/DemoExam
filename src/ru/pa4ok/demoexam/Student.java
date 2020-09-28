@@ -1,24 +1,15 @@
 package ru.pa4ok.demoexam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student
 {
-    public static final String CITY = "SPB";
-
-    public static void testStatic()
-    {
-        System.out.println("test static");
-    }
-
     private String name;
-    private String surname;
     private int level;
-    //private int[] integers = new int[10]; 10 нулей
-    //private String[] strings = new String[10]; //10 null
 
-
-    public Student(String name, String surname, int level) {
+    public Student(String name, int level) {
         this.name = name;
-        this.surname = surname;
         this.level = level;
     }
 
@@ -26,7 +17,6 @@ public class Student
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
                 ", level=" + level +
                 '}';
     }
@@ -39,14 +29,6 @@ public class Student
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public int getLevel() {
         return level;
     }
@@ -54,8 +36,4 @@ public class Student
     public void setLevel(int level) {
         this.level = level;
     }
-
-    /*public String[] getStrings() {
-        return strings;
-    }*/
 }
