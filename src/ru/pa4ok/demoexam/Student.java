@@ -2,37 +2,23 @@ package ru.pa4ok.demoexam;
 
 public class Student
 {
-    public static int GLOBAL_ID = 123123;
-
-    private int id;
     private String name;
+    private int age;
+    private int level;
 
-    public Student(int id, String name) {
-        this.id = id;
+    public Student(String name, int age, int level) {
         this.name = name;
-    }
-
-    public Student(String name)
-    {
-        this(-1, name);
+        this.age = age;
+        this.level = level;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", level=" + level +
                 '}';
-    }
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -41,5 +27,21 @@ public class Student
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

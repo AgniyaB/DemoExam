@@ -1,83 +1,54 @@
 package ru.pa4ok.demoexam;
 
-import java.util.Scanner;
-
 public class Main
 {
     public static void main(String[] args)
     {
-        /*int intValue = 1;
-        float floatValue = 3.24242F;
-        double doubleValue = 325423532.054354D;
-        boolean booleanValue = true;
-        char charValue = ' ';
-        Integer integer; //null
-        //Float
-        //Double
-        //Bolean
-        String string = "efwefwfewf";
-        System.out.println(string.substring(2, 7));
-        System.out.println(5 + Integer.parseInt("13"));
+        School school = new School(
+            1,
+            "fspo",
+            new Teacher[] {
+                    new Teacher("jhfweewfw", "math"),
+                    new Teacher("asedfqwe", "english")
+            },
+            new Student[] {
+                    new Student("vasya", 15, 4),
+                    new Student("petya", 20, 11)
+            }
+        );
+        System.out.println(school);
 
-        int[] intArr = new int[10];
-        System.out.println(intArr[0]);
+        School school1 = new School(2, "polikek");
+        System.out.println(school1);
+        System.out.println(school1.getStudents().length);
 
-        Integer[] integers = new Integer[10];
-        System.out.println(integers[0]);
-
-        for(int i=0; i<intArr.length; i++) {
-            intArr[i] = i + 3;
-        }
-        for(int i : intArr) {
-            System.out.printf(i + " ");
-        }
-
-        if(doubleValue > intValue) {
-            System.out.println("mark1");
-        }
-
-        String s1 = "23423432a";
-        String s2 = "23423432A";
-        System.out.println(s1.equals(s2));
-        System.out.println(s1.equalsIgnoreCase(s2));*/
-
-       /* Student student = new Student(1, "Vasya");
-        System.out.println(student);
-        test1(student);
-        System.out.println(student);
-        student = test2(student);
-        System.out.println(student);*/
-
-        //System.out.println(Math.cos(Math.PI));
-
-        //Student.GLOBAL_ID
-
-        /*Scanner in = new Scanner(System.in);
-
-        System.out.println(in.next());
-        System.out.println(5 + Integer.parseInt(in.next()));
-        System.out.println(5 + in.nextInt());
-
-        in.close();*/
+        Teacher teacher = new Teacher("kolya", "de");
+        school1.getTeachers()[0] = teacher;
+        System.out.println(school1);
+        teacher.setName("fewfwefefw");
+        System.out.println(school1);
     }
 
-    private static void test1(Student student) {
-        student.setName("new name");
-    }
+    /*
+    все поля приватные
+    +геттерыи и сеттеры
 
-    private static Student test2(Student student) {
-        student.setName("new name 2");
-        return student;
-    }
+    School
+    - int index
+    - String name
+    - Teacher[2] teachers
+    - Student[2] students
+    - toString()
 
-    public static class TestStaticClass
-    {
+    Student
+    - String name
+    - int age
+    - int level
+    - toString()
 
-    }
+    Teacher
+    - String name
+    - String subject
+    - toString()
+     */
 }
-
-/*
-class PrivateClass
-{
-
-}*/
