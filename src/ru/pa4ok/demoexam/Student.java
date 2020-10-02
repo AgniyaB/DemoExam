@@ -1,32 +1,22 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Student
+public class Student extends Human
 {
-    private String name;
     private int level;
 
-    public Student(String name, int level) {
-        this.name = name;
+    public Student(String name, int age, boolean isWomen, int level) {
+        super(name, age, isWomen);
         this.level = level;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", level=" + level +
+                "level=" + level +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isWomen=" + isWomen +
                 '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getLevel() {

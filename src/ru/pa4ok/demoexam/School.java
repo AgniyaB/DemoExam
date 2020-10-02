@@ -3,34 +3,48 @@ package ru.pa4ok.demoexam;
 import java.util.ArrayList;
 import java.util.List;
 
-public class School
+public class School extends Building
 {
     private int index;
-    private String title;
-    private List<Teacher> teacherList;
-    private List<Student> studentList;
+    private String name;
+    private List<Teacher> teachers;
+    private List<Student> students;
 
-    public School(int index, String title, List<Teacher> teacherList, List<Student> studentList)
-    {
+    public School(String adress, int flootCount, int index, String name, List<Teacher> teachers, List<Student> students) {
+        super(adress, flootCount);
         this.index = index;
-        this.title = title;
-        this.teacherList = teacherList;
-        this.studentList = studentList;
+        this.name = name;
+        this.teachers = new ArrayList<>(teachers);
+        this.students = new ArrayList<>(students);
     }
 
-    public School(int index, String title) {
-        this(index, title, new ArrayList<>(), new ArrayList<>());
+    public School(String adress, int flootCount, int index, String name) {
+        this(adress, flootCount, index, name, new ArrayList<>(), new ArrayList<>());
     }
 
     @Override
     public String toString() {
         return "School{" +
                 "index=" + index +
-                ", title='" + title + '\'' +
-                ", teacherList=" + teacherList +
-                ", studentList=" + studentList +
+                ", name='" + name + '\'' +
+                ", teachers=" + teachers +
+                ", students=" + students +
+                ", adress='" + adress + '\'' +
+                ", flootCount=" + flootCount +
                 '}';
     }
+
+    public void addEntity(Human human) {
+        if(human instanceof Teacher) {
+            teachers.add((Teacher)human);
+        } else if(human instanceof Student) {
+            students.add((Student)human);
+        } else {
+            System.out.println("Not a school entry: " + human);
+        }
+    }
+
+
 
     public int getIndex() {
         return index;
@@ -40,27 +54,27 @@ public class School
         this.index = index;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Teacher> getTeacherList() {
-        return teacherList;
+    public List<Teacher> getTeachers() {
+        return teachers;
     }
 
-    public void setTeacherList(List<Teacher> teacherList) {
-        this.teacherList = teacherList;
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
