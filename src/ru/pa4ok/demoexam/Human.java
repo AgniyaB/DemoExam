@@ -1,21 +1,40 @@
 package ru.pa4ok.demoexam;
 
-public class Human
+import java.util.ArrayList;
+import java.util.List;
+
+public class Human extends EntityLiving
 {
     protected String name;
     protected int age;
     protected boolean isWomen;
+    protected List<Animal> pets;
 
-    public Human(String name, int age, boolean isWomen) {
+    public Human(String name, int age, boolean isWomen, List<Animal> pets) {
         this.name = name;
         this.age = age;
         this.isWomen = isWomen;
+        this.pets = new ArrayList<>(pets);
     }
 
-    /*public void work()
+    public Human(String name, int age, boolean isWomen) {
+        this(name, age, isWomen, new ArrayList<>());
+    }
+
+    @Override
+    public String getType() {
+        return "млекопитающее";
+    }
+
+    public void addPet(Animal animal)
     {
-        System.out.println("work from Human.class");
-    }*/
+        if(animal.isPet) {
+            pets.add(animal);
+            System.out.println("Животное успешно добавлено");
+        } else {
+            System.out.println("Это животное не является домашним");
+        }
+    }
 
     @Override
     public String toString() {
@@ -23,6 +42,7 @@ public class Human
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", isWomen=" + isWomen +
+                ", pets=" + pets +
                 '}';
     }
 
@@ -48,5 +68,13 @@ public class Human
 
     public void setWomen(boolean women) {
         isWomen = women;
+    }
+
+    public List<Animal> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Animal> pets) {
+        this.pets = pets;
     }
 }

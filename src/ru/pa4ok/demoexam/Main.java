@@ -1,74 +1,100 @@
 package ru.pa4ok.demoexam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        /*//Human human = new Human("Vasya", 12);
-        //System.out.println(human);
+        /*Human human = new Human("Vasya", 20, false);
+        human.addPet(new Cat());
+        human.addPet(new Tiger());
+        System.out.println(human);*/
 
-        Teacher teacher = new Teacher("Petya", 40, "math");
-        //System.out.println(teacher);
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Cat());
+        animals.add(new Tiger());
+        animals.add(new Ant());
 
-        //human.work();
-        //teacher.work();
+        doAllSounds(animals);
+    }
 
-        Human human = new Teacher("Vasya", 35, "pp");
-        System.out.println(human);
-
-        System.out.println(human instanceof Student);
-        System.out.println(human instanceof Teacher);
-*/
-        /*List<Teacher> teacherList = new ArrayList<>()
-        if(human instanceof Teacher) {
-            //Teacher t = (Teacher)human;
-            teacherList.add((Teacher)human);
-            System.out.println(((Teacher)human).getSubject());
+    private static void doAllSounds(List<Animal> animals) {
+        for(Animal a : animals)
+        {
+            if(a instanceof ISoundEntity) {
+                System.out.println(a + " | sound: " + ((ISoundEntity)a).getSound());
+            } else {
+                System.out.println(a +  " | no sound :=(");
+            }
         }
-        Arrays.asList(1, 2, 3);*/
-
-        School school = new School("adreesssss", 4, 1, "fspo");
-        System.out.println(school);
-        school.addEntity(new Teacher("grin4pun",50, false, "pp"));
-        school.addEntity(new Student("Vasya", 15, false, 5));
-        System.out.println(school);
     }
 
 
-    /*Human
-    - String name
-    - int age
-    - boolean isWoman
-    - toString()
+    //все поля protected + геттеры и сеттеры
+    /*abstract EntityLiving
+    - abstract String getType()
+    - String toString()
 
-    Student extends Human
-    - int level
-    - toString()
+    Human extends EntityLiving
+    - name
+    - age
+    - isWomen
+    - String getType()
+    - List<Animal> pets
+    - void addPet(Animal) //проверка animal.isPet == true
+    - String toString()
 
-    Teacher extends Human
-    - String subject
-    - toString()
+    abstract Animal extends EntityLiving
+    - int legsCount;
+    - boolean isPet;
+    - String toString()
 
-    Building
-    - String adress
-    - int floorCount
-    - toString()
+    Cat extends Animal
+    - String getType()
+    - String getSound()
+    - String toString()
 
-    School extends Building
-    - int index
-    - String name
-    - List<Teacher> teachers
-    - List<Student> students
-    - toString()
-    - void addEntity(Human)
-        метод принимает либой объект Human
-        может быть как Student так и Teacher
-        если это Teacher - кинуть к List<Teacher> teachers
-        если это Student - кинуть к List<Student> students
+    Tiger extends Animal //передаст в родителький конструктор isPet = false
+    - String getType()
+    - String getSound()
+    - String toString()
+     */
+
+    //-----------------------------------------------------------
+
+    /*
+    abstract EntityLiving
+    - abstract String getType()
+    - String toString()
+
+    interface ISoundEntity
+    - String getSound()
+
+    Cat extends Animal
+    - String getType()
+    - String toString()
+
+    interface IFlyAnimal
+    - int getMaxFlyHeight()
+
+    Tiger extends Animal implements ISoundEntity
+    - String getType()
+    - String getSound()
+    - String toString()
+
+    Bird extends Animal implements ISoundEntity, IFlyAnimal
+    - String getType()
+    - String getSound()
+    - int getMaxFlyHeight()
+    - String toString()
+
+    Main
+    в главном методе создать List<Animal>
+    заполнить разными животными
+    и сделать перебор элементов проверяя
+    на принадлежность ко всем типам
+    выводя об этом информацию
      */
 }
