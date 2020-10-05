@@ -1,9 +1,9 @@
 package ru.pa4ok.demoexam;
 
-public class Cat extends Animal implements ISoundEntity
+public class Bird extends Animal implements ISoundEntity, IFlyAnimal
 {
-    public Cat() {
-        super(4, true);
+    public Bird() {
+        super(2, false);
     }
 
     @Override
@@ -12,13 +12,18 @@ public class Cat extends Animal implements ISoundEntity
     }
 
     @Override
+    public int getMaxFlyHeight() {
+        return 100;
+    }
+
+    @Override
     public String getSound() {
-        return "мяу";
+        return "чирик-чирик";
     }
 
     @Override
     public String toString() {
-        return "Cat{" +
+        return "Bird{" +
                 "legsCount=" + legsCount +
                 ", isPet=" + isPet +
                 '}';

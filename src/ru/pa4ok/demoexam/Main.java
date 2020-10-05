@@ -7,15 +7,10 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*Human human = new Human("Vasya", 20, false);
-        human.addPet(new Cat());
-        human.addPet(new Tiger());
-        System.out.println(human);*/
-
         List<Animal> animals = new ArrayList<>();
-        animals.add(new Cat());
         animals.add(new Tiger());
         animals.add(new Ant());
+        animals.add(new Bird());
 
         doAllSounds(animals);
     }
@@ -23,11 +18,16 @@ public class Main
     private static void doAllSounds(List<Animal> animals) {
         for(Animal a : animals)
         {
+            String str = a.toString();
             if(a instanceof ISoundEntity) {
-                System.out.println(a + " | sound: " + ((ISoundEntity)a).getSound());
-            } else {
-                System.out.println(a +  " | no sound :=(");
+                str += " | sound: ";
+                str += ((ISoundEntity)a).getSound();
             }
+            if(a instanceof IFlyAnimal) {
+                str += " | max fly height: ";
+                str += ((IFlyAnimal)a).getMaxFlyHeight();
+            }
+            System.out.println(str);
         }
     }
 

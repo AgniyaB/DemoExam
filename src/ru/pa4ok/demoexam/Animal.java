@@ -10,8 +10,6 @@ public abstract class Animal extends EntityLiving
         this.isPet = isPet;
     }
 
-    //public abstract String getSound();
-
     @Override
     public String toString() {
         return "Animal{" +
