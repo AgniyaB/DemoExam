@@ -1,32 +1,29 @@
 package ru.pa4ok.demoexam;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main
 {
     public static void main(String[] args)
     {
         School school = new School(
             1,
-            "fspo",
-            new Teacher[] {
+            "fspo"/*,
+                Arrays.asList(
                     new Teacher("jhfweewfw", "math"),
                     new Teacher("asedfqwe", "english")
-            },
-            new Student[] {
+                ),
+                Arrays.asList(
                     new Student("vasya", 15, 4),
                     new Student("petya", 20, 11)
-            }
+                )*/
         );
         System.out.println(school);
-
-        School school1 = new School(2, "polikek");
-        System.out.println(school1);
-        System.out.println(school1.getStudents().length);
-
-        Teacher teacher = new Teacher("kolya", "de");
-        school1.getTeachers()[0] = teacher;
-        System.out.println(school1);
-        teacher.setName("fewfwefefw");
-        System.out.println(school1);
+        school.getTeachers().add(new Teacher("jhfweewfw", "math"));
+        school.getStudents().add(new Student("vasya", 15, 4));
+        System.out.println(school);
     }
 
     /*
@@ -36,8 +33,8 @@ public class Main
     School
     - int index
     - String name
-    - Teacher[2] teachers
-    - Student[2] students
+    - List<Teacher> teachers
+    - List<Student> students
     - toString()
 
     Student

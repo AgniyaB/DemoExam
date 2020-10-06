@@ -1,24 +1,24 @@
 package ru.pa4ok.demoexam;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class School
 {
     private int index;
     private String name;
-    private Teacher[] teachers; //null
-    private Student[] students;
+    private List<Teacher> teachers;
+    private List<Student> students;
 
-    public School(int index, String name, Teacher[] teachers, Student[] students)
-    {
+    public School(int index, String name, List<Teacher> teachers, List<Student> students) {
         this.index = index;
         this.name = name;
-        this.teachers = teachers;
-        this.students = students;
+        this.teachers = new ArrayList<>(teachers);
+        this.students = new ArrayList<>(students);
     }
 
     public School(int index, String name) {
-        this(index, name, new Teacher[2], new Student[2]);
+        this(index, name, new ArrayList<>(), new ArrayList<>());
     }
 
     @Override
@@ -26,8 +26,8 @@ public class School
         return "School{" +
                 "index=" + index +
                 ", name='" + name + '\'' +
-                ", teachers=" + Arrays.toString(teachers) +
-                ", students=" + Arrays.toString(students) +
+                ", teachers=" + teachers +
+                ", students=" + students +
                 '}';
     }
 
@@ -47,19 +47,19 @@ public class School
         this.name = name;
     }
 
-    public Teacher[] getTeachers() {
+    public List<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(Teacher[] teachers) {
+    public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
     }
 
-    public Student[] getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 }
