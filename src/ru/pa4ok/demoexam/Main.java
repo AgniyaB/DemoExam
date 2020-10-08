@@ -4,43 +4,21 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*Student student = new Student("Vasya", 15, false, 1, 5);
-        System.out.println(student);
+        School school = new School(
+                "spb",
+                4,
+                1,
+                "fspo"
+        );
 
-        student.test();*/
+        school.addEntity(new Student("vasya", 15, false, 6));
+        school.addEntity(new Student("petya", 16, false, 7));
+        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 0));
 
-        Human h1 = new Man("Petya", 40);
-        Human h2 = new Woman("Lena", 35);
-
-        //System.out.println(man);
-        //System.out.println(woman);
-
-        //проверка на принадлежность класса через наследование
-        System.out.println(h1 instanceof Woman);
-        System.out.println(h2 instanceof Woman);
-    }
-
-    public static void doWork(Human human)
-    {
-        if(human instanceof Man) {
-            //дествие 1
-        } else {
-            //действие 2
+        System.out.println(school);
+        for(int i=0; i<3; i++) {
+            school.nextYear();
         }
+        System.out.println(school);
     }
-
-    /*
-    Human
-    - String name
-    - int age
-    - boolean isWoman
-
-    Man extends Human
-    - доп полей нет
-    - всегда передает isWoman = false
-
-    Woman extends Human
-    - доп полей нет
-    - всегда передает isWoman = true
-     */
 }

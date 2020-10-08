@@ -1,4 +1,4 @@
-package ru.pa4ok.demoexam.task;
+package ru.pa4ok.demoexam;
 
 public class Task
 {
@@ -7,29 +7,31 @@ public class Task
     - String name
     - int age
     - boolean isWoman
-    - toString()
+    - void nextYear() //age++
 
     Teacher extends Human
     - String subject
-    - toString()
+    - int exp
+    - void nextYear() //родителькую и exp++
 
     Student extends Human
-    - int level //класс в котором учится
-    - toString()
+    - int level
+    - void nextYear() //родителькую и level++
 
     Building
-    - String adress
+    - String address
     - int floorCount
-    - toString()
 
     School extends Builder
     - int index
     - String name
     - List<Teacher> teachers
     - List<Student> students
-    - toString()
     - public void addEntity(Human human)
         если human принадлежит к Teacher - добавить в список учителей
         если нет - добавить в список студент
+    - void nextYear()
+        перебирает всех студентов и преподавателей
+        вызывает у них nextYear()
      */
 }

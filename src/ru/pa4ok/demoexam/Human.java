@@ -12,9 +12,8 @@ public class Human
         this.isWomen = isWomen;
     }
 
-    public String getInfo()
-    {
-        return "Type: human";
+    public void nextYear() {
+        age++;
     }
 
     @Override
