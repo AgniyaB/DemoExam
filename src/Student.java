@@ -1,38 +1,27 @@
-public class Student
+public class Student extends Human
 {
-    private String name;
-    private int age;
     private int level;
 
-    public Student(String name, int age, int level) {
-        this.name = name;
-        this.age = age;
+    public Student(String name, int age, boolean isWoman, int level)
+    {
+        super(name, age, isWoman);
         this.level = level;
+    }
+
+    @Override
+    public void work() {
+        super.work();
+        System.out.println("work form Student");
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "level=" + level +
+                ", name='" + name + '\'' +
                 ", age=" + age +
-                ", level=" + level +
+                ", isWoman=" + isWoman +
                 '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getLevel() {
