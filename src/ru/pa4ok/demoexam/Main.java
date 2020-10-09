@@ -23,14 +23,21 @@ public class Main
         }
         System.out.println(teacherList);*/
 
-        human.work();
-        System.out.println();
-        student.work();
+        //human.work();
+        //System.out.println();
+        //student.work();
 
 
         //System.out.println(h);
         //System.out.println(student);
         //System.out.println(teacher);
+
+        School school = new School("spb", 4, 1, "fspo");
+        System.out.println(school);
+        school.addEntity(teacher);
+        school.addEntity(student);
+        school.addEntity(human);
+        System.out.println(school);
     }
 
     /*
@@ -43,16 +50,20 @@ public class Main
     - String name
     - int age
     - boolean isWoman
+    - void nextYear() // age++
 
     Teacher extends Human
     - String subject
+    - int exp //стаж
+    - void nextYear() // вызывать родительский метод, потом exp++
 
     Student extends Human
     - int level
+    - void nextYear() // вызывать родительский метод, потом level++
 
     Building
     - String address
-    - int florCount
+    - int floorCount
 
     School extends Building
     - int index
@@ -65,7 +76,9 @@ public class Main
         если human является Student
         то его надо добавить в students
         если не то и не то, то вывести в консоль
-
+    - void nextYear() //просто одинаковое название, может называться как угодно
+        //перебирать всех teachers и students
+        //и вызывать у них метод nextYear()
      */
 
     /*private static void printHumanAge(Human human)
