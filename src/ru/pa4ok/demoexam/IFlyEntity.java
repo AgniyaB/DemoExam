@@ -2,10 +2,7 @@ package ru.pa4ok.demoexam;
 
 public interface IFlyEntity
 {
-    public int getMaxFlyHeight();
+    public int getMaxFlyTime();
 
-    //можно сделать дефолтную функцию, а не заготовку
-    public default int getSpeed() {
-        return 10;
-    }
+    public double getMaxFlyHeight();
 }

@@ -4,35 +4,14 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*//EntityLiving e = new EntityLiving("млекопитающее", 20);
-        Dog d = new Dog("млекопитающее", 5);
-        System.out.println(d.getSound());
+        Zoo zoo = new Zoo("zoo");
+        zoo.getAnimals().add(new Tiger());
+        zoo.getAnimals().add(new Tiger());
+        zoo.getAnimals().add(new Bird());
+        zoo.getAnimals().add(new Ant());
 
-        EntityLiving dog = new EntityLiving("млекопитающее", 5) {
-            @Override
-            public String getSound() {
-                return "гав";
-            }
-        };
-        System.out.println(dog.getSound());*/
-
-        Tiger tiger = new Tiger("млекопитающее", 5);
-        //System.out.println(tiger instanceof IFlyEntity);
-        //System.out.println(tiger instanceof ISoundEntity);
-        Ant ant = new Ant("млекопитающее", 5);
-
-        playSound(tiger);
-        playSound(ant);
-    }
-
-
-    private static void playSound(EntityLiving entityLiving)
-    {
-        if(entityLiving instanceof ISoundEntity) {
-            System.out.println(((ISoundEntity)entityLiving).getSound());
-        } else {
-            System.out.println("нет звука");
-        }
+        System.out.println(zoo.getAllFlyEntities());
+        zoo.playAllAnimalSounds();
     }
 
     /*
@@ -48,8 +27,8 @@ public class Main
     - String getSound()
 
     interface IFlyEntity
-    - double getMinFlyHeight()
-    - dobule getMaxFlyHeight()
+    - int getMaxFlyTime()
+    - double getMaxFlyHeight()
 
     //
     3-4 класса животных

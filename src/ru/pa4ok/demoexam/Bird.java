@@ -1,18 +1,37 @@
 package ru.pa4ok.demoexam;
 
-public class Bird extends EntityLiving implements ISoundEntity, IFlyEntity
+public class Bird extends EntityLiving implements IFlyEntity, ISoundEntity
 {
-    public Bird(String type, int age) {
-        super(type, age);
+    public Bird() {
     }
 
     @Override
-    public int getMaxFlyHeight() {
+    public String getType() {
+        return "млекопитающее";
+    }
+
+    @Override
+    public boolean canPet() {
+        return true;
+    }
+
+    @Override
+    public int getMaxFlyTime() {
         return 100;
     }
 
     @Override
+    public double getMaxFlyHeight() {
+        return 30;
+    }
+
+    @Override
     public String getSound() {
-        return "кар";
+        return "курлык";
+    }
+
+    @Override
+    public String toString() {
+        return "Bird{}";
     }
 }
