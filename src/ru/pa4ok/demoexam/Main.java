@@ -1,67 +1,75 @@
 package ru.pa4ok.demoexam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        /*Student[] students = new Student[3];
-        students[0] = new Student("vasya", 5);
-        System.out.println(Arrays.toString(students));*/
+        Human human = new Human("vasya", 15, false);
+        Human student = new Student("petya", 16, false, 5);
+        Human teacher = new Teacher("grin4pun", 60, false, "pp");
 
-        List<Student> list = new ArrayList<>();
+        //printHumanAge(student);
+        //printHumanAge(teacher);
 
-        Student s = new Student("vasya", 5);
-        list.add(s);
-        list.add(new Student("petya", 7));
-        list.add(new Student("igor'", 6));
+        /*List<Teacher> teacherList = new ArrayList<>();
+        if(student instanceof Teacher) {
+            teacherList.add((Teacher)student);
+        }
+        if(teacher instanceof Teacher) {
+            teacherList.add((Teacher)teacher);
+        }
+        System.out.println(teacherList);*/
 
-        //System.out.println(list.get(1));
-        //list.isEmpty();
-        //System.out.println(list.indexOf(s));
-        //list.remove(2); //удаление по индексу
-        //list.remove(s); //удаление по объекту
-
-        //list.contains(s);
-        //list.clear();
-        //list.set(2, s);
-        //list.size();
-
-        /*for(Student student : list) {
-            student.setLevel(11);
-        }*/
-
-        /*for(int i=0; i<list.size(); i++) {
-            Student student = list.get(i);
-            student.setLevel(10);
-        }*/
-
-        System.out.println(list);
+        human.work();
+        System.out.println();
+        student.work();
 
 
-        School school = new School();
+        //System.out.println(h);
+        //System.out.println(student);
+        //System.out.println(teacher);
     }
 
     /*
-      School
-        - int number
-        - String title
-        - List<Teacher> teachers
-        - List<Student> students
-        - toString()
+    везде toString()
+    в наследуемых классах поля protected
+    в остальных private
+    + геттеры и сеттеры
 
-      Teacher
-        - String name
-        - String subject
-        - toString()
+    Human
+    - String name
+    - int age
+    - boolean isWoman
 
-      Student
-        - String name
-        - int level
-        - toString()
+    Teacher extends Human
+    - String subject
+
+    Student extends Human
+    - int level
+
+    Building
+    - String address
+    - int florCount
+
+    School extends Building
+    - int index
+    - String title
+    - List<Teacher> teachers
+    - List<Student> students
+    - void addEntity(Human human)
+        проверить если human является Teacher
+        то его надо добавить в teachers
+        если human является Student
+        то его надо добавить в students
+        если не то и не то, то вывести в консоль
 
      */
+
+    /*private static void printHumanAge(Human human)
+    {
+        System.out.println(human.getAge());
+    }*/
 }

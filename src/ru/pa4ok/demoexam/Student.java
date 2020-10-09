@@ -1,29 +1,30 @@
 package ru.pa4ok.demoexam;
 
-public class Student
+public class Student extends Human //множественного наследования нет
 {
-    private String name;
     private int level;
 
-    public Student(String name, int level) {
-        this.name = name;
+    public Student(String name, int age, boolean isWoman, int level)
+    {
+        super(name, age, isWoman); //вызов родительского конструктора
         this.level = level;
+    }
+
+    @Override
+    public void work()
+    {
+        super.work(); //вызов переопреденного родительского метода
+        System.out.println("work from Student");
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", level=" + level +
+                "level=" + level +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isWoman=" + isWoman +
                 '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getLevel() {
