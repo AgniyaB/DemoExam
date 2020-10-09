@@ -1,8 +1,16 @@
 package ru.pa4ok.demoexam;
 
-public class Ant extends Animal
+public class Ant extends EntityLiving
 {
-    public Ant() {
-        super("млекопитающее", false);
+    public Ant(String type, int age) {
+        super(type, age);
+    }
+
+    @Override
+    public String toString() {
+        return "Ant{" +
+                "type='" + type + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
