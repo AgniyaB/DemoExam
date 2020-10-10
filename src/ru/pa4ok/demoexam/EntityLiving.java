@@ -10,7 +10,6 @@ public abstract class EntityLiving
         this.age = age;
     }
 
-    //public abstract void writeSound();
 
     @Override
     public String toString() {

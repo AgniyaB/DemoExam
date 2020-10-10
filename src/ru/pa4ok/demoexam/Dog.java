@@ -7,8 +7,8 @@ public class Dog extends EntityLiving implements ISoundEntity
     }
 
     @Override
-    public void writeSound() {
-        System.out.println("гав");
+    public String getSound() {
+        return "гав";
     }
 
     @Override

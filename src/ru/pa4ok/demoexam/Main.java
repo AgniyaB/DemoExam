@@ -6,21 +6,20 @@ public class Main
     {
         Dog dog = new Dog("rewfwer", 4);
         Ant ant = new Ant("efef", 1);
+        Bird bird1 = new Bird("bird", 2);
+        Bird bird2 = new Bird("bird", 3);
 
-        //dog.writeSound();
-        writeSoundIfExist(dog);
-        writeSoundIfExist(ant);
+        Zoo zoo = new Zoo("zoo");
+        zoo.getAnimals().add(dog);
+        zoo.getAnimals().add(ant);
+        zoo.getAnimals().add(bird1);
+        zoo.getAnimals().add(bird2);
+
+        System.out.println(zoo.getAllFlyAnimals());
+        System.out.println();
+        zoo.printAllSounds();
     }
 
-    private static void writeSoundIfExist(EntityLiving e)
-    {
-        if(e instanceof ISoundEntity) {
-            ISoundEntity soundEntity = (ISoundEntity)e;
-            soundEntity.writeSound();
-        } else {
-            System.out.println("no sound");
-        }
-    }
 
     /*
     abstract EntityLiving
