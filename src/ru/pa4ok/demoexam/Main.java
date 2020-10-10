@@ -1,61 +1,89 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        School school = new School(
-                1,
-                "spo",
-                new ArrayList<>(Arrays.asList(
-                        new Teacher("grin4pun", "pp"),
-                        new Teacher("grin4pun", "pp")
-                )),
-                new ArrayList<>(Arrays.asList(
-                        new Student("vasya", 5),
-                        new Student("petya", 6)
-                ))
-        );
+        Map<Integer, Entity> map = new HashMap<>();
 
-        //school.getTeachers().add(new Teacher("grin4pun", "pp"));
+        Entity entity = new Entity(1, "first");
+        map.put(1, entity);
+        map.put(2, new Entity(2, "second"));
 
-        System.out.println(school);
+        //по 1 ключу хранится только 1 объект
+        //при добавлении по уже существующему ключу - перезапись
+
+        //System.out.println(map.get(2));
+        //System.out.println(map.get(10));
+
+        //System.out.println(map);
+        //map.remove(2); //удаление по ключу
+        //map.remove(1, entity); //удаление по связке ключ-значение
+
+        /*map.clear();
+        map.size();
+        map.isEmpty();*/
+
+        //перебор значений
+        /*for(Entity e : map.values()) {
+            System.out.println(e);
+        }*/
+
+        //перебор ключей
+        /*for(Integer i : map.keySet()) {
+            System.out.printf(i + " ");
+        }
+        System.out.println();*/
+
+        //перебор ключ-значение
+        /*for(Map.Entry<Integer, Entity> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " | " + entry.getValue());
+        }*/
+
+        //System.out.println(map);
     }
 
-    /*//примерная реализация Arrays.asList(...)
-    private static <T> List<T> myAsList(T... objs)
-    {
-        List<T> list = new ArrayList<>();
-        for(T t : objs) {
-            list.add(t);
-        }
-        return list;
-    }*/
-
     /*
-    все поля приватные
+    все поля private
     + геттеры и сеттеры
 
-    Student
-    - String name
-    - int level
+    Book
+    - static int idCounter = 0
+    - int id
+    - String title
+    - String author
     - toString()
 
-    Teacher
-    - String name
-    - String subject
+    Library
+    - String title
+    - Map<Integer, Book> books
     - toString()
 
-    School
-    - int index
-    - String name
-    - List<Teacher> teachers
-    - List<Student> students
-    - toString()
+    создать объект библиотки
+    заполнить книгами
+    потестировать методы
      */
+}
+
+class Entity
+{
+    public int id;
+    public String s;
+
+    public Entity(int id, String s) {
+        this.id = id;
+        this.s = s;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "id=" + id +
+                ", s='" + s + '\'' +
+                '}';
+    }
 }
 
