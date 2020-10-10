@@ -1,86 +1,86 @@
 package ru.pa4ok.demoexam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        int intValue; //0
-        Integer integer; //null
+        List<String> list = new ArrayList<>();
 
-        float floatValue = 443.43234324F;
-        double doubleValue =  4433424.000D;
-        boolean booleanValue1; //false
-        boolean booleanValue2 = true;
-        char charValue = 'r';
-        /*
-        Float
-        Double
-        Boolean
-        Char
-         */
+        list.add("erwgowewe");
+        list.add("42243");
+        list.add("4344gergrge");
 
-        /*String s = "4234334234";
-        System.out.println(s.substring(2, 5));
-        System.out.println(s.contains("lnger"));
-        System.out.println(s.contains("343"));
-        */
+        //list.size();
+        //list.isEmpty();
+        //list.clear();
 
-        /*System.out.println(doubleValue > floatValue);
-        String s1 = "wfeefewf";
-        String s2 = "wfeefewF";
-        //if(s1 == s2) //некоректно
-        System.out.println(s1.equals(s2));
-        System.out.println(s1.equalsIgnoreCase(s2));*/
+        //System.out.println(list.get(2));
+        //list.set(2, "new String");
+        //System.out.println(list.get(2));
 
-        /*String s = "4324";
-        int i = Integer.parseInt(s);
-        System.out.println(3 + i);
-        *//*
-        Float.parseFloat()
-        Double.parseDouble()
-        ...
-         */
+        /*System.out.println(list);
+        list.remove(0); //удаление по индексу
+        list.remove("4344gergrge"); //удаление по объекту*/
 
-        //int[] intArr; //null
-        /*int[] intArr = new int[10];
-        System.out.println(intArr[0]);
+        System.out.println(list);
 
-        Integer[] integers = new Integer[10];
-        System.out.println(integers[0]);
+        //System.out.println(list.contains("4344gergrge"));
+        //System.out.println(list.contains("....efwef"));
 
-        for(int i=0; i<intArr.length; i++) {
-            intArr[i] = i + 3;
+
+        //List<String> list1 = Arrays.asList("1", "2", "3"); //тут нельзя будет изменять список
+        List<String> list1 = new ArrayList<>(Arrays.asList("1", "2", "3")); //тут уже фикс
+        //java 9+ List.of(...)
+        System.out.println(list1);
+        //list1.add("4"); Arrays.asList возвращает реализацию List без части методов
+
+        for(String s : list) {
+            System.out.printf(s + " ");
         }
+        System.out.println();
 
-        for(int i : intArr) { //сюда копии объектов из массива
+        for(int i=0; i<list.size(); i++)
+        {
+            String s = list.get(i);
+            System.out.printf(s + " ");
         }
-
-        System.out.println(Arrays.toString(intArr));*/
-
-        /*Student student = new Student("Vasya", 15, 4);
-        //System.out.println(student.age);
-        System.out.println(student);
-        student.setName("Petya");
-        System.out.println(student);
-        */
-
-        /*Scanner scanner = new Scanner(System.in);
-
-        String s  = scanner.nextLine();
-        //System.out.println(s.toUpperCase());
-        System.out.println(5 + Integer.parseInt(s));
-        System.out.println(5 + scanner.nextInt());
-
-        scanner.close();*/
+        System.out.println();
     }
+
+    /*
+    все поля приватные
+    + геттеры и сеттеры
+
+    Student
+    - String name
+    - int level
+    - toString()
+
+    Teacher
+    - String name
+    - String subject
+    - toString()
+
+    School
+    - int index
+    - String name
+    - List<Teacher> teachers
+    - List<Student> students
+    - toString()
+     */
 }
 
-//область видимости этот файл и другие файлы из этого пакета
-class NewMain
+class School
 {
+    //private List<String> list = ArrayList<>();
 
+    /*private List<String> list;
+
+    public School(List<String> list) {
+        this.list = new ArrayList<>(list);
+    }*/
 }
-
