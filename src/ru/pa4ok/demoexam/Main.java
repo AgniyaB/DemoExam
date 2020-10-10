@@ -2,6 +2,10 @@ package ru.pa4ok.demoexam;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Main
 {
@@ -47,15 +51,55 @@ public class Main
         //testError3(null);
         //testError3("testtest");
 
-        try {
+        /*try {
             testError4(null);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("ошибка успешно обработана");
+        }*/
+
+
+        List<Book> books = new ArrayList<>();
+
+        try {
+            Book book = readBook();
+            books.add(book);
+            System.out.println("книга добавлена успешно " + book);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ошибка при чтении книги");
         }
+
+        System.out.println(books);
     }
 
-    //обработка ошибки
+    private static Pattern pattern = Pattern.compile("[" + "а-яА-ЯёЁ" + "\\s" + "\\p{Punct}" + "]" + "*");
+
+    private static Book readBook() throws BookReadException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("введите данные книги");
+
+        int id = Integer.parseInt(scanner.nextLine());
+        if(id <= 0) {
+            throw new BookReadException("неверный id");
+        }
+
+        String title = scanner.nextLine();
+        if(!pattern.matcher(title).matches() || title.length() < 3 || title.length() > 20) {
+            throw new BookReadException("неправильное название");
+        }
+
+        String author = scanner.nextLine();
+        if(!pattern.matcher(author).matches() || author.length() < 3 || author.length() > 30) {
+            throw new BookReadException("неправильный автор");
+        }
+
+        return new Book(id, title, author);
+    }
+
+
+    /*//обработка ошибки
     private static void testError1()
     {
         try {
@@ -85,7 +129,7 @@ public class Main
         } else {
             System.out.println(s.toUpperCase());
         }
-    }
+    }*/
 
     /*
     Book
@@ -97,7 +141,7 @@ public class Main
     - все базовые конструкторы сгенерировать
 
     Статичный метод в классе Main
-    private static readBook() throws BookReadException
+    private static Book readBook() throws BookReadException
     который запрашивает у пользователя из консоли
     данные для создания Book и проверяет их корректность
     если что-то не корректно, пробрасывает наверх ошибку
