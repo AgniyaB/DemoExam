@@ -1,100 +1,58 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Main
 {
+    /*
+        все ошибки которые наследуют класс Exception
+        обязательны для обработки
+
+        все ошибки которые наследуют класс RuntimeException
+        НЕ обязательны для обработки
+
+    */
+
     public static void main(String[] args)
     {
-        List<Animal> animals = new ArrayList<>();
-        animals.add(new Tiger());
-        animals.add(new Ant());
-        animals.add(new Bird());
+        try {
+            Integer.parseInt("32e");
+            FileReader fr = new FileReader("test");
+        } catch (NumberFormatException | FileNotFoundException e) {
+            System.out.println("ошибка обработана");
+            e.printStackTrace();
+        } finally {
+            //вызовется в любом случае
+            //в основном нужен для закрытия ресурсов
+        }
 
-        doAllSounds(animals);
+        try {
+            //...
+        } catch (Exception e) { //отловит любую ошибку
+            e.printStackTrace();
+        }
+
+        myRuntimeExceptionMethod(5);
     }
 
-    private static void doAllSounds(List<Animal> animals) {
-        for(Animal a : animals)
-        {
-            String str = a.toString();
-            if(a instanceof ISoundEntity) {
-                str += " | sound: ";
-                str += ((ISoundEntity)a).getSound();
-            }
-            if(a instanceof IFlyAnimal) {
-                str += " | max fly height: ";
-                str += ((IFlyAnimal)a).getMaxFlyHeight();
-            }
-            System.out.println(str);
+    private static void readFile(String fileName) throws FileNotFoundException {
+        new FileReader(fileName);
+    }
+
+    private static void myExceptionMethod(int i) throws MyException {
+        if (i < 0) {
+            throw new MyException();
+        } else {
+            System.out.println(10 * i);
         }
     }
 
-
-    //все поля protected + геттеры и сеттеры
-    /*abstract EntityLiving
-    - abstract String getType()
-    - String toString()
-
-    Human extends EntityLiving
-    - name
-    - age
-    - isWomen
-    - String getType()
-    - List<Animal> pets
-    - void addPet(Animal) //проверка animal.isPet == true
-    - String toString()
-
-    abstract Animal extends EntityLiving
-    - int legsCount;
-    - boolean isPet;
-    - String toString()
-
-    Cat extends Animal
-    - String getType()
-    - String getSound()
-    - String toString()
-
-    Tiger extends Animal //передаст в родителький конструктор isPet = false
-    - String getType()
-    - String getSound()
-    - String toString()
-     */
-
-    //-----------------------------------------------------------
-
-    /*
-    abstract EntityLiving
-    - abstract String getType()
-    - String toString()
-
-    interface ISoundEntity
-    - String getSound()
-
-    Cat extends Animal
-    - String getType()
-    - String toString()
-
-    interface IFlyAnimal
-    - int getMaxFlyHeight()
-
-    Tiger extends Animal implements ISoundEntity
-    - String getType()
-    - String getSound()
-    - String toString()
-
-    Bird extends Animal implements ISoundEntity, IFlyAnimal
-    - String getType()
-    - String getSound()
-    - int getMaxFlyHeight()
-    - String toString()
-
-    Main
-    в главном методе создать List<Animal>
-    заполнить разными животными
-    и сделать перебор элементов проверяя
-    на принадлежность ко всем типам
-    выводя об этом информацию
-     */
+    private static void myRuntimeExceptionMethod(int i) {
+        if (i > 0) {
+            throw new MyRuntimeException("нужно число меньше 0");
+        } else {
+            System.out.println(100 * i);
+        }
+    }
 }
