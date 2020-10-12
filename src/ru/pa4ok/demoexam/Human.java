@@ -1,12 +1,12 @@
 package ru.pa4ok.demoexam;
 
-public class Human
+public abstract class Human
 {
-    private String name;
-    private int age;
-    private GenderEnum gender;
+    protected String name;
+    protected int age;
+    protected Gender gender;
 
-    public Human(String name, int age, GenderEnum gender) {
+    public Human(String name, int age, Gender gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -37,11 +37,11 @@ public class Human
         this.age = age;
     }
 
-    public GenderEnum getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 }

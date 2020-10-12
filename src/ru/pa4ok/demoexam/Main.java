@@ -1,48 +1,61 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 public class Main
 {
-    public static final String SPB = "SPB";
-
     public static void main(String[] args)
     {
-        /*List<Book> books = new ArrayList<>();
+        School school = new School(
+                "spb",
+                4,
+                BuildingType.SOCIAL,
+                1,
+                "spo"
+        );
 
-        for(int i=0; i<10; i++) {
-            books.add(new Book("title-" + i, "author-" + i, BookStatusEnum.IN_LIBRARY));
-        }
-        Collections.shuffle(books); //рандомный порядок элементов списка
+        school.getTeachers().add(new Teacher("grin4pun", 60, Gender.MALE, "pp", 20));
+        school.getTeachers().add(new Teacher("oshurok", 35, Gender.MALE, "up", 5));
+        school.getStudents().add(new Student("vasya", 15, Gender.MALE, 5));
+        school.getStudents().add(new Student("ira", 16, Gender.FEMALE, 6));
+        school.getStudents().add(new Student("petya", 17, Gender.MALE, 7));
 
-        *//*for(int i=0; i<books.size(); i++) {
-            for(int j=0; j<books.size()-1; j++) {
-                //пузырек это классно
-            }
-        }*//*
-
-        //вариант 1
-        *//*Collections.sort(books, new Comparator<Book>() {
-            @Override
-            public int compare(Book o1, Book o2) {
-                //-1 - o1<o2
-                //0 - o1==o2
-                //1 - o1>o2
-                return Long.compare(o1.getId(), o2.getId());
-            }
-        });*//*
-
-        //вариант 2 (см. также implements Comparable в Book)
-        Collections.sort(books);
-
-        System.out.println(books);*/
-
-       /* Human human = new Human("vasya", 15, GenderEnum.MALE);
-        if(human.getGender() == GenderEnum.MALE) {
-            System.out.println("mark13567457654");
-        }*/
+        System.out.println(school);
     }
+
+    /*
+    все поля в наследуемых классах protected
+    в остальных private + геттеры и сеттеры
+    + toString()
+
+    abstract Human
+    - String name
+    - int age
+    - Gender gender
+
+    enum Gender
+    - MALE
+    - FEMALE
+
+    Student extends Human
+    - int level //класс
+
+    Teacher extends Human
+    - String subject
+    - int exp //стаж
+
+    abstract Building
+    - String address
+    - int floorCount
+    - BuildingType type
+
+    enum BuildingType
+    - SOCIAL
+    - HOUSE
+    - GOVERNMENT
+
+    School extends Building
+    - int index
+    - String title
+    - List<Teacher> teachers
+    - List<Student> students
+     */
 }

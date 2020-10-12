@@ -1,7 +1,7 @@
 package ru.pa4ok.demoexam;
 
-public enum GenderEnum
+public enum Gender
 {
     MALE,
-    FEMALE;
+    FEMALE
 }
