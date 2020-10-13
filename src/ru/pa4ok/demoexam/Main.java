@@ -4,7 +4,17 @@ public class Main
 {
     public static void main(String[] args)
     {
-
+        Zoo zoo = new Zoo("zoo");
+        zoo.getAnimals().add(new Tiger());
+        zoo.getAnimals().add(new Tiger());
+        zoo.getAnimals().add(new Dog("тузик"));
+        zoo.getAnimals().add(new Bird(false, "курлык"));
+        zoo.getAnimals().add(new Bird(true, "попугай"));
+        zoo.getAnimals().add(new Bird(true, "попугай"));
+        zoo.getAnimals().add(new Ant());
+        System.out.println(zoo);
+        zoo.getAllSounds();
+        System.out.println(zoo.getAllPredators());
     }
 
     /*
@@ -24,6 +34,7 @@ public class Main
     Tiger extends Predator
 
     Dog extends Animal
+    - String name
 
     Ant extends Animal
 
