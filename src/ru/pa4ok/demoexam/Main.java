@@ -1,5 +1,8 @@
 package ru.pa4ok.demoexam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main
 {
     /*
@@ -11,13 +14,16 @@ public class Main
     - String name
     - int age
     - boolean isWoman
+    - void nextYear() //age++
 
     Student extends Human
     - int level
+    - void nextYear() //родительскую реализацию и level++
 
     Teacher extends Human
     - String subject
     - int exp
+    - void nextYear() //родительскую реализацию и exp++
 
     Building
     - String address
@@ -34,17 +40,20 @@ public class Main
         если human это Teacher
         то добавить его в teachers
         если не то и не то - вывести в консоль
+    - void nextYear()
+        перебирать всех студентов и преподавателей
+        и вызывать у них nextYear()
 
      */
 
     public static void main(String[] args)
     {
-        Human human = new Human("Vasya", 15, false);
+        //Human human = new Human("Vasya", 15, false);
 
         //так можно
-        Student s1 = new Student("Petya", 16, false, 5);
-        Human s2 = new Student("Petya", 16, false, 5);
-        Human s3 = new Teacher("grin4pun", 60, false, "pp", 20);
+        //Student s1 = new Student("Petya", 16, false, 5);
+        //Human s2 = new Student("Petya", 16, false, 5);
+        //Human s3 = new Teacher("grin4pun", 60, false, "pp", 20);
         //
 
         //printNameAndAge(s2);
@@ -61,11 +70,30 @@ public class Main
             System.out.println(student);
         }*/
 
-        s1.test();
+        //s1.test();
+
+        School school = new School(
+                "spb",
+                4,
+                1,
+                "fspo"
+        );
+
+        //System.out.println(school);
+        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
+        school.addEntity(new Student("Petya", 16, false, 5));
+        school.addEntity(new Student("vasya", 17, false, 6));
+        System.out.println(school);
+        //school.addEntity(new Human("Vasya", 15, false));
+
+        for(int i=0; i<3; i++) {
+            school.nextYear();
+        }
+        System.out.println(school);
     }
 
-    private static void printNameAndAge(Human human)
+    /*private static void printNameAndAge(Human human)
     {
         System.out.println(human.getName() + " " + human.getAge());
-    }
+    }*/
 }

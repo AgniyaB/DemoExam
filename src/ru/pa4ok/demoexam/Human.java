@@ -12,8 +12,8 @@ public class Human
         this.isWoman = isWoman;
     }
 
-    public void test() {
-        System.out.println("test from Human");
+    public void nextYear() {
+        this.age++;
     }
 
     @Override

@@ -12,6 +12,12 @@ public class Teacher extends Human
     }
 
     @Override
+    public void nextYear() {
+        super.nextYear();
+        this.exp++;
+    }
+
+    @Override
     public String toString() {
         return "Teacher{" +
                 "subject='" + subject + '\'' +

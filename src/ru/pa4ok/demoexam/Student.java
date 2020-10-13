@@ -11,9 +11,9 @@ public class Student extends Human
     }
 
     @Override
-    public void test() {
-        super.test();
-        System.out.println("test from Student");
+    public void nextYear() {
+        super.nextYear();
+        this.level++;
     }
 
     @Override
