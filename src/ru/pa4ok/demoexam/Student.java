@@ -10,12 +10,11 @@ public class Student extends Human //множественного наследо
         this.level = level;
     }
 
-    /*@Override
-    public void work()
-    {
-        super.work(); //вызов переопреденного родительского метода
-        System.out.println("work from Student");
-    }*/
+    @Override
+    public void nextYear() {
+        super.nextYear();
+        level++;
+    }
 
     @Override
     public String toString() {

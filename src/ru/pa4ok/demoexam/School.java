@@ -39,6 +39,17 @@ public class School extends Building
                 '}';
     }
 
+    public void nextYear()
+    {
+        for(Teacher t : teachers) {
+            t.nextYear();
+        }
+
+        for(Student s : students) {
+            s.nextYear();
+        }
+    }
+
     public int getIndex() {
         return index;
     }

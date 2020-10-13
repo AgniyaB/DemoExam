@@ -7,36 +7,16 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Human human = new Human("vasya", 15, false);
-        Human student = new Student("petya", 16, false, 5);
-        Human teacher = new Teacher("grin4pun", 60, false, "pp");
-
-        //printHumanAge(student);
-        //printHumanAge(teacher);
-
-        /*List<Teacher> teacherList = new ArrayList<>();
-        if(student instanceof Teacher) {
-            teacherList.add((Teacher)student);
-        }
-        if(teacher instanceof Teacher) {
-            teacherList.add((Teacher)teacher);
-        }
-        System.out.println(teacherList);*/
-
-        //human.work();
-        //System.out.println();
-        //student.work();
-
-
-        //System.out.println(h);
-        //System.out.println(student);
-        //System.out.println(teacher);
-
         School school = new School("spb", 4, 1, "fspo");
+
+        school.addEntity(new Student("vasya", 15, false, 5));
+        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
+        school.addEntity(new Human("petya", 15, false));
+
         System.out.println(school);
-        school.addEntity(teacher);
-        school.addEntity(student);
-        school.addEntity(human);
+        for(int i=0; i<3; i++) {
+            school.nextYear();
+        }
         System.out.println(school);
     }
 
@@ -80,9 +60,4 @@ public class Main
         //перебирать всех teachers и students
         //и вызывать у них метод nextYear()
      */
-
-    /*private static void printHumanAge(Human human)
-    {
-        System.out.println(human.getAge());
-    }*/
 }

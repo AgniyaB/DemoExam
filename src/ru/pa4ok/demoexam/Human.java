@@ -12,10 +12,10 @@ public class Human
         this.isWoman = isWoman;
     }
 
-   /* public void work()
+    public void nextYear()
     {
-        System.out.println("work from Human");
-    }*/
+        age++;
+    }
 
     @Override
     public String toString() {
