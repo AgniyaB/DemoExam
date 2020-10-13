@@ -15,4 +15,4 @@
 
 ## Что можно почитать самостоятельно
 - https://metanit.com/java/tutorial/ - основы на русском
-- https://o7planning.org/ru/10973/java-basic - более подробно (лучше в оригинале читать на EN)
+- https://o7planning.org/en/10973/java-basic - более подробно на english
