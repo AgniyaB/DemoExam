@@ -1,63 +1,43 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main
 {
     public static void main(String[] args)
     {
-        School school = new School("spb", 4, 1, "fspo");
 
-        school.addEntity(new Student("vasya", 15, false, 5));
-        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
-        school.addEntity(new Human("petya", 15, false));
-
-        System.out.println(school);
-        for(int i=0; i<3; i++) {
-            school.nextYear();
-        }
-        System.out.println(school);
     }
 
     /*
-    везде toString()
-    в наследуемых классах поля protected
-    в остальных private
-    + геттеры и сеттеры
+    EntityLiving
+    - String type
 
-    Human
-    - String name
-    - int age
-    - boolean isWoman
-    - void nextYear() // age++
+    Animal extends EntityLiving
+    - boolean canPet
+    - boolean hasSound
+    - String sound
+        если hasSound == false
+        тогда поле равно null
 
-    Teacher extends Human
-    - String subject
-    - int exp //стаж
-    - void nextYear() // вызывать родительский метод, потом exp++
+    Predator extends Animal
+    - super(canPet = false)
 
-    Student extends Human
-    - int level
-    - void nextYear() // вызывать родительский метод, потом level++
+    Tiger extends Predator
 
-    Building
-    - String address
-    - int floorCount
+    Dog extends Animal
 
-    School extends Building
-    - int index
+    Ant extends Animal
+
+    Bird extends Animal
+
+    Zoo
     - String title
-    - List<Teacher> teachers
-    - List<Student> students
-    - void addEntity(Human human)
-        проверить если human является Teacher
-        то его надо добавить в teachers
-        если human является Student
-        то его надо добавить в students
-        если не то и не то, то вывести в консоль
-    - void nextYear() //просто одинаковое название, может называться как угодно
-        //перебирать всех teachers и students
-        //и вызывать у них метод nextYear()
+    - List<Animal> animals
+    - void getAllSounds()
+        должен вывести в консоль
+        звуки всех животных
+        без повторений
+    - List<Predator> getAllPredators
+        должен вернуть всех хищников
+        с повторениями
      */
 }
