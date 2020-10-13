@@ -1,29 +1,25 @@
 package ru.pa4ok.demoexam;
 
-public class Teacher
+public class Teacher extends Human
 {
-    private String name;
     private String subject;
+    private int exp;
 
-    public Teacher(String name, String subject) {
-        this.name = name;
+    public Teacher(String name, int age, boolean isWoman, String subject, int exp) {
+        super(name, age, isWoman);
         this.subject = subject;
+        this.exp = exp;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
-                "name='" + name + '\'' +
-                ", subject='" + subject + '\'' +
+                "subject='" + subject + '\'' +
+                ", exp=" + exp +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isWoman=" + isWoman +
                 '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getSubject() {
@@ -32,5 +28,13 @@ public class Teacher
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
     }
 }
