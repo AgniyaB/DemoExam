@@ -1,58 +1,79 @@
 package ru.pa4ok.demoexam;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.util.Arrays;
 
 public class Main
 {
-    /*
-        все ошибки которые наследуют класс Exception
-        обязательны для обработки
-
-        все ошибки которые наследуют класс RuntimeException
-        НЕ обязательны для обработки
-
-    */
-
     public static void main(String[] args)
     {
-        try {
-            Integer.parseInt("32e");
-            FileReader fr = new FileReader("test");
-        } catch (NumberFormatException | FileNotFoundException e) {
-            System.out.println("ошибка обработана");
-            e.printStackTrace();
-        } finally {
-            //вызовется в любом случае
-            //в основном нужен для закрытия ресурсов
-        }
+        /*Container<String> c1 = new Container<>("string");
+        Container<Integer> c2 = new Container<>(44);
 
-        try {
-            //...
-        } catch (Exception e) { //отловит любую ошибку
-            e.printStackTrace();
-        }
+        System.out.println(c1);
+        System.out.println(c2);
 
-        myRuntimeExceptionMethod(5);
+        */
+
+        //Tuple<Integer, String> t1 = new Tuple<>(1, "12fwwefwe");
+        //System.out.println(t1.getFirst() + " | " + t1.getSecond());
+
+        //testGenerik("4234324");
+        //testGenerik(443);
+
+        //Integer i = 434;
+
+        Integer[] arr = {2, 6, 4, 1, 54, 4, 10, 3, 4};
+        sortArray(arr);
+        System.out.println(Arrays.toString(arr));
+
+        //TestClass[] arr2 = new TestClass[10];
+        //sortArray(arr2);
     }
 
-    private static void readFile(String fileName) throws FileNotFoundException {
-        new FileReader(fileName);
+    private static <T extends Comparable> void sortArray(T[] arr)
+    {
+        for(int i=0; i<arr.length; i++)
+        {
+            for(int j=i+1; j<arr.length; j++)
+            {
+                /*
+                compare() compareTo()
+                a и b
+                -1 a<b
+                0 a==b
+                1 a>b
+                 */
+
+                if(arr[i].compareTo(arr[j]) == 1)
+                {
+                    T t = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = t;
+                }
+            }
+        }
+
+        //long timeMills = System.currentTimeMillis();
     }
 
-    private static void myExceptionMethod(int i) throws MyException {
-        if (i < 0) {
-            throw new MyException();
-        } else {
-            System.out.println(10 * i);
-        }
-    }
+       /* private static <T> void testGenerik(T t)
+    {
+        System.out.println(t instanceof String);
+        System.out.println(t);
+    }*/
 
-    private static void myRuntimeExceptionMethod(int i) {
-        if (i > 0) {
-            throw new MyRuntimeException("нужно число меньше 0");
-        } else {
-            System.out.println(100 * i);
-        }
-    }
+    /*
+    abstract Sortinger<T extends Comparable>
+    - abstract void sort(T[] arr) //метод без тела (абстрактный)
+    - void sortWithTime(T[] arr)
+        сохранять в перемененую текущее время
+        вызывать sort(T[] arr)
+        и выводить в консоль время потраченное на сортировку
+
+    BubbleSortinger extends Sortinger
+    - реализовать sort(T[] arr)
+        сортировка пузырьком
+
+    +еще 2 класса с любыми другими алгоритимами сортировки
+     */
 }
