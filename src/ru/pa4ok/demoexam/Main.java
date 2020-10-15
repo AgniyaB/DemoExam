@@ -1,38 +1,84 @@
 package ru.pa4ok.demoexam;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class Main
 {
+    /*
+    abstract Sortinger<T extends Comparable>
+    - abstract void sort(T[] arr)
+        сортировать массив
+    - void sortWithTime(T[] arr)
+        сохраняет в переменную текущее время
+        вызывает метод sort(T[] arr)
+        вычисляет и выводит время затраченное на сортировку
+
+    2 или 3 класса наследуют ваш Sortinger
+    аля BubbleSortinger<T extends Comparable> extends Sortinger<T>
+    с РАЗНЫМИ алгоритмами сортивки
+     */
+
     public static void main(String[] args)
     {
-        Book book = new Book(1, "title", "author", BookStatusEnum.IN_LIBRARY);
-        System.out.println(book);
-        //System.out.println(book.getStatus().getTranslate());
+        //самый яркий пример использование генерика
+        //List<String> list = new ArrayList<>();
 
-        book.setStatus(BookStatusEnum.valueOf("IN_TRANSFER"));
-        System.out.println(book);
+        //Container<String> stringContainer = new Container<>("test string");
+        //System.out.println(stringContainer);
 
-        for(BookStatusEnum e : BookStatusEnum.values()) {
-            System.out.printf(e.name() + " ");
-        }
-        System.out.println();
+        /*Container<int> нельзя
+        Container<Integer> можно */
 
-        /*if(book.getStatus() == BookStatusEnum.IN_LIBRARY) {
-            System.out.println("эта книга к библиотеке");
-        }
+        //нельзя создать такое объект так как TestClass не реализует интерфейс Comparable
+        //Container<TestClass> c1 = new Container<TestClass>();
 
-        switch (book.getStatus())
-        {
-            case ON_HANDS:
-                System.out.println(1);
-                break;
-            case IN_LIBRARY:
-                System.out.println(2);
-                break;
-            case IN_TRANSFER:
-                System.out.println(3);
-                break;
-        }*
+        //Tuple<Integer, String> tuple = new Tuple<>(213, "fgegregr");
+        //System.out.println(tuple);
 
-         */
+        Integer[] arr = {35, 33, 3, 10, 40, 6, 15, 4, 6, 20, 1};
+        sortArray(arr);
+        System.out.println(Arrays.toString(arr));
+
+        //текущее время в милисекундах
+        long timeMills = System.currentTimeMillis();
+
+        //рандом
+        Random rand = new Random();
+        int randInt = rand.nextInt(1000);
     }
+
+    private static <T extends Comparable> void sortArray(T[] arr)
+    {
+        //можно проверить генерик на принадлежность к классу
+        /*T t = null;
+        if(t instanceof String) {
+            //...
+        }*/
+
+        for(int i=0; i<arr.length; i++)
+        {
+            for(int j=i; j<arr.length; j++)
+            {
+                /*
+                -1 a<n
+                0 a==b
+                1 a>b
+                 */
+                if(arr[i].compareTo(arr[j]) == 1)
+                {
+                    T t = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = t;
+                }
+            }
+        }
+    }
+}
+
+class TestClass
+{
+
 }
