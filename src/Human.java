@@ -10,9 +10,8 @@ public class Human
         this.isWoman = isWoman;
     }
 
-    public void work()
-    {
-        System.out.println("work from Human");
+    public void nextYear() {
+        age++;
     }
 
 

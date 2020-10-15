@@ -9,9 +9,9 @@ public class Student extends Human
     }
 
     @Override
-    public void work() {
-        super.work();
-        System.out.println("work form Student");
+    public void nextYear() {
+        super.nextYear();
+        level++;
     }
 
     @Override

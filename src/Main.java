@@ -5,35 +5,23 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*Human h1 = new Student("vasya", 21, false, 5);
-        Human h2 = new Teacher("grin4pun", 60, false, "pp");
+        School school = new School(
+                "spb",
+                4,
+                1,
+                "fspo"
+        );
 
-        //printAge(h1);
-        //printAge(h2);
-
-        List<Student> list = new ArrayList<>();
-        //list.add((Student)h1);
-        //list.add((Student)h2);
-        //System.out.println(h1 instanceof Student);
-        //System.out.println(h2 instanceof Student);
-        if(h1 instanceof Student) {
-            list.add((Student) h1);
+        System.out.println(school);
+        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
+        school.addEntity(new Student("vasya", 15, false, 5));
+        school.addEntity(new Student("ira", 17, true, 8));
+        school.addEntity(new Human("armen", 30, false));
+        System.out.println(school);
+        for(int i=0; i<4; i++) {
+            school.nextYear();
         }
-        if(h2 instanceof Student) {
-            list.add((Student) h2);
-        }
-
-        System.out.println(list);
-
-
-        //System.out.println(h1);
-        //System.out.println(h2);*/
-
-        Human human = new Human("sfqfew", 34, false);
-        Student student = new Student("vasya", 21, false, 5);
-
-        //human.work();
-        student.work();
+        System.out.println(school);
     }
 
 
