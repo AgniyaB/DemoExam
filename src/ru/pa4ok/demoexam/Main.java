@@ -1,89 +1,71 @@
 package ru.pa4ok.demoexam;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main
 {
+    /*
+    поля наследуемых классов protected
+    остальные поля private + геттеры и сеттеры
+    + везде toString()
+
+    Human
+    - String name
+    - int age
+    - boolean isWoman
+
+    Student extends Human
+    - int level
+
+    Teacher extends Human
+    - String subject
+    - int exp
+
+    Building
+    - String address
+    - int floorCount
+
+    School extends Building
+    - int index
+    - String title
+    - List<Teacher> teachers
+    - List<Student> students
+    - void addEntity(Human human)
+        проверить, если human это Student
+        то добавить его в students
+        если human это Teacher
+        то добавить его в teachers
+        если не то и не то - вывести в консоль
+
+     */
+
     public static void main(String[] args)
     {
-        Map<Integer, Entity> map = new HashMap<>();
+        Human human = new Human("Vasya", 15, false);
 
-        Entity entity = new Entity(1, "first");
-        map.put(1, entity);
-        map.put(2, new Entity(2, "second"));
+        //так можно
+        Student s1 = new Student("Petya", 16, false, 5);
+        Human s2 = new Student("Petya", 16, false, 5);
+        Human s3 = new Teacher("grin4pun", 60, false, "pp", 20);
+        //
 
-        //по 1 ключу хранится только 1 объект
-        //при добавлении по уже существующему ключу - перезапись
+        //printNameAndAge(s2);
+        //printNameAndAge(s3);
+        //System.out.println(human);
 
-        //System.out.println(map.get(2));
-        //System.out.println(map.get(10));
+        //является ли класс объекта s2 Teacher или наследует его?
+        //sSystem.out.println(s2 instanceof Teacher);
+        //System.out.println(s3 instanceof Teacher);
 
-        //System.out.println(map);
-        //map.remove(2); //удаление по ключу
-        //map.remove(1, entity); //удаление по связке ключ-значение
-
-        /*map.clear();
-        map.size();
-        map.isEmpty();*/
-
-        //перебор значений
-        /*for(Entity e : map.values()) {
-            System.out.println(e);
+        //сначала проверяем на принадлежность и только потом делаем приведение типов
+        /*if(s2 instanceof Student) {
+            Student student = (Student)s2;
+            System.out.println(student);
         }*/
 
-        //перебор ключей
-        /*for(Integer i : map.keySet()) {
-            System.out.printf(i + " ");
-        }
-        System.out.println();*/
-
-        //перебор ключ-значение
-        /*for(Map.Entry<Integer, Entity> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " | " + entry.getValue());
-        }*/
-
-        //System.out.println(map);
+        s1.test();
     }
 
-    /*
-    все поля private
-    + геттеры и сеттеры
-
-    Book
-    - static int idCounter = 0
-    - int id
-    - String title
-    - String author
-    - toString()
-
-    Library
-    - String title
-    - Map<Integer, Book> books
-    - toString()
-
-    создать объект библиотки
-    заполнить книгами
-    потестировать методы
-     */
-}
-
-class Entity
-{
-    public int id;
-    public String s;
-
-    public Entity(int id, String s) {
-        this.id = id;
-        this.s = s;
-    }
-
-    @Override
-    public String toString() {
-        return "Entity{" +
-                "id=" + id +
-                ", s='" + s + '\'' +
-                '}';
+    private static void printNameAndAge(Human human)
+    {
+        System.out.println(human.getName() + " " + human.getAge());
     }
 }
-
