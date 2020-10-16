@@ -1,93 +1,131 @@
 package ru.pa4ok.demoexam;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main
 {
     /*
-    поля наследуемых классов protected
-    остальные поля private + геттеры и сеттеры
-    + везде toString()
+    все ошибки которые наследуют Exception
+    они обязательны для обработки
 
-    Human
-    - String name
-    - int age
-    - boolean isWoman
-    - void nextYear()
-
-    Student extends Human
-    - int level
-    - void nextYear() //родительский, level++
-
-    Teacher extends Human
-    - String subject
-    - int exp
-    - void nextYear() //родительский, exp++
-
-    Building
-    - String address
-    - int floorCount
-
-    School extends Building
-    - int index
-    - String title
-    - List<Teacher> teachers
-    - List<Student> students
-    - void addEntity(Human human)
-        проверить, если human это Student
-        то добавить его в students
-        если human это Teacher
-        то добавить его в teachers
-        если не то и не то - вывести в консоль
-    - void nextYear()
-        перебирает всех учителей и студентов
-        вывывает у низ nextYear()
-
+    все ошибки которые наследуют RuntimeException
+    они НЕ обязательны для обработки
      */
 
     public static void main(String[] args)
     {
-        Human human = new Human("Vasya", 15, false);
 
-        //так можно
-        Student s1 = new Student("Petya", 16, false, 5);
-        Human s2 = new Student("Petya", 16, false, 5);
-        Human s3 = new Teacher("grin4pun", 60, false, "pp", 20);
-        //
+        int i = 5;
 
-        //printNameAndAge(s2);
-        //printNameAndAge(s3);
-        //System.out.println(human);
+        try {
+            System.out.println(i + Integer.parseInt("10e"));
+            //FileReader fr = new FileReader("fefe");
+        } /*catch(Exception e) {
+            e.printStackTrace(); отловит любую ошибку
+        }*/
+        /*catch(NumberFormatException e) {
+            e.printStackTrace();
+        } можно размещать несклько блоков catch
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }*/
+        catch(NumberFormatException/* | FileNotFoundException*/ e) {
+            System.out.println("ошибка обработана");
+            i = 0;
+        } finally {
+            //блок который вызывается всегда
+            //раньше его использовали для закрытия ресурсов
+            //сейчас уже редко используется
+        }
 
-        //является ли класс объекта s2 Teacher или наследует его?
-        //sSystem.out.println(s2 instanceof Teacher);
-        //System.out.println(s3 instanceof Teacher);
+        System.out.println(i);
 
-        //сначала проверяем на принадлежность и только потом делаем приведение типов
-        /*if(s2 instanceof Student) {
-            Student student = (Student)s2;
-            System.out.println(student);
+        //readFile1("file.txt");
+
+        //пробросить выше уже некуда
+        //если метод main выбрасывает ошибку
+        //программа завершает работу
+        /*try {
+            readFile2("file.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
         }*/
 
-        School school = new School(
-                "spb",
-                4,
-                1,
-                "fspo"
-        );
+        //checkInt(1);
+        //checkInt(-1);
 
-        System.out.println(school);
-        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
-        school.addEntity(new Student("Petya", 16, false, 5));
-        school.addEntity(new Student("Vasya", 16, false, 5));
-        school.addEntity(new Human("54345", 23, true));
-        System.out.println(school);
-        for(int i=0; i<3; i++) {
-            school.nextYear();
-        }
-        System.out.println(school);
+        /*try {
+            checkInt1(-1);
+        } catch (MyException e) {
+            e.printStackTrace();
+        }*/
+
     }
 
-    private static void printNameAndAge(Human human)
+    private static void readFile1(String fileName)
     {
-        System.out.println(human.getName() + " " + human.getAge());
+        try {
+            FileReader fr = new FileReader(fileName);
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //проброс ошибки наверх
+    private static void readFile2(String fileName) throws IOException {
+        FileReader fr = new FileReader(fileName);
+        fr.close();
+    }
+
+    private static void checkInt(int i)
+    {
+        if(i < 0) {
+            throw new NumberFormatException("число меньше 0");
+        }
+    }
+
+    private static void checkInt1(int i) throws MyException {
+        if(i < 0) {
+            throw new MyException("число меньше 0");
+        }
+    }
+
+    /*
+    Library
+    - String title
+    - Map<Integer, Book> books
+
+    Book
+    - int id (>0 и не должно быть повторений)
+    - int year (>1900)
+    - String author (>2 && <30)
+    - String title  (>2 && <30)
+
+    BookFatalReadException extends Exception
+
+    BookMetaReadException extends RuntimeException
+
+    сделать метод, который будет
+    запрашивать с консоли ввод книги
+    проверять все введенные данные
+
+    если есть ошибка при чтении id или года выпуска
+    должен выбрасывать BookFatalReadException
+
+    если есть ошибка при чтении author или title
+    должен выбрасывать BookMetaReadException
+
+    создать объект Library и вызывать в цикле
+    ввод нескольких книг
+     */
+
+    private void read() {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        scanner.close();
     }
 }
