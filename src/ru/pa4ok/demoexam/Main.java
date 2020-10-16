@@ -11,13 +11,16 @@ public class Main
     - String name
     - int age
     - boolean isWoman
+    - void nextYear()
 
     Student extends Human
     - int level
+    - void nextYear() //родительский, level++
 
     Teacher extends Human
     - String subject
     - int exp
+    - void nextYear() //родительский, exp++
 
     Building
     - String address
@@ -34,6 +37,9 @@ public class Main
         если human это Teacher
         то добавить его в teachers
         если не то и не то - вывести в консоль
+    - void nextYear()
+        перебирает всех учителей и студентов
+        вывывает у низ nextYear()
 
      */
 
@@ -61,7 +67,23 @@ public class Main
             System.out.println(student);
         }*/
 
-        s1.test();
+        School school = new School(
+                "spb",
+                4,
+                1,
+                "fspo"
+        );
+
+        System.out.println(school);
+        school.addEntity(new Teacher("grin4pun", 60, false, "pp", 20));
+        school.addEntity(new Student("Petya", 16, false, 5));
+        school.addEntity(new Student("Vasya", 16, false, 5));
+        school.addEntity(new Human("54345", 23, true));
+        System.out.println(school);
+        for(int i=0; i<3; i++) {
+            school.nextYear();
+        }
+        System.out.println(school);
     }
 
     private static void printNameAndAge(Human human)
