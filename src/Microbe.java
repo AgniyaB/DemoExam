@@ -1,18 +1,26 @@
 public class Microbe extends EntityLiving
 {
-    public Microbe() {
-        super("бактерия");
+    private boolean danger;
+
+    public Microbe(boolean danger) {
+        super();
+        this.danger = danger;
     }
 
     @Override
-    public void test() {
-        System.out.println("test from Microbe");
+    public String getType() {
+        return "бактерия";
+    }
+
+    @Override
+    public boolean canPet() {
+        return false;
     }
 
     @Override
     public String toString() {
         return "Microbe{" +
-                "type='" + type + '\'' +
+                "danger=" + danger +
                 '}';
     }
 }

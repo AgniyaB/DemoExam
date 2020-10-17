@@ -1,7 +1,17 @@
-public class Tiger extends Animal implements ISoundEntity//, Inteface1, Iterface2...
+public class Tiger extends EntityLiving implements ISoundEntity
 {
     public Tiger() {
-        super("млекопитающее");
+        super();
+    }
+
+    @Override
+    public String getType() {
+        return "млекопитающее";
+    }
+
+    @Override
+    public boolean canPet() {
+        return false;
     }
 
     @Override
@@ -11,8 +21,6 @@ public class Tiger extends Animal implements ISoundEntity//, Inteface1, Iterface
 
     @Override
     public String toString() {
-        return "Tiger{" +
-                "type='" + type + '\'' +
-                '}';
+        return "Tiger{}";
     }
 }

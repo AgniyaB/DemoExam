@@ -1,25 +1,14 @@
 public abstract class EntityLiving
 {
-    protected String type;
-
-    public EntityLiving(String type) {
-        this.type = type;
+    public EntityLiving() {
     }
 
-    public abstract void test();
+    public abstract String getType();
+
+    public abstract boolean canPet();
 
     @Override
     public String toString() {
-        return "EntityLiving{" +
-                "type='" + type + '\'' +
-                '}';
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        return "EntityLiving{}";
     }
 }

@@ -32,39 +32,19 @@ public class Main
 
     public static void main(String[] args)
     {
-        //нельзя просто так создать объект абстрактного класса
-        //EntityLiving e = new EntityLiving();
+        Zoo zoo = new Zoo("peso4naya 14");
+        zoo.getAnimals().add(new Ant());
+        zoo.getAnimals().add(new Bird());
+        zoo.getAnimals().add(new Bird());
+        zoo.getAnimals().add(new Bird());
+        zoo.getAnimals().add(new Microbe(true));
+        zoo.getAnimals().add(new Microbe(false));
+        zoo.getAnimals().add(new Tiger());
+        zoo.getAnimals().add(new Tiger());
 
-        //мы можем унаследовать абстрактный класс и создать объект
-        //Animal a = new Animal("млекопитающее");
-        //Microbe m = new Microbe();
-
-        /*System.out.println(a);
-        System.out.println(m);
+        System.out.println(zoo.getAllFlyEntities());
         System.out.println();
-        a.test();
-        m.test();*/
+        zoo.playAllAnimalSounds();
 
-        //EntityLiving e = new Animal("млекопитающее");
-
-        Animal a = new Tiger();
-        Animal b = new Ant();
-
-        //System.out.println(a instanceof ISoundEntity);
-        //System.out.println(b instanceof ISoundEntity);
-
-
-        printSound(a);
-        printSound(b);
-
-    }
-
-    private static void printSound(Animal animal)
-    {
-        if(animal instanceof ISoundEntity) {
-            System.out.println(((ISoundEntity)animal).getSound());
-        } else {
-            System.out.println("no sound");
-        }
     }
 }
