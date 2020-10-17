@@ -1,50 +1,71 @@
 public class Main
 {
-     /*
-    все поля в наследуемых классах protected
-    остальные поля private + геттеры и сеттеры
-    во всех классах toString()
-
-    abstract EntityLiving
-    - abstract String getType()
-    - abstract boolean canPet()
-
-    interface ISoundEntity
-    - String getSound()
-
-    interface IFlyEntity
-    - int getMaxFlyTime()
-    - double getMaxFlyHeight()
-
-    //
-    3-4 класса животных
-    которые реализурую разные итерефейсы (или нет)
-    //
-
-    Zoo
-    - String address
-    - List<EntityLiving> animals
-    - [функция] List<IFlyEntity> getAllFlyAnimals()
-        //возвращает список с всеми IFlyEntity из animals
-    - void playAllAnimalSounds()
-        //выводит все звуки животных, без повторений
-     */
-
     public static void main(String[] args)
     {
-        Zoo zoo = new Zoo("peso4naya 14");
-        zoo.getAnimals().add(new Ant());
-        zoo.getAnimals().add(new Bird());
-        zoo.getAnimals().add(new Bird());
-        zoo.getAnimals().add(new Bird());
-        zoo.getAnimals().add(new Microbe(true));
-        zoo.getAnimals().add(new Microbe(false));
-        zoo.getAnimals().add(new Tiger());
-        zoo.getAnimals().add(new Tiger());
+        Human human = new Human("paul", 25, GenderEnum.MALE);
 
-        System.out.println(zoo.getAllFlyEntities());
-        System.out.println();
-        zoo.playAllAnimalSounds();
+        //сравнивать энумы можно через ==
+        //System.out.println(human.getGender() == GenderEnum.MALE);
 
+        //можно нормально сравнивать черезе switch
+        /*switch (human.getGender())
+        {
+            case MALE:
+                System.out.println("male");
+                break;
+
+            case FEMALE:
+                System.out.println("female");
+                break;
+        }*/
+
+        //сериализация из строки
+        /*String s = "MALE";
+        GenderEnum genderEnum = GenderEnum.valueOf(s);
+        System.out.println(genderEnum);*/
+
+        //перебор всех значений
+        /*for(GenderEnum g : GenderEnum.values()) {
+            System.out.printf(g + " ");
+        }
+        System.out.println();*/
+
+        System.out.println(human);
     }
+
+
+     /*
+    abstract Human
+    - String name
+    - int age
+    - Gender gender
+
+    enum Gender
+    - MALE
+    - FEMALE
+
+    Student extends Human
+    - int level //класс
+
+    Teacher extends Human
+    - String subject
+    - int exp //стаж
+
+    abstract Building
+    - String address
+    - int floorCount
+    - BuildingType type
+
+    enum BuildingType
+    - SOCIAL
+    - HOUSE
+    - GOVERNMENT
+    - TRASH
+
+    School extends Building
+    - int index
+    - String title
+    - List<Teacher> teachers
+    - List<Student> students
+     */
 }
