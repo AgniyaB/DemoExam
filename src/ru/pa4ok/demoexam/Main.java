@@ -1,61 +1,37 @@
 package ru.pa4ok.demoexam;
 
+import java.util.Random;
+
 public class Main
 {
     public static void main(String[] args)
     {
-        School school = new School(
-                "spb",
-                4,
-                BuildingType.SOCIAL,
-                1,
-                "spo"
-        );
+        Random rand = new Random();
+        //число от 0 до 9999
+        int i = rand.nextInt(10000);
 
-        school.getTeachers().add(new Teacher("grin4pun", 60, Gender.MALE, "pp", 20));
-        school.getTeachers().add(new Teacher("oshurok", 35, Gender.MALE, "up", 5));
-        school.getStudents().add(new Student("vasya", 15, Gender.MALE, 5));
-        school.getStudents().add(new Student("ira", 16, Gender.FEMALE, 6));
-        school.getStudents().add(new Student("petya", 17, Gender.MALE, 7));
-
-        System.out.println(school);
+        //текущее время в миллисекундах
+        long timeMills = System.currentTimeMillis();
     }
 
     /*
-    все поля в наследуемых классах protected
-    в остальных private + геттеры и сеттеры
-    + toString()
+    interface Sortinger
+    - sort(int[] arr) [без тела / не реализоавнный]
+    - default sortWithTime(int[] arr)
+        сохраняет текущее время
+        вызывает метод сортировки, передает туда массив
+        после окончания, выводит затраченное время
 
-    abstract Human
-    - String name
-    - int age
-    - Gender gender
+    2-3 класса
+    которые реализуют интрефейс Sortinger
+    с использованием различных алгоритмов сортировки
 
-    enum Gender
-    - MALE
-    - FEMALE
+    BubbleSortinger implements Sortinger
+    HeapSoritnger implements Sortinger
+    ...
 
-    Student extends Human
-    - int level //класс
-
-    Teacher extends Human
-    - String subject
-    - int exp //стаж
-
-    abstract Building
-    - String address
-    - int floorCount
-    - BuildingType type
-
-    enum BuildingType
-    - SOCIAL
-    - HOUSE
-    - GOVERNMENT
-
-    School extends Building
-    - int index
-    - String title
-    - List<Teacher> teachers
-    - List<Student> students
+    чтобы не тужить алгоритмы сортировки
+    можно посмотреть сюда
+    https://proglib.io/p/java-sorting-algorithmsы
      */
 }
