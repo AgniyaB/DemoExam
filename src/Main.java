@@ -4,29 +4,28 @@ public class Main
 {
     public static void main(String[] args)
     {
-        //время в милисекундах
-        long timeMills = System.currentTimeMillis();
-
-        //рандом
         Random random = new Random();
-        random.nextInt(); //вообще любое рандомное число
-        random.nextInt(10000); //от 0 до 9999
+
+        String s1 = "frwedwfwfe";
+        long startTime1 = System.currentTimeMillis();
+        for(int i=1; i<10000; i++)
+        {
+            s1 += i;
+            s1 += '|';
+            s1 += random.nextInt(i);
+            s1 += ",";
+        }
+        System.out.println((System.currentTimeMillis() - startTime1) + " " + s1);
+
+        StringBuilder sb = new StringBuilder("frwedwfwfe");
+        long startTime2 = System.currentTimeMillis();
+        for(int i=1; i<100000; i++)
+        {
+            sb.append(i)
+                    .append('|')
+                    .append(random.nextInt(i))
+                    .append(",");
+        }
+        System.out.println((System.currentTimeMillis() - startTime2));
     }
-
-    /*
-    abstract Sortinger
-    - abstract void sort(int[] arr)
-    - void sortWithTime(int[] arr)
-        сохранить время до сортировки
-        вызывать метод сортировки
-        посчитать и вывести время затраченное на сортировку
-
-    3 и более классов которые наследуют Sortinger
-    и реализуют РАЗЛИЧНЫЕ алгоритмы сортировки
-
-    BubbleSortinger extends Sortinger
-    SelectionSortinger extends Sortinger
-    ...
-    //https://proglib.io/p/java-sorting-algorithms
-    */
 }
