@@ -1,12 +1,15 @@
 package ru.pa4ok.demoexam;
 
-public class EntityLiving
+public abstract class EntityLiving
 {
     protected String type;
 
     public EntityLiving(String type) {
         this.type = type;
     }
+
+    //абстрактная функция
+    public abstract void test(int i);
 
     @Override
     public String toString() {

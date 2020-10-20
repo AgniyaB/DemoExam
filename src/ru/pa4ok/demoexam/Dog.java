@@ -1,30 +1,18 @@
 package ru.pa4ok.demoexam;
 
-public class Dog extends Animal
+public class Dog extends EntityLiving implements ISoundEntity
 {
-    private String name;
-
-    public Dog(String name) {
-        super("млекопитающее", true, "гав");
-        this.name = name;
+    public Dog() {
+        super("млекопитающее");
     }
 
     @Override
-    public String toString() {
-        return "Dog{" +
-                "name='" + name + '\'' +
-                ", canPet=" + canPet +
-                ", hasSound=" + hasSound +
-                ", sound='" + sound + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+    public void test(int i) {
+        System.out.println(i);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getSound() {
+        return "гав";
     }
 }
