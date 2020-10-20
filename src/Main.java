@@ -1,34 +1,32 @@
+import java.util.Random;
+
 public class Main
 {
     public static void main(String[] args)
     {
-        Human human = new Human("vasya", 15, GenderEnum.MALE);
+        //время в милисекундах
+        long timeMills = System.currentTimeMillis();
 
-        //можно сравнивать через ==
-        //System.out.println(human.getGender() == GenderEnum.MALE);
-
-        //перебор всех значений
-        /*for(GenderEnum g : GenderEnum.values()) {
-            System.out.printf(g + " ");
-        }
-        System.out.println();*/
-
-        //получение из строки
-        /*String s = "FEMALE";
-        GenderEnum genderEnum = GenderEnum.valueOf(s);
-        System.out.println(genderEnum);*/
-
-        //использование через switch
-        /*switch(human.getGender())
-        {
-            case FEMALE:
-                System.out.println(1);
-                break;
-            case MALE:
-                System.out.println(2);
-                break;
-        }*/
-
-        System.out.println(human);
+        //рандом
+        Random random = new Random();
+        random.nextInt(); //вообще любое рандомное число
+        random.nextInt(10000); //от 0 до 9999
     }
+
+    /*
+    abstract Sortinger
+    - abstract void sort(int[] arr)
+    - void sortWithTime(int[] arr)
+        сохранить время до сортировки
+        вызывать метод сортировки
+        посчитать и вывести время затраченное на сортировку
+
+    3 и более классов которые наследуют Sortinger
+    и реализуют РАЗЛИЧНЫЕ алгоритмы сортировки
+
+    BubbleSortinger extends Sortinger
+    SelectionSortinger extends Sortinger
+    ...
+    //https://proglib.io/p/java-sorting-algorithms
+    */
 }
