@@ -1,43 +1,52 @@
 package ru.pa4ok.demoexam;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Main
 {
     /*
-    interface Sortinger<T extends Comparable>
-    - void sort(T[] arr) [без тела / не реализоавнный]
-    - default long sortWithTime(T[] arr)
-        сохраняет текущее время
-        вызывает метод сортировки, передает туда массив
-        возвращает затраченное время
+    enum OperationTypeEnum
+    - ADD
+    - SUB
+    - MULT
+    - DIV
 
-    2-3 класса
-    которые реализуют интрефейс Sortinger
-    с использованием различных алгоритмов сортировки
+    interface IOperational
+    - public double process(double, double)
+    - public OperationTypeEnum getType()
 
-    BubbleSortinger<T extends Comparable> implements Sortinger<T>
-    HeapSoritnger<T extends Comparable> implements Sortinger<T>
-    ...
-    чтобы не тужить алгоритмы сортировки
-    можно посмотреть сюда
-    https://proglib.io/p/java-sorting-algorithmsы
+    interface IDefectiveOperational
+    - public boolean canProcess(double, double)
+    //деление будет через этот интерфес для проверки на 0
+
+    abstract Button implements IOperational
+    - String title
+
+    SomeButton extends Button
+    DivButton extends Button implements IDefectiveOperational
+
+    Calculator
+    - List<Button> buttons // +заполнить кнопками с операциями
+    - double firstValue
+    - double secondValue
+    - double result
+    - public void readValues()
+        запросить чтение firstValue и secondValue
+    - public void process(OperationTypeEnum type)
+        перебрать все кнопки
+        найти кнопку с нужным типом операции
+        проверить на IDefectiveOperational, если все ок
+        нажать, при нажатии вывести название кнопки
+    - public void clear()
+        очистить поля и результат
+
      */
 
     public static void main(String[] args)
     {
-        Random rand = new Random();
-
-        Integer[] integers = new Integer[10000];
-        for(int i=0; i<integers.length; i++) {
-            integers[i] = rand.nextInt(10000);
-        }
-
-        Arrays.toString(integers);
-        BubbleSortinger bubbleSortinger = new BubbleSortinger();
-        System.out.printf(bubbleSortinger.sortWithTime(integers) + " " + Arrays.toString(integers));
+        Scanner scanner = new Scanner(System.in);
+        //scanner.nextDouble();
+        Double.parseDouble(scanner.nextLine());
+        scanner.close();
     }
 }
