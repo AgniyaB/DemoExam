@@ -3,6 +3,7 @@ package ru.pa4ok.demoexam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Main
 {
@@ -28,43 +29,15 @@ public class Main
 
     public static void main(String[] args)
     {
-        //самый яркий пример использования генериков
-        //List<String> list = new ArrayList<>();
+        Random rand = new Random();
 
-        Container<String> stringContainer = new Container<>("fefqff");
-        Container<Integer> integerContainer = new Container<>(343443);
-
-        stringContainer.test();
-        integerContainer.test();
-
-        //Integer i = 10;
-        //i.compareTo(11);
-        //sort(new Integer[0]);
-        //sort(new Container<?>[0]);
-
-        Integer[] integers = {32, 43, 45, 3, 5, -4, 54, 4, 654, 43, 2, 4, 11};
-        sort(integers);
-        System.out.println(Arrays.toString(integers));
-    }
-
-    /*public static <T,E> E test(T value)
-    {
-        return null;
-    }*/
-
-    private static <T extends Comparable> void sort(T[] arr)
-    {
-        for(int i=0; i<arr.length; i++)
-        {
-            for(int j=i+1; j<arr.length; j++)
-            {
-                if(arr[i].compareTo(arr[j]) == 1)
-                {
-                    T temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
+        Integer[] integers = new Integer[10000];
+        for(int i=0; i<integers.length; i++) {
+            integers[i] = rand.nextInt(10000);
         }
+
+        Arrays.toString(integers);
+        BubbleSortinger bubbleSortinger = new BubbleSortinger();
+        System.out.printf(bubbleSortinger.sortWithTime(integers) + " " + Arrays.toString(integers));
     }
 }
