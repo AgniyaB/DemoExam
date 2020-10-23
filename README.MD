@@ -14,5 +14,6 @@
 - git reset <ИНДЕФИКАТОР КОММИТА>
 
 ## Что можно почитать самостоятельно
+- О_экзамене_и_критерях.pdf - название говорит за себя
 - https://metanit.com/java/tutorial/ - основы на русском
 - https://o7planning.org/en/10973/java-basic - более подробно на english
