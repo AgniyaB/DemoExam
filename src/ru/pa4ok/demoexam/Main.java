@@ -1,49 +1,80 @@
 package ru.pa4ok.demoexam;
 
-import java.util.Random;
-
 public class Main
 {
+    /*
+    крайний коммит с работой со школой
+    https://github.com/Pa4ok/DemoExam/tree/36f5788f1d226e6eab8c259649b89c31974b3eae/src/ru/pa4ok/demoexam
+
+    enum GenderEnum
+    - MALE
+    - FEMALE
+
+    Human
+    - String name
+    - int age
+    - GenderEnum gender
+
+    Student extends Human
+    - int level
+
+    Teacher extends Human
+    - String subject
+
+    BuildingTypeEnum
+    - SOCIAL
+    - HOME
+    - GOVERNMENT
+
+    Building
+    - String address
+    - int floorCount
+    - BuildingTypeEnum buildingType
+
+    SchoolTypeEnum
+    - PRIMARY
+    - MEDIUM
+    - HIGH
+
+    School extends Building
+    - int index
+    - String name
+    - SchoolTypeEnum schoolType
+    - List<Teacher> teachers
+    - List<Student> students
+    - void addEntity(Human)
+        метод принимает либой объект Human
+        может быть как Student так и Teacher
+        если это Teacher - кинуть к List<Teacher> teachers
+        если это Student - кинуть к List<Student> students
+     */
+
     public static void main(String[] args)
     {
-        Random rand = new Random();
+        Human human = new Human("vasya", 15, GenderEnum.MALE);
 
-        long startMills1 = System.currentTimeMillis();
-        String s = "rffweewfwe";
-        for(int i=1; i<10000; i++) {
-            s += i;
-            s += ',';
-            s += rand.nextInt(i);
-            s += "|";
+        //сравнивать можно через ==
+        //System.out.println(human.getGender() == GenderEnum.MALE);
+        //human.setGender(GenderEnum.FEMALE);
+        //System.out.println(human.getGender() == GenderEnum.MALE);
+
+        //хорошо сравниваются свичами
+        /*switch (human.getGender())
+        {
+            case FEMALE:
+                System.out.println(1);
+                break;
+            case MALE:
+                System.out.println(2);
+                break;
+        }*/
+
+        //перебор всех значений
+        /*for(GenderEnum g : GenderEnum.values()) {
+            System.out.print(g + " ");
         }
-        System.out.println((System.currentTimeMillis() - startMills1) + " " + s.length());
+        System.out.println();*/
 
-        long startMills2 = System.currentTimeMillis();
-        StringBuilder sb = new StringBuilder("rffweewfwe");
-        for(int i=1; i<10000; i++) {
-            sb.append(i)
-                    .append(',')
-                    .append(rand.nextInt(i))
-                    .append("|");
-        }
-        String newS = sb.toString();
-        System.out.println((System.currentTimeMillis() - startMills2) + " " + newS.length());
-    }
-}
-
-class Test
-{
-    private int i;
-    private String s;
-    private boolean b;
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Test{");
-        sb.append("i=").append(i);
-        sb.append(", s='").append(s).append('\'');
-        sb.append(", b=").append(b);
-        sb.append('}');
-        return sb.toString();
+        System.out.println(human);
     }
 }
