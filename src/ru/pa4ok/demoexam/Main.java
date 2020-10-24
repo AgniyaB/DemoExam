@@ -6,6 +6,33 @@ import java.util.*;
 
 public class Main
 {
+    /*
+    Book
+    - int id
+    - String title
+    - String author
+
+    Library
+    - String name
+    - List<Book> books
+    - void save()
+        1 строка это название
+        остальные строки это кники
+        формат для книг id;title;author
+    - void read()
+        будет работать в связке с пустым конструктором
+
+    файл для чтения и записи new File("lib.txt")
+
+    создать бибилитеку
+    заполнить книгами
+    сохранить и завершить работу программы
+    после чего запустить
+    создать бибилиотеку из пустого конструтора
+    и загрузить сохранные книги
+
+     */
+
     public static void main(String[] args)
     {
         /* это мы пропускаем и идем выше
