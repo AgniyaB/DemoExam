@@ -1,60 +1,78 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class Main
 {
-    /*
-    abstract Sortinger
-    - abstract void sort(int[] arr)
-    - long sortWithTime(int[] arr)
-        сохраняет время в переменную
-        вызывает функцию сортировки
-        считает и возвращает время
-        затраченное насортировку
-
-    3 класса extends Sortinger
-    (BubbleSoringer extends Sortinger...)
-    каждый класс реализует разный алгоритм сортировки
-
-    тут можно подглядеть алгоритмы
-    https://proglib.io/p/java-sorting-algorithms
-     */
-
     public static void main(String[] args)
     {
-/*
-        //текущее время в милисекундах
-        long timeMills = System.currentTimeMillis();
-
-        //рандом
-        Random rand = new Random();
-        rand.nextInt(); //любое число
-        rand.nextInt(10000); //0-9999
-*/
         Random rand = new Random();
 
-        int[] arr1 = new int[50000];
-        int[] arr2 = new int[50000];
-
-        for(int i=0; i<arr1.length; i++) {
-            arr1[i] = rand.nextInt(10000);
-            arr2[i] = arr1[i];
+        long l1 = System.currentTimeMillis();
+        String s = "wefwefef3";
+        for(int i=1; i<10000; i++)
+        {
+            s += i;
+            s += ',';
+            s += rand.nextInt(i);
+            s += "|";
         }
+        System.out.println((System.currentTimeMillis() - l1) + " " + s.length());
 
-        //System.out.println(Arrays.toString(arr1));
-        //System.out.println(Arrays.toString(arr2));
-        //System.out.println();
 
-        BubbleSortinger bubbleSortinger = new BubbleSortinger();
-        QuickSortinger quickSortinger = new QuickSortinger();
-
-        long l1 = bubbleSortinger.sortWithTime(arr1);
-        long l2 = quickSortinger.sortWithTime(arr2);
-
-        /*System.out.println(l1 + " | " + Arrays.toString(arr1));
-        System.out.println(l2 + " | " + Arrays.toString(arr1));*/
-
-        System.out.println(l1);
-        System.out.println(l2);
+        long l2 = System.currentTimeMillis();
+        StringBuilder sb = new StringBuilder("wefwefef3");
+        for(int i=1; i<1000000; i++)
+        {
+            sb.append(i)
+                    .append(',')
+                    .append(rand.nextInt(i))
+                    .append("|");
+        }
+        String s1 = sb.toString();
+        System.out.println((System.currentTimeMillis() - l2) + " " + s1.length());
     }
 }
+
+class Test
+{
+    private int id;
+    private String title;
+
+    public Test(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    /*@Override
+    public String toString() {
+        return "Test{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Test{");
+        sb.append("id=").append(id);
+        sb.append(", title='").append(title).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
+
