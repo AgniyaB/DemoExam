@@ -1,72 +1,87 @@
 package ru.pa4ok.demoexam;
 
-import ru.pa4ok.demoexam.type.GenderEnum;
-import ru.pa4ok.demoexam.type.SchoolTypeEnum;
+import java.util.*;
 
 public class Main
 {
     /*
-    крайний коммит с работой со школой
-    https://github.com/Pa4ok/DemoExam/tree/36f5788f1d226e6eab8c259649b89c31974b3eae/src/ru/pa4ok/demoexam
+    abstract Sortinger<T exntends Comparable>
+    - abstract void sort(T[] arr)
+    - long sortWithTime(T[] arr)
+        сохраняет в переменную текущее время
+        вызывает функцию sort()
+        передает туда массив
+        считает и возвращает время
+        потраченное на сортировку
 
-    enum GenderEnum
-    - MALE
-    - FEMALE
+    2-3 класса сортировщиков extends Sortinger
+    реализуют функцию sort(T[] arr)
+    используя разные алгоритсы сортировки
+    аля BubbleSortinger<T exntends Comparable> extends Sortinger<T>
+    ...
 
-    Human
-    - String name
-    - int age
-    - GenderEnum gender
-
-    Student extends Human
-    - int level
-
-    Teacher extends Human
-    - String subject
-
-    BuildingTypeEnum
-    - SOCIAL
-    - HOME
-    - GOVERNMENT
-
-    Building
-    - String address
-    - int floorCount
-    - BuildingTypeEnum buildingType
-
-    SchoolTypeEnum
-    - PRIMARY
-    - MEDIUM
-    - HIGH
-
-    School extends Building
-    - int index
-    - String name
-    - SchoolTypeEnum schoolType
-    - List<Teacher> teachers
-    - List<Student> students
-    - void addEntity(Human)
-        метод принимает либой объект Human
-        может быть как Student так и Teacher
-        если это Teacher - кинуть к List<Teacher> teachers
-        если это Student - кинуть к List<Student> students
+    алгоритмы сортивки
+    https://proglib.io/p/java-sorting-algorithms
      */
 
     public static void main(String[] args)
     {
-        School school = new School(
-                "spb",
-                4,
-                1,
-                "super school",
-                SchoolTypeEnum.HIGH
-        );
+        //самый яркий пример использования генериков
+        //List<String> list = new ArrayList<>();
+        //List<Integer> list1 = new ArrayList<>();
 
-        System.out.println(school);
+        /*Container<String> container = new Container<>("423432432gererg");
+        System.out.println(container);
 
-        school.addEntity(new Teacher("grin4pun", 60, GenderEnum.MALE, "pp", 20));
-        school.addEntity(new Student("vasya", 15, GenderEnum.MALE, 9));
+        DoubleContainer<String, Integer> doubleContainer = new DoubleContainer<>("3443tgrget", 645);
+        System.out.println(doubleContainer);
 
-        System.out.println(school);
+        TestInterface<String> testInterface = new TestInterface<String>() {
+            @Override
+            public void test(String object) {
+                System.out.println("test");
+            }
+        };*/
+
+
+        //bubbleSort(new Integer[10]);
+        //bubbleSort(new Container[10]);
+
+        System.out.println(Arrays.toString(bubbleSort(new Integer[] {4, 5, 32, 23, 2, -5, 46, 100, 4, 6, 98})));
+        System.out.println(Arrays.toString(bubbleSort(new Double[] {0.1, 0.3, -0.3, 0.003})));
+    }
+
+    /*//генерик можно объявить в рамках одной функции
+    public static <T> void test1(T t)
+    {
+        T t1 = null;
+    }
+
+    public static <T> T test2()
+    {
+        return null;
+    }
+
+    public static <T> T test3(T t)
+    {
+        return null;
+    }*/
+
+    public static <T extends Comparable> T[] bubbleSort(T[] arr)
+    {
+        for(int i=0; i<arr.length; i++)
+        {
+            for(int j=i+1; j< arr.length; j++)
+            {
+                if(arr[i].compareTo(arr[j]) == 1)
+                {
+                    T temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        return arr;
     }
 }
