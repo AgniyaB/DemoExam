@@ -1,5 +1,8 @@
 package ru.pa4ok.demoexam;
 
+import ru.pa4ok.demoexam.type.GenderEnum;
+import ru.pa4ok.demoexam.type.SchoolTypeEnum;
+
 public class Main
 {
     /*
@@ -51,30 +54,19 @@ public class Main
 
     public static void main(String[] args)
     {
-        Human human = new Human("vasya", 15, GenderEnum.MALE);
+        School school = new School(
+                "spb",
+                4,
+                1,
+                "super school",
+                SchoolTypeEnum.HIGH
+        );
 
-        //сравнивать можно через ==
-        //System.out.println(human.getGender() == GenderEnum.MALE);
-        //human.setGender(GenderEnum.FEMALE);
-        //System.out.println(human.getGender() == GenderEnum.MALE);
+        System.out.println(school);
 
-        //хорошо сравниваются свичами
-        /*switch (human.getGender())
-        {
-            case FEMALE:
-                System.out.println(1);
-                break;
-            case MALE:
-                System.out.println(2);
-                break;
-        }*/
+        school.addEntity(new Teacher("grin4pun", 60, GenderEnum.MALE, "pp", 20));
+        school.addEntity(new Student("vasya", 15, GenderEnum.MALE, 9));
 
-        //перебор всех значений
-        /*for(GenderEnum g : GenderEnum.values()) {
-            System.out.print(g + " ");
-        }
-        System.out.println();*/
-
-        System.out.println(human);
+        System.out.println(school);
     }
 }

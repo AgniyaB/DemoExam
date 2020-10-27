@@ -1,10 +1,12 @@
 package ru.pa4ok.demoexam;
 
+import ru.pa4ok.demoexam.type.GenderEnum;
+
 public class Human
 {
-    private String name;
-    private int age;
-    private GenderEnum gender;
+    protected String name;
+    protected int age;
+    protected GenderEnum gender;
 
     public Human(String name, int age, GenderEnum gender) {
         this.name = name;
