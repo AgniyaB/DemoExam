@@ -1,57 +1,64 @@
 package ru.pa4ok.demoexam;
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
 
 public class Main
 {
     /*
-    Book
+    Book implements Externalizable
     - int id
     - String title
     - String author
 
-    Library
+    Library implements Externalizable
     - String title
     - List<Book> books
-    - void save()
-        1 строка это название (title)
-        остальные строки это кники
-        формат для книг id;title;author
-    - void load()
-        будет работать в связке с пустым конструктором
-
-    файл для чтения и записи new File("lib.txt")
-
-    создать бибилитеку
-    заполнить книгами
-    сохранить и завершить работу программы
-    после чего запустить
-    создать бибилиотеку из пустого конструтора
-    и загрузить сохранные книги
+    - public static void save(String path, Library libs)
+        сериализовать бибилитеку в файл path
+        через методы интерфейса Externalizable
+    - public static Library load(String path)
+        должен десереализовать библиотеку из файла path
+        и вернуть ее
      */
 
     public static void main(String[] args)
     {
-        /*Library lib = new Library("lib super title");
-        for(int i=0; i<10; i++) {
-            lib.getBooks().add(new Book(i, "title-" + i, "author-" + i));
-        }
+        /*Book book = new Book(1, "some title", "some author");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book-1.dat"))) {
 
-        try {
-            lib.save();
+            oos.writeObject(book);
+
         } catch (IOException e) {
             e.printStackTrace();
         }*/
 
-        Library lib = new Library();
+        /*try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book-1.dat"))) {
 
-        System.out.println(lib);
-        try {
-            lib.load();
-        } catch (Exception e) {
+            Book book = (Book) ois.readObject();
+            System.out.println(book);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }*/
+
+        //------------------------------------------------------------------------------------------//
+
+        SuperBook book = new SuperBook(1, "some title", "some author");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("super-book-1.dat"))) {
+
+            oos.writeObject(book);
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(lib);
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("super-book-1.dat"))) {
+
+            SuperBook book1 = (SuperBook) ois.readObject();
+            System.out.println(book1);
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
