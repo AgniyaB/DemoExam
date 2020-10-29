@@ -1,13 +1,16 @@
 package ru.pa4ok.demoexam;
 
-public class Book
+import java.io.Serializable;
+
+public class Book implements Serializable
 {
-    private int id;
+    private static int idCounter = 0;
+
+    private transient final int id = ++idCounter;
     private String title;
     private String author;
 
-    public Book(int id, String title, String author) {
-        this.id = id;
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
     }
@@ -21,37 +24,8 @@ public class Book
                 '}';
     }
 
-    public static String serialize(Book book) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(book.getId())
-                .append(';')
-                .append(book.getTitle())
-                .append(';')
-                .append(book.getAuthor());
-        return sb.toString();
-    }
-
-    public static Book deserialize(String s) {
-        try {
-            String[] arr = s.split(";");
-            return new Book(
-                    Integer.parseInt(arr[0]),
-                    arr[1],
-                    arr[2]
-            );
-
-        } catch(Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {

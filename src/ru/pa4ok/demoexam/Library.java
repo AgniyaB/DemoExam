@@ -22,38 +22,6 @@ public class Library
     public Library() {
     }
 
-    public void save() throws IOException {
-        try(BufferedWriter bw = Files.newBufferedWriter(PATH))
-        {
-            bw.write(title);
-            bw.newLine();
-            for(Book b : books) {
-                bw.write(Book.serialize(b));
-                bw.newLine();
-            }
-        }
-    }
-
-    public void load() throws Exception
-    {
-        boolean markFirst = false;
-
-        for(String s : Files.readAllLines(PATH))
-        {
-            if(!markFirst) {
-                title = s;
-                markFirst = true;
-                continue;
-            }
-
-            Book book = Book.deserialize(s);
-            if(book != null) {
-                books.add(book);
-            }
-        }
-
-    }
-
     @Override
     public String toString() {
         return "Library{" +

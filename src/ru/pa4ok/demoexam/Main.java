@@ -1,67 +1,70 @@
 package ru.pa4ok.demoexam;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Main
 {
     /*
-    Book
+    Book implements Externalizable
     - int id
     - String title
     - String author
 
-    Library
+    Library implements Externalizable
     - String name
     - List<Book> books
-    - void save()
-        1 строка это название
-        остальные строки это кники
-        формат для книг id;title;author
-    - void read()
-        будет работать в связке с пустым конструктором
+    - public static void save(String path)
+        сериализовать библиотеку в файл
+        через методы интерфейса Externalizable
+    - public static Library load(String path)
+        прочить сериализованную в файл библиотеку
 
-    файл для чтения и записи new File("lib.txt")
-
-    создать бибилитеку
-    заполнить книгами
-    сохранить и завершить работу программы
-    после чего запустить
-    создать бибилиотеку из пустого конструтора
-    и загрузить сохранные книги
-
+    //методы статичные, чтобы была вот такая логиках
+    //Library lib = Library.load("lib.txt");
      */
+
 
     public static void main(String[] args)
     {
-        /*Library library = new Library("Библиотекв");
-        for(int i=0; i<10; i++) {
-            library.getBooks().add(new Book(i, "title-" +i, "author-" + i));
-        }
-        System.out.println(library);
+        /*Book book = new Book("super book title", "vasya pupkin");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book1.dat"))) {
 
-        try {
-            library.save();
-        } catch (IOException e) {
+            oos.writeObject(book);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }*/
 
-        Library library = new Library();
-        try {
-            library.load();
+        /*try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book1.dat"))) {
+
+            Book book = (Book)ois.readObject();
+            System.out.println(book);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        //----------------------------------------------------------------------------//
+
+        /*SuperBook book = new SuperBook(1, "super book title", "vasya pupkin");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("super-book1.dat"))) {
+
+            oos.writeObject(book);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("super-book1.dat"))) {
+
+            SuperBook book = (SuperBook)ois.readObject();
+            System.out.println(book);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(library);
-
-
-        /*try {
-            Files.readAllLines(Paths.get("test"), StandardCharsets.US_ASCII);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 }
