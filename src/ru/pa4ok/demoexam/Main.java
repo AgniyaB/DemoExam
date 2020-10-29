@@ -1,9 +1,6 @@
 package ru.pa4ok.demoexam;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class Main
 {
@@ -16,7 +13,7 @@ public class Main
     Library implements Externalizable
     - String name
     - List<Book> books
-    - public static void save(String path)
+    - public static void save(Library library, String path)
         сериализовать библиотеку в файл
         через методы интерфейса Externalizable
     - public static Library load(String path)
@@ -29,40 +26,21 @@ public class Main
 
     public static void main(String[] args)
     {
-        /*Book book = new Book("super book title", "vasya pupkin");
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book1.dat"))) {
+        /*Library lib = new Library("oeufouwfiuh4t");
+        for(int i=1; i<11; i++) {
+            lib.getBooks().add(new Book(i, "title-" + i, "author-" + i));
+        }
 
-            oos.writeObject(book);
-
-        } catch (Exception e) {
+        try {
+            Library.save(lib, "library.dat");
+        } catch (IOException e) {
             e.printStackTrace();
         }*/
 
-        /*try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book1.dat"))) {
 
-            Book book = (Book)ois.readObject();
-            System.out.println(book);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-        //----------------------------------------------------------------------------//
-
-        /*SuperBook book = new SuperBook(1, "super book title", "vasya pupkin");
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("super-book1.dat"))) {
-
-            oos.writeObject(book);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("super-book1.dat"))) {
-
-            SuperBook book = (SuperBook)ois.readObject();
-            System.out.println(book);
-
+        try {
+            Library lib = Library.load("library.dat");
+            System.out.println(lib);
         } catch (Exception e) {
             e.printStackTrace();
         }
