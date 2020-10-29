@@ -1,57 +1,42 @@
 package ru.pa4ok.demoexam;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library
+public class Library implements Externalizable
 {
-    private static final Path LIB_PATH = Paths.get("lib.txt");
-
     private String title;
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
 
     public Library(String title) {
         this.title = title;
+        this.books = new ArrayList<>();
     }
 
-    public Library() {
+    public Library() {}
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(title);
+        out.writeObject(books);
     }
 
-    public void save() throws IOException {
-        try (BufferedWriter bw = Files.newBufferedWriter(LIB_PATH))
-        {
-            StringBuilder sb = new StringBuilder();
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        title = (String) in.readObject();
+        books = (List<Book>) in.readObject();
+    }
 
-            sb.append(title).append('\n');
-            for(Book b : books) {
-                sb.append(b.getId()).append(';')
-                        .append(b.getTitle()).append(';')
-                        .append(b.getAuthor()).append('\n');
-            }
-
-            bw.write(sb.toString());
+    public static void save(String path, Library library) throws IOException {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(library);
         }
     }
 
-    public void load() throws Exception {
-        try (BufferedReader br = Files.newBufferedReader(LIB_PATH))
-        {
-            title = br.readLine();
-            String temp;
-            while((temp = br.readLine()) != null) {
-                String[] arr = temp.split(";");
-                books.add(new Book(
-                        Integer.parseInt(arr[0]),
-                        arr[1],
-                        arr[2]
-                ));
-            }
+    public static Library load(String path) throws IOException, ClassNotFoundException {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            return (Library) ois.readObject();
         }
     }
 

@@ -23,39 +23,25 @@ public class Main
 
     public static void main(String[] args)
     {
-        /*Book book = new Book(1, "some title", "some author");
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book-1.dat"))) {
+        Library library1 = new Library("ewohuiefhegeif");
+        for(int i=1; i<11; i++) {
+            library1.getBooks().add(new Book(i, "title-" + i, "author-" + i));
+        }
 
-            oos.writeObject(book);
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("lib.dat"))) {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-        /*try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book-1.dat"))) {
-
-            Book book = (Book) ois.readObject();
-            System.out.println(book);
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
-        //------------------------------------------------------------------------------------------//
-
-        SuperBook book = new SuperBook(1, "some title", "some author");
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("super-book-1.dat"))) {
-
-            oos.writeObject(book);
+            oos.writeObject(library1);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("super-book-1.dat"))) {
 
-            SuperBook book1 = (SuperBook) ois.readObject();
-            System.out.println(book1);
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("lib.dat"))) {
+
+            Library library2 = (Library) ois.readObject();
+            System.out.println(library2);
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
