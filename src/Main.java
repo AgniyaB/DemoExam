@@ -1,42 +1,79 @@
-import java.net.CookiePolicy;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class Main
 {
     /*
-    abstract Sortinger<T extends Comparable>
-    - abstract void sort(T[] arr)
-    - void sortWithTime(T[] arr)
-        сохранить время до сортировки
-        вызывать метод сортировки
-        посчитать и вывести время затраченное на сортировку
+    Book implements Externalizable
+    - int id
+    - String title
+    - String author
 
-    3 и более классов которые наследуют Sortinger
-    и реализуют РАЗЛИЧНЫЕ алгоритмы сортировки
+    Library implements Externalizable
+    - String title
+    - List<Book> books
+    - public static void save(String path, Library lib)
+        сериализовать lib в файл по пути path
+    - public static Library load(String path)
+        десериализовать библиотеку из файла по пути path
+        и вернуть ее
 
-    BubbleSortinger<T extends Comparable> extends Sortinger<T>
-    SelectionSortinger<T extends Comparable> extends Sortinger<T>
-    ...
-
-    //https://proglib.io/p/java-sorting-algorithms
-    */
+    методы статичные + пробрасывают исключения наверх
+     */
 
     public static void main(String[] args)
     {
-        Random rand = new Random();
+        long l1 = System.currentTimeMillis();
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book.dat"))) {
 
-        Integer[] arr = new Integer[100000];
-        for(int i=0; i<arr.length; i++) {
-            arr[i] = rand.nextInt(10000);
+            Book book = new Book(1, "vozna i mir", "pushkin");
+            for(int i=0; i<1000; i++) {
+                oos.writeObject(book);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        BubbleSortinger bubbleSortinger = new BubbleSortinger();
-        System.out.println(bubbleSortinger.sortWithTime(arr.clone()));
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book.dat"))) {
 
-        QiuckSortinger qiuckSortinger = new QiuckSortinger();
-        System.out.println(qiuckSortinger.sortWithTime(arr.clone()));
+            List<Book> list = new ArrayList<>();
+            for(int i=0; i<1000; i++) {
+                Book book = (Book)ois.readObject();
+                list.add(book);
+            }
+            System.out.println(list.size());
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(System.currentTimeMillis() - l1);
+
+        long l2 = System.currentTimeMillis();
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("new-book.dat"))) {
+
+            NewBook book = new NewBook(1, "vozna i mir", "pushkin");
+            for(int i=0; i<1000; i++) {
+                oos.writeObject(book);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("new-book.dat"))) {
+
+            List<NewBook> list = new ArrayList<>();
+            for(int i=0; i<1000; i++) {
+                NewBook book = (NewBook)ois.readObject();
+                list.add(book);
+            }
+            System.out.println(list.size());
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(System.currentTimeMillis() - l2);
     }
 }
