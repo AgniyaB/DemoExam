@@ -2,6 +2,7 @@ import java.net.CookiePolicy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Main
 {
@@ -25,35 +26,17 @@ public class Main
 
     public static void main(String[] args)
     {
-        //List<String> list = new ArrayList<>();
+        Random rand = new Random();
 
-        /*Container<Integer> integerContainer = new Container<>(422);
-        System.out.println(integerContainer);
-        integerContainer.test();*/
-
-        Integer[] arr = {34, 21, 5, -5, 100, 34, 86, 8, 56, 4, 2, 1};
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    public static <T extends Comparable> void sort(T[] arr)
-    {
-        for(int i=0; i<arr.length; i++)
-        {
-            for(int j=i+1; j<arr.length; j++)
-            {
-                if(arr[i].compareTo(arr[j]) == 1)
-                {
-                    T temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
+        Integer[] arr = new Integer[100000];
+        for(int i=0; i<arr.length; i++) {
+            arr[i] = rand.nextInt(10000);
         }
-    }
 
-    /*public static <T> T test(T in) {
-        T t = null;
-        return t;
-    }*/
+        BubbleSortinger bubbleSortinger = new BubbleSortinger();
+        System.out.println(bubbleSortinger.sortWithTime(arr.clone()));
+
+        QiuckSortinger qiuckSortinger = new QiuckSortinger();
+        System.out.println(qiuckSortinger.sortWithTime(arr.clone()));
+    }
 }
