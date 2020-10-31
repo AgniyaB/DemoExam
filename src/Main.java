@@ -1,42 +1,174 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Executable;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 
-public class Main {
+public class Main
+{
     /*
     Book
-    - int id (>0)
-    - String title (length > 3 & <20)
-    - String author (length > 3 & <20)
-
-    BookReadException extends Exception
+    - int id
+    - String title
+    - String author
 
     Library
     - String title
     - List<Book> books
-    - public void readBook()
-        запрашивает из консоли чтение книги
-        проверяет поля на корректность
-        если поля для книги введены некоретно
-        выбрасывает ошибку BookReadException
-        если верно, то добавляет книгу
+    - void save()
+        первая строка это название (title)
+        остальные строки это кники
+        формат для книг id;title;author
+    - void load()
+        будет работать в связке с пустым конструктором
 
-    создать библиотеку
-    и в цикле прочитать несколько книг
+    файл для чтения и записи new File("lib.txt")
+
+    создать бибилитеку
+    заполнить книгами
+    сохранить и завершить работу программы
+    после чего запустить
+    создать бибилиотеку из пустого конструтора
+    и загрузить сохранные книги
      */
 
     public static void main(String[] args)
     {
-        Library lib = new Library("назвнание4зшукпмркуп");
+        /*File file = new File("text.txt");
+        File dir = new File("/dir");
 
-        Scanner scanner = new Scanner(System.in);
-        for(int i=0; i<2; i++) {
-            lib.readBook(scanner);
+        dir.exists();
+        file.exists();
+            file.isDirectory();
+            file.isFile();
+            file.isHidden();
+            file.canRead();
+            file.canWrite();
+            file.canExecute();
+
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        scanner.close();
 
-        System.out.println(lib);
+        if(!dir.exists()) {
+            dir.mkdir();
+            dir.mkdirs(); //создаст все недостающие папки на пути
+        }
+
+        if(dir.isDirectory()) {
+            File[] files = dir.listFiles();
+        }
+
+        String name = file.getName(); //имя + расширение
+        String path = file.getAbsolutePath();
+
+        file.delete();*/
+
+        /*InputStream is;
+        OutputStream os;
+
+        Reader r;
+        Writer w;
+
+        InputStreamReader isr;
+        OutputStreamWriter osw;*/
+
+        /*try {
+            FileWriter fw = new FileWriter("text.txt");//, true);
+
+            String s = "ewhfgewiewfefwefw\noeihfeh435h435\n45t5yt45gb4i5g";
+            fw.write(s);
+
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            long startMills = System.currentTimeMillis();
+
+            FileReader fr = new FileReader("text.txt");
+
+            StringBuilder sb = new StringBuilder();
+            int i;
+            while((i = fr.read()) != -1) {
+                sb.append((char)i);
+            }
+            String s = sb.toString();
+            //System.out.println(sb);
+
+            fr.close();
+
+            System.out.println(s.length() + " " + (System.currentTimeMillis() - startMills));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            long startMills = System.currentTimeMillis();
+
+            BufferedReader br = new BufferedReader(new FileReader("text.txt"));
+
+            StringBuilder sb = new StringBuilder();
+            String s;
+            while((s = br.readLine()) != null) {
+                sb.append(s);
+                sb.append('\n');
+            }
+            String s1 = sb.toString();
+
+            br.close();
+            System.out.println(s1.length() + " " + (System.currentTimeMillis() - startMills));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt"));
+
+            String[] arr = {"oljkwhgeog", "rekrgrwgwr", "oheruhgrg"};
+            for(String s : arr) {
+                bw.write(s);
+                bw.newLine();
+            }
+
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+
+            Path path = Paths.get("text.txt");
+
+            //List<String> stringList = Files.readAllLines(Paths.get(path);
+            //List<String> stringList = Files.readAllLines(Paths.get(path), Charset.forName("CP1251"));
+
+            //byte[] bytes = Files.readAllBytes(path);
+
+            /*Files.copy(
+                    path,
+                    Paths.get("new-file.txt")
+            );
+
+            Files.copy(
+                    path,
+                    Paths.get("new-file.txt"),
+                    StandardCopyOption.COPY_ATTRIBUTES,
+                    StandardCopyOption.REPLACE_EXISTING
+            );*/
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
