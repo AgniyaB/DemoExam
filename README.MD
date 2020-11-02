@@ -16,5 +16,7 @@
 ## Что можно почитать самостоятельно
 - О_экзамене_и_критерях.pdf - название говорит за себя
 - git-cmd.txt - как работать с  консолью гита
+- README-example.md - образец readme файла для ДЭ
+- https://paulradzkov.com/2014/markdown_cheatsheet/ - гайд по разметке README.md файла
 - https://metanit.com/java/tutorial/ - основы на русском
 - https://o7planning.org/en/10973/java-basic - более подробно на english
