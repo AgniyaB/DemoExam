@@ -1,18 +1,14 @@
 package ru.pa4ok.demoexam;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library
+public class Library implements Externalizable
 {
-    private static final Path path = Paths.get("lib.txt");
-
     private String title;
     private List<Book> books = new ArrayList<>();
 
@@ -20,34 +16,30 @@ public class Library
         this.title = title;
     }
 
-    public Library() throws IOException {
-        load();
-    }
+    public Library() {}
 
-    public void save() throws IOException {
-        try(BufferedWriter bw = Files.newBufferedWriter(path)) {
-            bw.write(title);
-            bw.newLine();
-            for(Book b : books) {
-                bw.write(b.getId() + ";" + b.getTitle() + ";" + b.getAuthor());
-                bw.newLine();
-            }
+    public static void save(String path, Library lib) throws IOException {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(lib);
         }
     }
 
-    public void load() throws IOException {
-        try(BufferedReader br = Files.newBufferedReader(path)) {
-            title = br.readLine();
-            String s;
-            while((s = br.readLine()) != null) {
-                String[] arr = s.split(";");
-                books.add(new Book(
-                        Integer.parseInt(arr[0]),
-                        arr[1],
-                        arr[2]
-                ));
-            }
+    public static Library load(String path) throws IOException, ClassNotFoundException {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            return (Library) ois.readObject();
         }
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(title);
+        out.writeObject(books);
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        title = (String) in.readObject();
+        books = (List<Book>) in.readObject();
     }
 
     @Override
