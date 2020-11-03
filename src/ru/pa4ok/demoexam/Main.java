@@ -26,62 +26,22 @@ public class Main
 
     public static void main(String[] args)
     {
-        //самый яркий пример использования генериков
-        //List<String> list = new ArrayList<>();
-        //List<Integer> list1 = new ArrayList<>();
+        Random rand = new Random();
 
-        /*Container<String> container = new Container<>("423432432gererg");
-        System.out.println(container);
-
-        DoubleContainer<String, Integer> doubleContainer = new DoubleContainer<>("3443tgrget", 645);
-        System.out.println(doubleContainer);
-
-        TestInterface<String> testInterface = new TestInterface<String>() {
-            @Override
-            public void test(String object) {
-                System.out.println("test");
-            }
-        };*/
-
-
-        //bubbleSort(new Integer[10]);
-        //bubbleSort(new Container[10]);
-
-        System.out.println(Arrays.toString(bubbleSort(new Integer[] {4, 5, 32, 23, 2, -5, 46, 100, 4, 6, 98})));
-        System.out.println(Arrays.toString(bubbleSort(new Double[] {0.1, 0.3, -0.3, 0.003})));
-    }
-
-    /*//генерик можно объявить в рамках одной функции
-    public static <T> void test1(T t)
-    {
-        T t1 = null;
-    }
-
-    public static <T> T test2()
-    {
-        return null;
-    }
-
-    public static <T> T test3(T t)
-    {
-        return null;
-    }*/
-
-    public static <T extends Comparable> T[] bubbleSort(T[] arr)
-    {
-        for(int i=0; i<arr.length; i++)
-        {
-            for(int j=i+1; j< arr.length; j++)
-            {
-                if(arr[i].compareTo(arr[j]) == 1)
-                {
-                    T temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
+        Integer[] arr1 = new Integer[10000];
+        Integer[] arr2 = new Integer[10000];
+        for(int i=0; i<arr1.length; i++) {
+            arr1[i] = rand.nextInt(10000);
+            arr2[i] = arr1[i];
         }
 
-        return arr;
+        BubbleSortinger<Integer> bubbleSortinger = new BubbleSortinger<>();
+        QuickSortinger<Integer> quickSortinger = new QuickSortinger<>();
+
+        System.out.println(bubbleSortinger.sortWithTime(arr1));
+        System.out.println(quickSortinger.sortWithTime(arr2));
+        System.out.println();
+        System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr2));
     }
 }
