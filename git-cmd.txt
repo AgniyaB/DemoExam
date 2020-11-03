@@ -33,6 +33,9 @@ gut push -f
 синхронизация с репозиторием
 git pull
 
+возврат к состоянию комита (откат всех незадокументированных изменений)
+git stash
+
 создание новой ветки
 git branch session1 [за то вы загрузите ваш дэ в такую ветку - получите 0.2 балла]
 
@@ -51,6 +54,11 @@ git add -A
 git commit -m "message"
 git remote add origin https://github.com/Pa4ok/TestGit.git
 git push --set-upstream origin session1
+	на данном этапе у вас есть репозиторий с 1 комитом
+	после чего по мере написания кода делаете еще пару комитов
+	git add -A
+	git commit -m "message"
+	git push
 
 если возникли проблемы
 что-то не работает, кидает ошибки, не пушите
