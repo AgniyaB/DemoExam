@@ -1,47 +1,181 @@
 package ru.pa4ok.demoexam;
 
-import java.util.*;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 public class Main
 {
     /*
-    abstract Sortinger<T exntends Comparable>
-    - abstract void sort(T[] arr)
-    - long sortWithTime(T[] arr)
-        сохраняет в переменную текущее время
-        вызывает функцию sort()
-        передает туда массив
-        считает и возвращает время
-        потраченное на сортировку
+    Book
+    - int id
+    - String title
+    - String author
 
-    2-3 класса сортировщиков extends Sortinger
-    реализуют функцию sort(T[] arr)
-    используя разные алгоритсы сортировки
-    аля BubbleSortinger<T exntends Comparable> extends Sortinger<T>
-    ...
+    Library
+    - String title
+    - List<Book> books
+    - void save()
+        первая строка это название
+        остальные строки это кники
+        формат для книг id;title;author
+    - void load()
+        будет работать в связке с пустым конструктором
 
-    алгоритмы сортивки
-    https://proglib.io/p/java-sorting-algorithms
+    файл для чтения и записи new File("lib.txt")
+
+    создать бибилитеку, заполнить книгами
+    сохранить и завершить работу программы
+    после чего запустить
+    создать бибилиотеку из пустого конструтора
+    и загрузить сохранные книги
      */
 
     public static void main(String[] args)
     {
-        Random rand = new Random();
+        /*File file = new File("text.txt");
+        File dir = new File("C:\\Users\\Student\\Desktop\\Test\\test");
 
-        Integer[] arr1 = new Integer[10000];
-        Integer[] arr2 = new Integer[10000];
-        for(int i=0; i<arr1.length; i++) {
-            arr1[i] = rand.nextInt(10000);
-            arr2[i] = arr1[i];
+        file.exists();
+            file.isDirectory();
+            file.isFile();
+            file.canExecute();
+            file.canWrite();
+            file.canRead();
+            file.isHidden();
+
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        BubbleSortinger<Integer> bubbleSortinger = new BubbleSortinger<>();
-        QuickSortinger<Integer> quickSortinger = new QuickSortinger<>();
+        if(!dir.exists()) {
+            dir.mkdir();
+            dir.mkdirs(); //создает все отстуствующие папки на пути
+        }
 
-        System.out.println(bubbleSortinger.sortWithTime(arr1));
-        System.out.println(quickSortinger.sortWithTime(arr2));
-        System.out.println();
-        System.out.println(Arrays.toString(arr1));
-        System.out.println(Arrays.toString(arr2));
+        String name = file.getName();
+        long lastChangeMills = file.lastModified();
+
+        System.out.println(file.getAbsolutePath());
+
+        file.delete();*/
+
+        /*InputStream is;
+        OutputStream os;
+
+        Reader r;
+        Writer w;
+
+        InputStreamReader isr;
+        OutputStreamWriter osw;*/
+
+        /*try {
+            FileWriter fw = new FileWriter("text.txt");//, true);
+
+            String s = ";wefkj43ry437yf43bfw;ohf3rh34f\noewfh4f44купрпкпшгп'neoifohfe\n";
+            *//*for(char c : s.toCharArray()) {
+                fw.write(c);
+            }*//*
+            fw.write(s);
+
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            long l1 = System.currentTimeMillis();
+            FileReader fr = new FileReader(new File("text.txt"));
+
+            StringBuilder sb = new StringBuilder();
+            int i;
+            while((i = fr.read()) != -1) {
+                sb.append((char)i);
+            }
+            System.out.println((System.currentTimeMillis() - l1) + " " + sb.length());
+
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            long l2 = System.currentTimeMillis();
+            BufferedReader br = new BufferedReader(new FileReader("text.txt"));
+
+            StringBuilder sb = new StringBuilder();
+            String s;
+            while((s = br.readLine()) != null) {
+                sb.append(s).append('\n');
+            }
+            System.out.println((System.currentTimeMillis() - l2) + " " + sb.length());
+
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt")))
+        {
+            String[] strings = {"wefwkeofboew2f", "43954briu4f", "lirgh54th5"};
+            for(String s : strings) {
+                bw.write(s);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+            Path path = Paths.get("text.txt");
+
+            Files.copy(
+                    path,
+                    Paths.get("new-txt.txt")
+            );
+
+            Files.copy(
+                    path,
+                    Paths.get("new-txt.txt"),
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.COPY_ATTRIBUTES
+            );
+
+            Files.createLink(Paths.get("/test1"), Paths.get("/test2"));
+
+            BufferedWriter fw = Files.newBufferedWriter(path);
+            BufferedReader br = Files.newBufferedReader(path);
+
+            BufferedWriter fw1 = Files.newBufferedWriter(path, Charset.forName("CP1251"));
+            BufferedReader br1 = Files.newBufferedReader(path, Charset.forName("CP1251"));
+
+            List<String> list1 = Files.readAllLines(path);
+            List<String> list2 = Files.readAllLines(path, Charset.forName("CP1251"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    /*private static void readFile() throws IOException
+    {
+        try(FileReader fr = new FileReader("geegregre")) {
+            //...
+        }
+    }*/
+
 }
