@@ -1,18 +1,43 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library
+public class Library implements Externalizable
 {
     private String title;
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
 
     public Library(String title) {
         this.title = title;
+        books = new ArrayList<>();
+    }
+
+    public Library() {}
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(title);
+        out.writeObject(books);
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        title = (String) in.readObject();
+        books = (List<Book>) in.readObject();
+    }
+
+    public static void save(String path, Library lib) throws IOException {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(lib);
+        }
+    }
+
+    public static Library load(String path) throws IOException, ClassNotFoundException {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            return (Library) ois.readObject();
+        }
     }
 
     @Override
