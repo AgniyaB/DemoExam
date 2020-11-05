@@ -48,11 +48,11 @@ git push --set-upstream origin session1
 вариант номер 2 как создать репозиторий для дэ
 открываем папку с проектом и пишем 
 git init
-git branch session1
-git checkout session1
+git remote add origin https://github.com/Pa4ok/TestGit.git
 git add -A
 git commit -m "message"
-git remote add origin https://github.com/Pa4ok/TestGit.git
+git branch session1
+git checkout session1
 git push --set-upstream origin session1
 	на данном этапе у вас есть репозиторий с 1 комитом
 	после чего по мере написания кода делаете еще пару комитов
