@@ -9,72 +9,65 @@ import java.util.List;
 public class Main
 {
     /*
-    Book
+    Book implements Externalizable
     - int id
     - String title
     - String author
 
-    Library
+    Library implements Externalizable
     - String title
     - List<Book> books
-    - void save()
-        первая строка это название (title)
-        остальные строки это кники
-        формат для книг id;title;author
-    - void load()
-        будет работать в связке с пустым конструктором
-
-    файл для чтения и записи new File("lib.txt")
-
-    создать бибилитеку
-    заполнить книгами
-    сохранить и завершить работу программы
-    после чего запустить
-    создать бибилиотеку из пустого конструтора
-    и загрузить сохранные книги
-     */
+    - public static void save(String path, Library lib)
+        сериализует lib в файл по адресу path
+        через механизм интерфейса Externalizable
+    - public static Library load(String path)
+        десериализует бибилиотеку из файла по адресу path
+        и возвращает ее
+    */
 
     public static void main(String[] args)
     {
-        /*Library lib1 = new Library("oeiwiubibnefwe");
-        for(int i=1; i<10; i++) {
-            lib1.getBooks().add(new Book(i, "title-" + i, "author-" + i));
-        }
-        try {
-            lib1.save();
+        /*Book book = new Book(1, "title", "author");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("lib.dat"))) {
+
+            oos.writeObject(book);
+            oos.writeObject("rkgnjrgreggr");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try {
-            Library lib2 = new Library();
-            System.out.println(lib2);
-        } catch (Exception e) {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("lib.dat"))) {
+
+            Book book1 = (Book) ois.readObject();
+            String s = (String) ois.readObject();
+            System.out.println(book);
+            System.out.println(s);
+
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }*/
 
-        try {
-            test2();
+        SuperBook book = new SuperBook(1, "title", "author");
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("lib-super.dat"))) {
+
+            oos.writeObject(book);
+            oos.writeObject("rkgnjrgreggr");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public static void test1()
-    {
-        try(BufferedWriter bw = Files.newBufferedWriter(Paths.get("lib.txt"))) {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("lib-super.dat"))) {
 
-            bw.write("ewpihfef");
+            SuperBook book1 = (SuperBook) ois.readObject();
+            String s = (String) ois.readObject();
+            System.out.println(book);
+            System.out.println(s);
 
-        } catch (Exception e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
 
-    public static void test2() throws IOException
-    {
-        try(BufferedWriter bw = Files.newBufferedWriter(Paths.get("lib.txt"))) {
-            bw.write("ewpihfef");
-        }
     }
 }

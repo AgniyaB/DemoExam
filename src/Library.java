@@ -15,48 +15,6 @@ public class Library
         this.title = title;
     }
 
-    public Library() throws Exception {
-        load();
-    }
-
-    public void save() throws IOException
-    {
-        BufferedWriter bw = Files.newBufferedWriter(Paths.get("lib.txt"));
-
-        bw.write(title);
-        bw.newLine();
-
-        for(Book b : books) {
-            bw.write(b.getId() + ";" + b.getTitle() + ";" + b.getAuthor());
-            bw.newLine();
-        }
-
-        bw.close();
-    }
-
-    public void load() throws Exception {
-        BufferedReader br = Files.newBufferedReader(Paths.get("lib.txt"));
-
-        boolean first = false;
-        String s;
-        while((s = br.readLine()) != null) {
-            if(!first) {
-                title = s;
-                first = true;
-                continue;
-            }
-
-            String[] arr = s.split(";");
-            books.add(new Book(
-                    Integer.parseInt(arr[0]),
-                    arr[1],
-                    arr[2]
-            ));
-        }
-
-        br.close();
-    }
-
     @Override
     public String toString() {
         return "Library{" +
