@@ -17,10 +17,10 @@ public class Main
     - String author
 
     Library
-    - String title
+    - String libTitle
     - List<Book> books
     - void save()
-        первая строка это название
+        первая строка это название (libTitle)
         остальные строки это кники
         формат для книг id;title;author
     - void load()
@@ -37,6 +37,25 @@ public class Main
 
     public static void main(String[] args)
     {
+        Library lib1 = new Library("super library title 1");
+        for(int i=0; i<10; i++) {
+            lib1.getBooks().add(new Book(i, "title-" + i, "author-" + i));
+        }
+        try {
+            lib1.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Library lib2 = new Library();
+            System.out.println(lib2);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         /*File file = new File("text.txt");
         File dir = new File("C:\\Users\\Student\\Desktop\\Test\\test");
 
@@ -89,9 +108,9 @@ public class Main
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        /*try {
+        try {
             long l1 = System.currentTimeMillis();
             FileReader fr = new FileReader(new File("text.txt"));
 
@@ -121,9 +140,9 @@ public class Main
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        /*try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt")))
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("text.txt")))
         {
             String[] strings = {"wefwkeofboew2f", "43954briu4f", "lirgh54th5"};
             for(String s : strings) {
@@ -132,15 +151,15 @@ public class Main
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        /*try {
+        try {
             readFile();
         } catch (IOException e) {
             e.printStackTrace();
         }*/
 
-        try {
+        /*try {
             Path path = Paths.get("text.txt");
 
             Files.copy(
@@ -168,7 +187,7 @@ public class Main
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /*private static void readFile() throws IOException
