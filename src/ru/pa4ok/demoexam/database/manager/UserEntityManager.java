@@ -1,18 +1,17 @@
 package ru.pa4ok.demoexam.database.manager;
 
 import ru.pa4ok.demoexam.database.entity.UserEntity;
+import ru.pa4ok.demoexam.util.BaseManager;
 import ru.pa4ok.demoexam.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEntityManager
+public class UserEntityManager extends BaseManager
 {
-    private MysqlDatabase database;
-
     public UserEntityManager(MysqlDatabase database) {
-        this.database = database;
+        super(database);
     }
 
     public UserEntity addUser(UserEntity userEntity) throws SQLException
