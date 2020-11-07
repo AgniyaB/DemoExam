@@ -1,47 +1,34 @@
 package ru.pa4ok.demoexam;
 
-import java.io.*;
+import ru.pa4ok.demoexam.database.entity.UserEntity;
+import ru.pa4ok.demoexam.database.manager.UserEntityManager;
+import ru.pa4ok.demoexam.util.MysqlDatabase;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class Main
 {
     /*
-    Book implements Externalizable
-    - int id
-    - String title
-    - String author
-
-    Library implements Externalizable
-    - String name
-    - List<Book> books
-    - public static void save(Library library, String path)
-        сериализовать библиотеку в файл
-        через методы интерфейса Externalizable
-    - public static Library load(String path)
-        прочить сериализованную в файл библиотеку
-
-    //методы статичные, чтобы была вот такая логиках
-    //Library lib = Library.load("lib.txt");
+    116.202.236.174
+    DemoExam
      */
-
 
     public static void main(String[] args)
     {
-        /*Library lib = new Library("oeufouwfiuh4t");
-        for(int i=1; i<11; i++) {
-            lib.getBooks().add(new Book(i, "title-" + i, "author-" + i));
-        }
+        MysqlDatabase database = new MysqlDatabase("116.202.236.174", 3306, "DemoExam", "DemoExam", "DemoExam");
+        UserEntityManager userEntityManager = new UserEntityManager(database);
 
         try {
-            Library.save(lib, "library.dat");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+
+            //System.out.println(userEntityManager.addUser(new UserEntity("Pa4ok", "12345")));
+            //System.out.println(userEntityManager.getUserById(7));
+
+            List<UserEntity> allUsers = userEntityManager.getAllUsers();
+            System.out.println(allUsers);
 
 
-        try {
-            Library lib = Library.load("library.dat");
-            System.out.println(lib);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
