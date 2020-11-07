@@ -2,11 +2,11 @@ package ru.pa4ok.demoexam.database.entity;
 
 public class UserEntity
 {
-    private long id;
+    private int id;
     private String login;
     private String password;
 
-    public UserEntity(long id, String login, String password) {
+    public UserEntity(int id, String login, String password) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -26,11 +26,11 @@ public class UserEntity
                 '}';
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

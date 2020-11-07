@@ -10,8 +10,18 @@ import java.util.List;
 public class Main
 {
     /*
-    116.202.236.174
-    DemoExam
+    UserEntity
+    - int id
+    - String login
+    - String password
+    - int age
+    - String job
+
+    создать базу и обработчик для сущности
+    считывать с консоли логин и пароль
+    если есть совпадение по обоим
+    получать и выводить сущность в консоль
+    если нет - вывести "неверный логин/пароль"
      */
 
     public static void main(String[] args)
@@ -24,9 +34,15 @@ public class Main
             //System.out.println(userEntityManager.addUser(new UserEntity("Pa4ok", "12345")));
             //System.out.println(userEntityManager.getUserById(7));
 
-            List<UserEntity> allUsers = userEntityManager.getAllUsers();
-            System.out.println(allUsers);
+            //List<UserEntity> allUsers = userEntityManager.getAllUsers();
+            //System.out.println(allUsers);
 
+            /*UserEntity user = userEntityManager.getUserById(3);
+            user.setLogin("new login");
+            user.setPassword("minecraft1");
+            System.out.println(userEntityManager.update(user));*/
+
+            userEntityManager.deleteById(4);
 
         } catch (SQLException e) {
             e.printStackTrace();

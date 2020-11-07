@@ -76,4 +76,30 @@ public class UserEntityManager
             return users;
         }
     }
+
+    public int update(UserEntity userEntity) throws SQLException
+    {
+        try(Connection c = database.getConnection())
+        {
+            String sql = "UPDATE users SET login=?, PASSWORD=? WHERE id=?";
+            PreparedStatement s = c.prepareStatement(sql);
+            s.setString(1, userEntity.getLogin());
+            s.setString(2, userEntity.getPassword());
+            s.setInt(3, userEntity.getId());
+
+            return s.executeUpdate();
+        }
+    }
+
+    public int deleteById(int id) throws SQLException
+    {
+       try(Connection c = database.getConnection())
+       {
+           String sql = "DELETE FROM users WHERE id=?";
+           PreparedStatement s = c.prepareStatement(sql);
+           s.setInt(1, id);
+
+           return s.executeUpdate();
+       }
+    }
 }
