@@ -19,10 +19,12 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT INTO users (login, password) values (?,?)";
+            String sql = "INSERT INTO users (login, password, age, job) values (?,?,?,?)";
             PreparedStatement s = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
+            s.setInt(3, userEntity.getAge());
+            s.setString(4, userEntity.getJob());
             s.executeUpdate();
 
             ResultSet resultSet = s.getGeneratedKeys();
@@ -31,7 +33,7 @@ public class UserEntityManager
                 return userEntity;
             }
 
-            throw new SQLException("User not addeds");
+            throw new SQLException("User not added");
         }
     }
 
@@ -48,13 +50,40 @@ public class UserEntityManager
                 return new UserEntity(
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
-                        resultSet.getString("PASSWORD")
+                        resultSet.getString("PASSWORD"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("job")
                 );
             }
 
             return null;
         }
     }
+
+    public UserEntity getByAuth(String login, String pass) throws SQLException
+    {
+        try(Connection c = database.getConnection())
+        {
+            String sql = "SELECT * FROM users WHERE login=? AND PASSWORD=?";
+            PreparedStatement s = c.prepareStatement(sql);
+            s.setString(1, login);
+            s.setString(2, pass);
+
+            ResultSet resultSet = s.executeQuery();
+            if(resultSet.next()) {
+                return new UserEntity(
+                        resultSet.getInt("id"),
+                        resultSet.getString("login"),
+                        resultSet.getString("PASSWORD"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("job")
+                );
+            }
+
+            return null;
+        }
+    }
+
 
     public List<UserEntity> getAll() throws SQLException
     {
@@ -69,7 +98,9 @@ public class UserEntityManager
                 users.add(new UserEntity(
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
-                        resultSet.getString("PASSWORD")
+                        resultSet.getString("PASSWORD"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("job")
                 ));
             }
 
@@ -81,11 +112,13 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users SET login=?, PASSWORD=? WHERE id=?";
+            String sql = "UPDATE users SET login=?, PASSWORD=?, age=?, job=? WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
-            s.setInt(3, userEntity.getId());
+            s.setInt(3, userEntity.getAge());
+            s.setString(4, userEntity.getJob());
+            s.setInt(5, userEntity.getId());
 
             return s.executeUpdate();
         }
