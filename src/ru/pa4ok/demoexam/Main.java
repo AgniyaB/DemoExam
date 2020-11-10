@@ -1,12 +1,6 @@
 package ru.pa4ok.demoexam;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
+import java.io.IOException;
 
 public class Main
 {
@@ -31,46 +25,22 @@ public class Main
 
     public static void main(String[] args)
     {
-        /*try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("lib.dat"))) {
-
-            Book book = new Book(1,"voina i mir", "pushkin");
-            oos.writeObject(book);
-            oos.writeObject("giehg54tg45gi64");
-
+        Library lib1 = new Library("title super 1");
+        for(int i=0; i<10; i++) {
+            lib1.getBooks().add(new Book(i, "title-" + i, "author-" + i));
+        }
+        try {
+            Library.save("lib.dat", lib1);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("lib.dat"))) {
-
-            Book book = (Book) ois.readObject();
-            System.out.println(book);
-            String s = (String) ois.readObject();
-            System.out.println(s);
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("super-lib.dat"))) {
-
-            SuperBook book = new SuperBook(1,"voina i mir", "pushkin");
-            oos.writeObject(book);
-            oos.writeObject("giehg54tg45gi64");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("super-lib.dat"))) {
-
-            SuperBook book = (SuperBook) ois.readObject();
-            System.out.println(book);
-            String s = (String) ois.readObject();
-            System.out.println(s);
-
+        try {
+            Library lib2 = Library.load("lib.dat");
+            System.out.println(lib2);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }

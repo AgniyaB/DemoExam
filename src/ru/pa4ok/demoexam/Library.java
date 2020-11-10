@@ -4,47 +4,29 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library
+public class Library implements Externalizable
 {
     private String title;
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
 
     public Library(String title) {
         this.title = title;
+        this.books = new ArrayList<>();
     }
 
-    public Library() throws IOException {
-        load();
+    public Library() {}
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(title);
+        out.writeObject(books);
     }
 
-    public void save() throws IOException
-    {
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("lib.txt"))) {
-            bw.write(title);
-            bw.newLine();
-            for(Book b : books) {
-                bw.write(b.getId() + ";" + b.getTitle() + ";" + b.getAuthor());
-                bw.newLine();
-            }
-        }
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        title = (String) in.readObject();
+        books = (List<Book>) in.readObject();
     }
-
-    public void load() throws IOException
-    {
-        try(BufferedReader br = new BufferedReader(new FileReader("lib.txt"))) {
-            title = br.readLine();
-            String s;
-            while((s = br.readLine()) != null) {
-                String[] arr = s.split(";");
-                books.add(new Book(
-                        Integer.parseInt(arr[0]),
-                        arr[1],
-                        arr[2]
-                ));
-            }
-        }
-    }
-
 
     @Override
     public String toString() {
@@ -52,6 +34,18 @@ public class Library
                 "title='" + title + '\'' +
                 ", books=" + books +
                 '}';
+    }
+
+    public static void save(String path, Library lib) throws IOException {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(lib);
+        }
+    }
+
+    public static Library load(String path) throws IOException, ClassNotFoundException {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            return (Library) ois.readObject();
+        }
     }
 
     public String getTitle() {
