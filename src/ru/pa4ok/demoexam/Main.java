@@ -47,10 +47,23 @@ public class Main
 
     public Main()
     {
-        boolean alive = true;
-        while(alive)
+        while(true)
         {
-            switch (Integer.parseInt(scanner.nextLine()))
+            printChoice();
+            String choice = scanner.nextLine();
+            if(choice == null || choice.equals("")) {
+                System.out.println("Введите выбор");
+            }
+
+            int i;
+            try {
+               i = Integer.parseInt(choice);
+            } catch (NumberFormatException e) {
+                System.out.println("Вы ввели не цифру");
+                continue;
+            }
+
+            switch (i)
             {
                 case 1:
                     register();
@@ -68,8 +81,7 @@ public class Main
                     deleteAccount();
                     break;
                 case 0:
-                    alive = false;
-                    break;
+                    return;
                 default:
                     System.out.println("Нет такого варианта");
                     break;
@@ -136,16 +148,63 @@ public class Main
 
     private void changeLogin()
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        String oldLogin = authedUser.getLogin();
+        authedUser.setLogin(scanner.nextLine());
+        if(!authedUser.validate()) {
+            authedUser.setLogin(oldLogin);
+            System.out.println("Логин введен некоректно");
+            return;
+        }
+
+        try {
+            userEntityManager.update(authedUser);
+            System.out.println("Логин успешно изменен: " + authedUser);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void changePass()
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        String oldPass = authedUser.getPassword();
+        authedUser.setPassword(scanner.nextLine());
+        if(!authedUser.validate()) {
+            authedUser.setPassword(oldPass);
+            System.out.println("Пароль введен некоректно");
+            return;
+        }
+
+        try {
+            userEntityManager.update(authedUser);
+            System.out.println("Пароль успешно изменен: " + authedUser);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteAccount()
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        try {
+            userEntityManager.delete(authedUser);
+            System.out.println("Пользователь успешно удален");
+            authedUser = null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

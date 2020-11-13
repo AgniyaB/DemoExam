@@ -15,7 +15,7 @@ public class UserEntityManager
         this.database = database;
     }
 
-    public UserEntity add(UserEntity userEntity) throws SQLException
+    public void add(UserEntity userEntity) throws SQLException
     {
         try(Connection c = database.getConnection())
         {
@@ -30,7 +30,7 @@ public class UserEntityManager
             ResultSet resultSet = s.getGeneratedKeys();
             if (resultSet.next()) {
                 userEntity.setId(resultSet.getInt(1));
-                return userEntity;
+                return;
             }
 
             throw new SQLException("User not added");
@@ -134,5 +134,10 @@ public class UserEntityManager
 
             return s.executeUpdate();
         }
+    }
+
+    public int delete(UserEntity user) throws SQLException
+    {
+        return deleteById(user.getId());
     }
 }
