@@ -1,18 +1,18 @@
 package org.orgname.app.database.manager;
 
 import org.orgname.app.database.entity.UserEntity;
+import org.orgname.app.util.BaseManager;
 import org.orgname.app.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEntityManager
+public class UserEntityManager extends BaseManager
 {
-    private MysqlDatabase database;
-
-    public UserEntityManager(MysqlDatabase database) {
-        this.database = database;
+    public UserEntityManager(MysqlDatabase database)
+    {
+        super(database);
     }
 
     public void add(UserEntity user) throws SQLException
