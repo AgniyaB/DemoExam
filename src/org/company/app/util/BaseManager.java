@@ -1,4 +1,4 @@
-package org.orgname.app.util;
+package org.company.app.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

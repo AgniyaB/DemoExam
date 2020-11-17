@@ -1,8 +1,8 @@
-package org.orgname.app.database.manager;
+package org.company.app.data.manager;
 
-import org.orgname.app.database.entity.UserEntity;
-import org.orgname.app.util.BaseManager;
-import org.orgname.app.util.MysqlDatabase;
+import org.company.app.data.entity.UserEntity;
+import org.company.app.util.BaseManager;
+import org.company.app.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;

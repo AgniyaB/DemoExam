@@ -1,4 +1,4 @@
-package org.orgname.app.database.entity;
+package org.company.app.data.entity;
 
 public class UserEntity
 {

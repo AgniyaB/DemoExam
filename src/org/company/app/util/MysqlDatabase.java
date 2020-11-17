@@ -1,4 +1,4 @@
-package org.orgname.app.util;
+package org.company.app.util;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
