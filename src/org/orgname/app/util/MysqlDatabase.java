@@ -39,10 +39,30 @@ public class MysqlDatabase
             source.setUser(user);
             source.setPassword(pass);
 
-            source.setCharacterEncoding("UTF-8");
             source.setServerTimezone("UTC");
+            source.setCharacterEncoding("UTF-8");
         }
 
         return source.getConnection();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getDb() {
+        return db;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPass() {
+        return pass;
     }
 }
