@@ -31,6 +31,27 @@ public class UserEntity
                 '}';
     }
 
+    public static boolean isLoginIncorrect(String login) {
+        return login.length() > 20;
+    }
+
+    public static boolean isPasswordIncorrect(String password) {
+        return password.length() > 32;
+    }
+
+    public static boolean isAgeIncorrect(String ageString) {
+        try {
+            int age = Integer.parseInt(ageString);
+            return age < 0;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+
+    public static boolean isJobIncorrect(String job) {
+        return job.length() > 45;
+    }
+
     public int getId() {
         return id;
     }
