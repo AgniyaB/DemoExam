@@ -134,18 +134,51 @@ public class Main
         }
     }
 
-    private void changePassword()
+    private void changePassword() throws SQLException
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        String password = scanner.nextLine();
+        if(UserEntity.isPasswordIncorrect(password)) {
+            System.out.println("Некоректный пароль");
+            return;
+        }
+
+        authedUser.setPass(password);
+        userEntityManager.update(authedUser);
+        System.out.println("Пароль успешно обновлен " + authedUser);
     }
 
-    private void changeLogin()
+    private void changeLogin() throws SQLException
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        String login = scanner.nextLine();
+        if(UserEntity.isLoginIncorrect(login)) {
+            System.out.println("Некоректный Логин");
+            return;
+        }
+
+        authedUser.setLogin(login);
+        userEntityManager.update(authedUser);
+        System.out.println("Логин успешно обновлен " + authedUser);
     }
 
-    private void deleteUser()
+    private void deleteUser() throws SQLException
     {
+        if(authedUser == null) {
+            System.out.println("Вы не авторизованы");
+            return;
+        }
 
+        userEntityManager.deleteById(authedUser.getId());
+        authedUser = null;
+        System.out.println("Аккаунт успешно удален");
     }
 }
