@@ -1,4 +1,7 @@
-package ru.pa4ok.demoexam.database.entity;
+package org.orgname.app.database.entity;
+
+import org.orgname.app.Application;
+import org.orgname.app.database.manager.UserEntityManager;
 
 public class UserEntity
 {
