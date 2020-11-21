@@ -5,11 +5,16 @@ import java.awt.*;
 
 public abstract class BaseForm extends JFrame
 {
-    private static String baseApplicationTitle;
+    protected static String baseApplicationTitle;
+    protected static Image baseApplicationIcon;
 
     public BaseForm()
     {
         setTitle(baseApplicationTitle == null ? "Крутая приложуха" : baseApplicationTitle);
+        if(baseApplicationIcon != null) {
+            setIconImage(baseApplicationIcon);
+        }
+
         setMinimumSize(new Dimension(getFormWidth(), getFormHeight()));
         setPreferredSize(new Dimension(getFormWidth(), getFormHeight()));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -29,5 +34,13 @@ public abstract class BaseForm extends JFrame
 
     public static void setBaseApplicationTitle(String baseApplicationTitle) {
         BaseForm.baseApplicationTitle = baseApplicationTitle;
+    }
+
+    public static Image getBaseApplicationIcon() {
+        return baseApplicationIcon;
+    }
+
+    public static void setBaseApplicationIcon(Image baseApplicationIcon) {
+        BaseForm.baseApplicationIcon = baseApplicationIcon;
     }
 }

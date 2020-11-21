@@ -1,20 +1,17 @@
 package org.orgname.app.ui;
 
-import org.orgname.app.Main;
+import org.orgname.app.Application;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 
 public class TestForm extends BaseForm
 {
-    private UserEntityManager userEntityManager = new UserEntityManager(Main.getInstance().getDatabase());
+    private UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
     private final TestForm localInstance;
 
     private JPanel mainPanel;
@@ -37,7 +34,6 @@ public class TestForm extends BaseForm
         loadButton.addActionListener(e -> update());
 
         addButton.addActionListener(e -> {
-            setVisible(false);
             new AddUserForm(localInstance);
         });
     }

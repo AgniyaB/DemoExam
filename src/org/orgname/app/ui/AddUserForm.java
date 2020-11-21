@@ -1,17 +1,16 @@
 package org.orgname.app.ui;
 
-import org.orgname.app.Main;
+import org.orgname.app.Application;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
-import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.BaseSubForm;
 
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseForm
+public class AddUserForm extends BaseSubForm
 {
-    private final UserEntityManager userEntityManager = new UserEntityManager(Main.getInstance().getDatabase());
-    private final TestForm mainForm;
+    private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
     private JPanel mainPanel;
     private JTextField loginField;
@@ -24,7 +23,7 @@ public class AddUserForm extends BaseForm
 
     public AddUserForm(TestForm mainForm)
     {
-        this.mainForm = mainForm;
+        super(mainForm, "Добавление нового пользователя");
         setContentPane(mainPanel);
 
         initBoxes();
@@ -50,8 +49,7 @@ public class AddUserForm extends BaseForm
     private void initButtons()
     {
         назадButton.addActionListener(e -> {
-            dispose();
-            mainForm.setVisible(true);
+            closeSubForm();
         });
 
         сохранитьButton.addActionListener(e -> {
@@ -63,13 +61,12 @@ public class AddUserForm extends BaseForm
 
             try {
                 addUserFromFields();
-                mainForm.update();
+                ((TestForm)mainForm).update();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
-            dispose();
-            mainForm.setVisible(true);
+            closeSubForm();
         });
     }
 
