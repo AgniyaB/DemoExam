@@ -1,4 +1,4 @@
-package ru.pa4ok.demoexam.util;
+package org.orgname.app.util;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 

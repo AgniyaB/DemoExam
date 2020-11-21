@@ -1,7 +1,7 @@
-package ru.pa4ok.demoexam.database.manager;
+package org.orgname.app.database.manager;
 
-import ru.pa4ok.demoexam.database.entity.UserEntity;
-import ru.pa4ok.demoexam.util.MysqlDatabase;
+import org.orgname.app.database.entity.UserEntity;
+import org.orgname.app.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
