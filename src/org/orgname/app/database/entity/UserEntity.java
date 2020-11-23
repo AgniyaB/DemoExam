@@ -1,23 +1,27 @@
 package org.orgname.app.database.entity;
 
+import org.orgname.app.database.GenderEnum;
+
 public class UserEntity
 {
     private int id;
     private String login;
     private String pass;
+    private GenderEnum gender;
     private int age;
     private String job;
 
-    public UserEntity(int id, String login, String pass, int age, String job) {
+    public UserEntity(int id, String login, String pass, GenderEnum gender, int age, String job) {
         this.id = id;
         this.login = login;
         this.pass = pass;
+        this.gender = gender;
         this.age = age;
         this.job = job;
     }
 
-    public UserEntity(String login, String pass, int age, String job) {
-        this(-1, login, pass, age, job);
+    public UserEntity(String login, String pass, GenderEnum gender, int age, String job) {
+        this(-1, login, pass, gender, age, job);
     }
 
     public static boolean isLoginIncorrect(String s) {
@@ -44,14 +48,13 @@ public class UserEntity
         return false;
     }
 
-
-
     @Override
     public String toString() {
         return "UserEntity{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", pass='" + pass + '\'' +
+                ", gender=" + gender +
                 ", age=" + age +
                 ", job='" + job + '\'' +
                 '}';
@@ -95,5 +98,13 @@ public class UserEntity
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public GenderEnum getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnum gender) {
+        this.gender = gender;
     }
 }

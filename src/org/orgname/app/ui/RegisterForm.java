@@ -1,6 +1,7 @@
 package org.orgname.app.ui;
 
 import org.orgname.app.Application;
+import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
@@ -8,10 +9,9 @@ import org.orgname.app.util.BaseForm;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseForm
+public class RegisterForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
-    private final TestForm mainForm;
 
     private JPanel mainPanel;
     private JTextField loginField;
@@ -22,9 +22,8 @@ public class AddUserForm extends BaseForm
     private JButton saveButton;
     private JComboBox genderBox;
 
-    public AddUserForm(TestForm mainForm)
+    public RegisterForm()
     {
-        this.mainForm = mainForm;
         setContentPane(mainPanel);
 
         initBoxes();
@@ -35,21 +34,8 @@ public class AddUserForm extends BaseForm
 
     private void initBoxes()
     {
-        genderBox.addItem("Выберите гендер");
-        genderBox.addItem("Мужчина");
-        genderBox.addItem("Женщина");
-        genderBox.addItem("Вертолет");
-
-        //получить
-        //genderBox.getSelectedItem();
-        //genderBox.getSelectedIndex();
-
-        //слушатель
-        genderBox.addItemListener(e -> {
-            System.out.println(e.getStateChange() + " " + e.getItem());
-        });
-        //2 - старый объект
-        //1 - новый
+        genderBox.addItem(GenderEnum.MALE);
+        genderBox.addItem(GenderEnum.FEMALE);
     }
 
     private void initButtons()
@@ -62,25 +48,26 @@ public class AddUserForm extends BaseForm
             UserEntity userEntity = new UserEntity(
                     loginField.getText(),
                     new String(passwordField.getPassword()),
+                    (GenderEnum) genderBox.getSelectedItem(),
                     Integer.parseInt(ageField.getText()),
                     jobField.getText()
             );
 
             try {
                 userEntityManager.add(userEntity);
-                mainForm.update();
+                dispose();
+                new MainForm(userEntity);
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
-            back();
         });
     }
 
     private void back()
     {
         dispose();
-        mainForm.setVisible(true);
+        new StartForm();
     }
 
     @Override
