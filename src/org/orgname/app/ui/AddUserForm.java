@@ -8,6 +8,8 @@ import org.orgname.app.util.BaseForm;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
 public class AddUserForm extends BaseForm
@@ -22,6 +24,7 @@ public class AddUserForm extends BaseForm
     private JTextField jobField;
     private JButton backButton;
     private JButton saveButton;
+    private JComboBox genderBox;
 
     public AddUserForm(TestForm mainForm)
     {
@@ -29,6 +32,24 @@ public class AddUserForm extends BaseForm
         setContentPane(mainPanel);
 
         initButtons();
+
+        /*genderBox.addItem("Максим");
+        genderBox.addItem("Мужчина");
+        genderBox.addItem("Женщина");
+        genderBox.addItem("Вертолет");
+        */
+        genderBox.addItem(Gender.MALE);
+        genderBox.addItem(Gender.FEMALE);
+
+        genderBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                System.out.println(e.getStateChange() + " " + e.getItem());
+            }
+        });
+
+        System.out.println(genderBox.getSelectedIndex());
+        System.out.println(genderBox.getSelectedItem());
 
         setVisible(true);
     }
@@ -78,6 +99,24 @@ public class AddUserForm extends BaseForm
 
     @Override
     public int getFormHeight() {
-        return 225;
+        return 250;
+    }
+}
+
+enum Gender
+{
+    MALE("Мужчина"),
+    FEMALE("Женщина");
+
+    private final String locale;
+
+    private Gender(String locale)
+    {
+        this.locale = locale;
+    }
+
+    @Override
+    public String toString() {
+        return this.locale;
     }
 }
