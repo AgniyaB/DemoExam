@@ -23,12 +23,6 @@ public abstract class BaseForm extends JFrame
 
     public abstract int getFormHeight();
 
-    public void changeForm(BaseForm baseForm)
-    {
-        dispose();
-        baseForm.setVisible(true);
-    }
-
     public static String getBaseApplicationTitle() {
         return baseApplicationTitle;
     }

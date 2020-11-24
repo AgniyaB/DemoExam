@@ -22,8 +22,7 @@ public class Application
         initDatabase();
         initUi();
 
-        TestForm test = new TestForm();
-        test.setVisible(true);
+        new TestForm();
 
     }
 
