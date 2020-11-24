@@ -19,7 +19,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT users(login, password, age, job) values(?,?,?,?)";
+            String sql = "INSERT users_small(login, password, age, job) values(?,?,?,?)";
 
             PreparedStatement ps = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getLogin());
@@ -42,7 +42,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE id=?";
+            String sql = "SELECT * FROM users_small WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -65,7 +65,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE login=? AND password=?";
+            String sql = "SELECT * FROM users_small WHERE login=? AND password=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, login);
             ps.setString(2, password);
@@ -89,7 +89,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM users_small";
             Statement s = c.createStatement();
             ResultSet resultSet = s.executeQuery(sql);
 
@@ -113,7 +113,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users SET login=?, password=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users_small SET login=?, password=?, age=?, job=? WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getPassword());
@@ -129,7 +129,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "DELETE FROM users WHERE id=?";
+            String sql = "DELETE FROM users_small WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setInt(1, id);
 
