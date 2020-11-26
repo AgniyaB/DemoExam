@@ -1,9 +1,10 @@
 package org.orgname.app;
 
-import org.orgname.app.database.entity.UserEntity;
-import org.orgname.app.ui.TestForm;
+import org.orgname.app.ui.StartForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.MysqlDatabase;
+
+import java.sql.Connection;
 
 public class Application
 {
@@ -18,12 +19,17 @@ public class Application
         initDatabase();
         initUi();
 
-        new TestForm();
+        new StartForm();
     }
 
     private void initDatabase()
     {
-
+        try(Connection c = database.getConnection()) {
+        } catch (Exception e) {
+            System.out.println("Ошибка подключения к бд");
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     private void initUi()
