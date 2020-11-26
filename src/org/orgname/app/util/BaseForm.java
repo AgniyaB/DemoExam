@@ -5,12 +5,12 @@ import java.awt.*;
 
 public abstract class BaseForm extends JFrame
 {
-    private static String baseApplicationTitle;
+    private static String baseApplicationTitle = "Application";
 
     public BaseForm()
     {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle(baseApplicationTitle == null ? "Application" : baseApplicationTitle);
+        setTitle(baseApplicationTitle);
         setMinimumSize(new Dimension(getFormWidth(), getFormHeight()));
         setLocation(
                 Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getFormWidth() / 2,

@@ -2,6 +2,7 @@ package org.orgname.app;
 
 import org.orgname.app.ui.StartForm;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
 
 import java.sql.Connection;
