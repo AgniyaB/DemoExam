@@ -1,6 +1,7 @@
 package org.orgname.app.ui;
 
 import org.orgname.app.Application;
+import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseSubForm;
@@ -8,8 +9,7 @@ import org.orgname.app.util.BaseSubForm;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseSubForm
-{
+public class AddUserForm extends BaseSubForm {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
     private JPanel mainPanel;
@@ -21,8 +21,7 @@ public class AddUserForm extends BaseSubForm
     private JButton сохранитьButton;
     private JComboBox genderBox;
 
-    public AddUserForm(TestForm mainForm)
-    {
+    public AddUserForm(TableForm mainForm) {
         super(mainForm, "Добавление нового пользователя");
         setContentPane(mainPanel);
 
@@ -32,36 +31,18 @@ public class AddUserForm extends BaseSubForm
         setVisible(true);
     }
 
-    private void initBoxes()
-    {
-        genderBox.addItem("Выберите пол");
-        genderBox.addItem("Мужской");
-        genderBox.addItem("Женский");
-
-        genderBox.addItemListener(e -> {
-            //e.getStateChange()
-            //2 - старое значение
-            //1 - новое значение
-            System.out.println(e.getStateChange() + " " + e.getItem());
-        });
+    private void initBoxes() {
+        genderBox.addItem(GenderEnum.MALE);
+        genderBox.addItem(GenderEnum.FEMALE);
     }
 
-    private void initButtons()
-    {
-        назадButton.addActionListener(e -> {
-            closeSubForm();
-        });
+    private void initButtons() {
+        назадButton.addActionListener(e -> closeSubForm());
 
         сохранитьButton.addActionListener(e -> {
 
-            if(genderBox.getSelectedIndex() == 0) {
-                System.out.println("Выберите пол");
-                return;
-            }
-
             try {
                 addUserFromFields();
-                ((TestForm)mainForm).update();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -71,13 +52,24 @@ public class AddUserForm extends BaseSubForm
     }
 
     private void addUserFromFields() throws SQLException {
-        System.out.println("Пол - " + genderBox.getSelectedItem());
-        userEntityManager.add(new UserEntity(
+        UserEntity user = new UserEntity(
                 loginField.getText(),
                 new String(passwordField.getPassword()),
+                (GenderEnum)genderBox.getSelectedItem(),
                 Integer.parseInt(ageFiled.getText()),
                 jobField.getText()
-        ));
+        );
+        userEntityManager.add(user);
+
+        ((TableForm) mainForm).getTableModel().addRow(
+                new Object[]{
+                        user.getId(),
+                        user.getLogin(),
+                        user.getPassword(),
+                        user.getGender(),
+                        user.getAge(),
+                        user.getJob()
+                });
     }
 
     @Override

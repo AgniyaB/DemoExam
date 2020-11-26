@@ -1,5 +1,6 @@
 package org.orgname.app.database.manager;
 
+import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.util.MysqlDatabase;
 
@@ -19,12 +20,13 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT INTO users(login, password, age, job) values(?,?,?,?)";
+            String sql = "INSERT INTO users(login, password, gender, age, job) values(?,?,?,?,?)";
             PreparedStatement s = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             s.setString(1, user.getLogin());
             s.setString(2, user.getPassword());
-            s.setInt(3, user.getAge());
-            s.setString(4, user.getJob());
+            s.setString(3, user.getGender().name());
+            s.setInt(4, user.getAge());
+            s.setString(5, user.getJob());
             s.executeUpdate();
 
             ResultSet keys = s.getGeneratedKeys();
@@ -51,6 +53,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 );
@@ -75,6 +78,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 );
@@ -98,6 +102,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 ));
@@ -110,13 +115,14 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users SET login=?, password=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users SET login=?, password=?, gender=?, age=?, job=? WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, user.getLogin());
             s.setString(2, user.getPassword());
-            s.setInt(3, user.getAge());
-            s.setString(4, user.getJob());
-            s.setInt(5, user.getId());
+            s.setString(3, user.getGender().name());
+            s.setInt(4, user.getAge());
+            s.setString(5, user.getJob());
+            s.setInt(6, user.getId());
 
             return s.executeUpdate();
         }

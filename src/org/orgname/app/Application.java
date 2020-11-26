@@ -1,9 +1,8 @@
 package org.orgname.app;
 
-import org.orgname.app.ui.TestForm;
+import org.orgname.app.ui.TableForm;
 import org.orgname.app.util.*;
 
-import java.io.IOException;
 import java.sql.Connection;
 
 public class Application
@@ -32,7 +31,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new TestForm();
+        new TableForm();
     }
 
     private void initDatabase()
@@ -49,12 +48,12 @@ public class Application
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр трубочист");
 
-        try {
+        /*try {
             BaseForm.setBaseApplicationIcon(ResourceUtil.getImage("icon.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
             DialogUtil.showError("Не удалось загрузить иконку приложения");
-        }
+        }*/
     }
 
     public MysqlDatabase getDatabase() {
