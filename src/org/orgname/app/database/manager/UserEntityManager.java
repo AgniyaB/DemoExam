@@ -20,13 +20,14 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT INTO users (login, password, gender, age, job) values (?,?,?,?,?)";
+            String sql = "INSERT INTO users_full (login, password, gender, age, job, notes) values (?,?,?,?,?,?)";
             PreparedStatement s = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
             s.setString(3, userEntity.getGender().name());
             s.setInt(4, userEntity.getAge());
             s.setString(5, userEntity.getJob());
+            s.setString(6, userEntity.getNotes());
             s.executeUpdate();
 
             ResultSet resultSet = s.getGeneratedKeys();
@@ -43,7 +44,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE id=?";
+            String sql = "SELECT * FROM users_full WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setInt(1, id);
 
@@ -55,7 +56,8 @@ public class UserEntityManager
                         resultSet.getString("password"),
                         GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
-                        resultSet.getString("job")
+                        resultSet.getString("job"),
+                        resultSet.getString("notes")
                 );
             }
 
@@ -67,7 +69,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE login=? AND PASSWORD=?";
+            String sql = "SELECT * FROM users_full WHERE login=? AND PASSWORD=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, login);
             s.setString(2, pass);
@@ -80,7 +82,8 @@ public class UserEntityManager
                         resultSet.getString("password"),
                         GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
-                        resultSet.getString("job")
+                        resultSet.getString("job"),
+                        resultSet.getString("notes")
                 );
             }
 
@@ -93,7 +96,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM users_full";
             Statement s = c.createStatement();
             ResultSet resultSet = s.executeQuery(sql);
 
@@ -105,7 +108,8 @@ public class UserEntityManager
                         resultSet.getString("password"),
                         GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
-                        resultSet.getString("job")
+                        resultSet.getString("job"),
+                        resultSet.getString("notes")
                 ));
             }
 
@@ -117,14 +121,15 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users SET login=?, password=?, gender=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users_full SET login=?, password=?, gender=?, age=?, job=?, notes=? WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
             s.setString(3, userEntity.getGender().name());
             s.setInt(4, userEntity.getAge());
             s.setString(5, userEntity.getJob());
-            s.setInt(6, userEntity.getId());
+            s.setString(6, userEntity.getNotes());
+            s.setInt(7, userEntity.getId());
 
             return s.executeUpdate();
         }
@@ -134,7 +139,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "DELETE FROM users WHERE id=?";
+            String sql = "DELETE FROM users_full WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setInt(1, id);
 

@@ -14,6 +14,7 @@ public class MainForm extends BaseForm {
     private JPanel mainPanel;
     private JButton exitButton;
     private JButton editButton;
+    private JButton notesButton;
 
     public MainForm(UserEntity userEntity)
     {
@@ -40,7 +41,8 @@ public class MainForm extends BaseForm {
         sb.append("    Пароль ").append(userEntity.getPassword()).append("\n");
         sb.append("    Гендер ").append(userEntity.getGender()).append("\n");
         sb.append("    Возраст ").append(userEntity.getAge()).append("\n");
-        sb.append("    Работа ").append(userEntity.getJob()).append("\n");
+        sb.append("    Работа ").append(userEntity.getJob()).append("\n\n\n");
+        sb.append("  Заметки:\n").append(userEntity.getNotes());
 
         textArea.setText(sb.toString());
     }
@@ -60,6 +62,14 @@ public class MainForm extends BaseForm {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new EditUserForm(MainForm.this);
+            }
+        });
+
+        notesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new UserNotesForm(MainForm.this);
             }
         });
     }

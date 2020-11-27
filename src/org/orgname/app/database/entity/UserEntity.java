@@ -11,18 +11,20 @@ public class UserEntity
     private GenderEnum gender;
     private int age;
     private String job;
+    private String notes;
 
-    public UserEntity(int id, String login, String password, GenderEnum gender, int age, String job) {
+    public UserEntity(int id, String login, String password, GenderEnum gender, int age, String job, String notes) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.gender = gender;
         this.age = age;
         this.job = job;
+        this.notes = notes;
     }
 
     public UserEntity(String login, String password, GenderEnum gender, int age, String job) {
-        this(-1, login, password, gender, age, job);
+        this(-1, login, password, gender, age, job,"");
     }
 
     public boolean validate()
@@ -39,8 +41,10 @@ public class UserEntity
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", gender=" + gender +
                 ", age=" + age +
                 ", job='" + job + '\'' +
+                ", notes='" + notes + '\'' +
                 '}';
     }
 
@@ -90,5 +94,13 @@ public class UserEntity
 
     public void setGender(GenderEnum gender) {
         this.gender = gender;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
