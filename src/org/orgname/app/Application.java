@@ -2,8 +2,10 @@ package org.orgname.app;
 
 import org.orgname.app.ui.StartForm;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
 
+import javax.swing.*;
 import java.sql.Connection;
 
 public class Application
@@ -31,7 +33,7 @@ public class Application
     {
         try(Connection c = database.getConnection()) {
         } catch (Exception e) {
-            System.out.println("Ошибка подключения к бд");
+            DialogUtil.showError("Ошибка подключения к бд");
             e.printStackTrace();
             System.exit(-1);
         }

@@ -4,6 +4,7 @@ import org.orgname.app.Application;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -51,7 +52,7 @@ public class AuthForm extends BaseForm
                         dispose();
                         new MainForm(user);
                     } else {
-                        System.out.println("Неверный логин / пароль");
+                        DialogUtil.showError(AuthForm.this, "Неверный логин/пароль");
                     }
 
                 } catch (SQLException throwables) {
