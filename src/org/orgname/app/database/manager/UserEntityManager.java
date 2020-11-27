@@ -19,7 +19,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT INTO users (login, password, age, job) values (?,?,?,?)";
+            String sql = "INSERT INTO users_small (login, password, age, job) values (?,?,?,?)";
             PreparedStatement s = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
@@ -41,7 +41,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE id=?";
+            String sql = "SELECT * FROM users_small WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setInt(1, id);
 
@@ -60,11 +60,11 @@ public class UserEntityManager
         }
     }
 
-    public UserEntity getByAuth(String login, String pass) throws SQLException
+    public UserEntity getByLoginAndPassword(String login, String pass) throws SQLException
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users WHERE login=? AND PASSWORD=?";
+            String sql = "SELECT * FROM users_small WHERE login=? AND PASSWORD=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, login);
             s.setString(2, pass);
@@ -89,7 +89,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM users_small";
             Statement s = c.createStatement();
             ResultSet resultSet = s.executeQuery(sql);
 
@@ -112,7 +112,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users SET login=?, PASSWORD=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users_small SET login=?, PASSWORD=?, age=?, job=? WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setString(1, userEntity.getLogin());
             s.setString(2, userEntity.getPassword());
@@ -128,7 +128,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "DELETE FROM users WHERE id=?";
+            String sql = "DELETE FROM users_small WHERE id=?";
             PreparedStatement s = c.prepareStatement(sql);
             s.setInt(1, id);
 

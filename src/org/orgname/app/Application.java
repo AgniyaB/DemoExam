@@ -1,6 +1,6 @@
 package org.orgname.app;
 
-import org.orgname.app.ui.TestForm;
+import org.orgname.app.ui.StartForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.MysqlDatabase;
 
@@ -24,7 +24,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new TestForm();
+        new StartForm();
     }
 
     private void initDatabase()
