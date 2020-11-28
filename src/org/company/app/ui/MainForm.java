@@ -10,18 +10,25 @@ public class MainForm extends BaseForm
     private final UserEntity userEntity;
 
     private JPanel mainPanel;
-    private JTextArea textAre;
+    private JTextArea textArea;
     private JButton exitButton;
+    private JButton editButton;
 
     public MainForm(UserEntity userEntity)
     {
         this.userEntity = userEntity;
         setContentPane(mainPanel);
 
+        initElements();
         initButtons();
         loadUserData();
 
         setVisible(true);
+    }
+
+    private void initElements()
+    {
+        textArea.setEditable(false);
     }
 
     private void initButtons()
@@ -29,6 +36,10 @@ public class MainForm extends BaseForm
         exitButton.addActionListener(e -> {
             dispose();
             new StartForm();
+        });
+
+        editButton.addActionListener(e -> {
+            new EditUserForm(this);
         });
     }
 
@@ -42,7 +53,7 @@ public class MainForm extends BaseForm
         sb.append("   Возраст ").append(userEntity.getAge()).append("\n");
         sb.append("   Работа ").append(userEntity.getJob()).append("\n");
 
-        textAre.setText(sb.toString());
+        textArea.setText(sb.toString());
     }
 
     @Override
@@ -53,5 +64,9 @@ public class MainForm extends BaseForm
     @Override
     public int getFormHeight() {
         return 400;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 }
