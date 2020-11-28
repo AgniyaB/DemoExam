@@ -3,8 +3,10 @@ package org.company.app;
 import org.company.app.data.manager.UserEntityManager;
 import org.company.app.ui.StartForm;
 import org.company.app.util.BaseForm;
+import org.company.app.util.DialogUtil;
 import org.company.app.util.MysqlDatabase;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -23,15 +25,14 @@ public class Application
         initUi();
 
         new StartForm();
-
     }
 
     private void initDatabase()
     {
         try(Connection c = database.getConnection()) {
         } catch (SQLException e) {
-            System.out.println("Соедиение с базой установить не удалось");
             e.printStackTrace();
+            DialogUtil.showError("Соедиение с базой установить не удалось");
             System.exit(228);
         }
     }
