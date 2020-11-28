@@ -1,8 +1,7 @@
-package org.orgname.app.util;
+package org.company.app.util;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -34,8 +33,8 @@ public class MysqlDatabase
             source = new MysqlDataSource();
 
             source.setServerName(address);
-            source.setPort(port);
             source.setDatabaseName(db);
+            source.setPort(port);
             source.setUser(user);
             source.setPassword(pass);
 
@@ -44,25 +43,5 @@ public class MysqlDatabase
         }
 
         return source.getConnection();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public String getDb() {
-        return db;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public String getPass() {
-        return pass;
     }
 }

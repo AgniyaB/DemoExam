@@ -1,21 +1,22 @@
-package org.orgname.app.util;
+package org.company.app.util;
 
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class BaseForm extends JFrame
 {
-    private static String baseApplicationTitle = "Application";
+    private static String baseApplicationTitle;
 
     public BaseForm()
     {
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle(baseApplicationTitle == null ? "Заголовок приложения" : baseApplicationTitle);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(getFormWidth(), getFormHeight()));
         setLocation(
                 Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getFormWidth() / 2,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - getFormHeight() / 2
         );
-        setTitle(baseApplicationTitle);
+        pack();
     }
 
     public abstract int getFormWidth();
