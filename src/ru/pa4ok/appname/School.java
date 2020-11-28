@@ -1,17 +1,26 @@
 package ru.pa4ok.appname;
 
+import java.util.Arrays;
+
 public class School
 {
     private int number;
     private String title;
-    private Teacher teacher;
-    private Student student;
+    private Teacher[] teachers;
+    private Student[] students;
 
-    public School(int number, String title, Teacher teacher, Student student) {
+    public School(int number, String title, Teacher[] teachers, Student[] students) {
         this.number = number;
         this.title = title;
-        this.teacher = teacher;
-        this.student = student;
+        this.teachers = teachers;
+        this.students = students;
+    }
+
+    public School(int number, String title) {
+        this.number = number;
+        this.title = title;
+        teachers = new Teacher[2];
+        students = new Student[2];
     }
 
     @Override
@@ -19,8 +28,8 @@ public class School
         return "School{" +
                 "number=" + number +
                 ", title='" + title + '\'' +
-                ", teacher=" + teacher +
-                ", student=" + student +
+                ", teachers=" + Arrays.toString(teachers) +
+                ", students=" + Arrays.toString(students) +
                 '}';
     }
 
@@ -40,20 +49,20 @@ public class School
         this.title = title;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
+    public Teacher[] getTeachers() {
+        return teachers;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setTeachers(Teacher[] teachers) {
+        this.teachers = teachers;
     }
 
-    public Student getStudent() {
-        return student;
+    public Student[] getStudents() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudents(Student[] students) {
+        this.students = students;
     }
 }
 

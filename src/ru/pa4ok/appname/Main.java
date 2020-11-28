@@ -29,21 +29,42 @@ public class Main
 
     public static void main(String[] args)
     {
+        /*Teacher[] teachers = new Teacher[2];
+        teachers[0] = new Teacher("Vasiliy", "Vasylievi4", "pp", 15);
+        teachers[1] = new Teacher("Vasiliy", "Vasylievi4", "coding", 21);
+
+        Student[] students = new Student[2];
+        students[0] = new Student("vasya", "lopatkin", 10);
+        students[1] = new Student("petya", "shishkin", 11);
+
         School school = new School(
                 1,
                 "fspo",
-                new Teacher(
-                        "Vasiliy",
-                        "Vasylievi4",
-                        "pp",
-                        15
-                ),
-                new Student(
-                        "vasya",
-                        "lopatkin",
-                        10
-                )
+                teachers,
+                students
+        );*/
+
+
+        /*School school = new School(
+                1,
+                "fspo",
+                new Teacher[]{
+                        new Teacher("Vasiliy", "Vasylievi4", "pp", 15),
+                        new Teacher("Vasiliy", "Vasylievi4", "coding", 21)
+                },
+                new Student[]{
+                        new Student("vasya", "lopatkin", 10),
+                        new Student("petya", "shishkin", 11)
+                }
+        );*/
+
+        School school = new School(
+                1,
+                "fspo"
         );
+
+        school.getTeachers()[0] = new Teacher("Vasiliy", "Vasylievi4", "pp", 15);
+        school.getStudents()[0] = new Student("vasya", "lopatkin", 10);
 
         System.out.println(school);
     }
