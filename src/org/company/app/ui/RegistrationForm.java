@@ -9,10 +9,9 @@ import org.company.app.util.BaseForm;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseForm
+public class RegistrationForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
-    private final TestForm mainForm;
 
     private JPanel mainPanel;
     private JTextField loginField;
@@ -23,9 +22,8 @@ public class AddUserForm extends BaseForm
     private JTextField ageField;
     private JComboBox genderBox;
 
-    public AddUserForm(TestForm mainForm)
+    public RegistrationForm()
     {
-        this.mainForm = mainForm;
         setContentPane(mainPanel);
 
         initElements();
@@ -42,13 +40,17 @@ public class AddUserForm extends BaseForm
 
     private void initButtons()
     {
-        backButton.addActionListener(e -> back());
+        backButton.addActionListener(e -> {
+            dispose();
+            new StartForm();
+        });
 
         addButton.addActionListener(e -> {
             //тут должны быть проверки полей на корректноть, но мне лень
             UserEntity user = new UserEntity(
                     loginField.getText(),
                     new String(passwordField.getPassword()),
+                    (GenderEnum) genderBox.getSelectedItem(),
                     Integer.parseInt(ageField.getText()),
                     jobField.getText()
             );
@@ -57,19 +59,13 @@ public class AddUserForm extends BaseForm
 
             try {
                 userEntityManager.add(user);
-                mainForm.update();
-                back();
+                dispose();
+                new MainForm(user);
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         });
-    }
-
-    private void back()
-    {
-        dispose();
-        mainForm.setVisible(true);
     }
 
     @Override

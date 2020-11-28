@@ -1,7 +1,7 @@
 package org.company.app;
 
 import org.company.app.data.manager.UserEntityManager;
-import org.company.app.ui.TestForm;
+import org.company.app.ui.StartForm;
 import org.company.app.util.BaseForm;
 import org.company.app.util.MysqlDatabase;
 
@@ -22,7 +22,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new TestForm();
+        new StartForm();
 
     }
 
