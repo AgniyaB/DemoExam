@@ -5,11 +5,11 @@ import java.awt.*;
 
 public abstract class BaseForm extends JFrame
 {
-    private static String baseApplicationTitle;
+    private static String baseApplicationTitle = "Заголовок приложения";
 
     public BaseForm()
     {
-        setTitle(baseApplicationTitle == null ? "Заголовок приложения" : baseApplicationTitle);
+        setTitle(baseApplicationTitle);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(getFormWidth(), getFormHeight()));
         setLocation(
