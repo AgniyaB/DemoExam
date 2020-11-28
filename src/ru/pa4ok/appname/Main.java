@@ -18,42 +18,55 @@ public class Main
     School
     - int number
     - String title
-    - Teacher teacher
-    - Student student
-    
+    - Teacher[] teacher //всегда длина 3
+    - Student[] student //всегда длина 3
+
     у всех классов переопределен метод toString()
     все поля приватные + геттеры и сеттеры
-    создать объект школы с студертом и учителем
+    создать объект школы с 3 студертам и 3 учителями
     вывести его в консоль
      */
 
     public static void main(String[] args)
     {
-        /*Person[] arr = new Person[10];
-        System.out.println(Arrays.toString(arr));
-        for(int i=0; i<arr.length; i++) {
-            arr[i] = new Person(1, "first-" + i, "surname-" + i, 15 + i);
-        }
-        System.out.println(Arrays.toString(arr));*/
-
-        /*Passport passport = new Passport(
-                4014,
-                077754,
-                "spb peso4naya 14"
-        );*/
-
-        Person p = new Person(
+        School school = new School(
                 1,
-                "Vasya",
-                "Shurik",
-                15,
-                new Passport(
-                        4014,
-                        077754,
-                        "spb peso4naya 14"
+                "fspo",
+                new Teacher(
+                        "Vasiliy",
+                        "Vasylievi4",
+                        "pp",
+                        15
+                ),
+                new Student(
+                        "vasya",
+                        "lopatkin",
+                        10
                 )
         );
 
-        System.out.println(p.getPassport().getAddress());
+        System.out.println(school);
+    }
+}
+
+//примеры инициализии массивов в качество вложенных объектов
+class Test
+{
+    private String[] arr;// = new String[2];
+
+    public Test(String[] arr) {
+        this.arr = arr;
+    }
+
+    public Test() {
+        this.arr = new String[2];
+    }
+
+    public String[] getArr() {
+        return arr;
+    }
+
+    public void setArr(String[] arr) {
+        this.arr = arr;
     }
 }
