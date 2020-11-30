@@ -13,6 +13,7 @@ public class MainForm extends BaseForm
     private JTextArea textArea;
     private JButton exitButton;
     private JButton editButton;
+    private JButton usersListButton;
 
     public MainForm(UserEntity userEntity)
     {
@@ -53,6 +54,8 @@ public class MainForm extends BaseForm
         });
 
         editButton.addActionListener(e -> new EditUserForm(this));
+
+        usersListButton.addActionListener(e -> new UsersListForm(this));
     }
 
     @Override
