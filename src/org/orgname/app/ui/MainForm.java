@@ -12,6 +12,7 @@ public class MainForm extends BaseForm
     private JPanel mainPanel;
     private JTextArea textArea;
     private JButton exitButton;
+    private JButton editButton;
 
     public MainForm(UserEntity authedUser)
     {
@@ -23,6 +24,19 @@ public class MainForm extends BaseForm
             new StartForm();
         });
 
+        editButton.addActionListener(e -> {
+            setVisible(false);
+            new EditUserForm(this);
+        });
+
+        textArea.setEditable(false);
+        initUserData();
+
+        setVisible(true);
+    }
+
+    public void initUserData()
+    {
         StringBuilder sb = new StringBuilder();
         sb.append("  ID: ").append(authedUser.getId()).append("\n")
                 .append("  Логин: ").append(authedUser.getLogin()).append("\n")
@@ -32,8 +46,6 @@ public class MainForm extends BaseForm
 
         textArea.setEditable(false);
         textArea.setText(sb.toString());
-
-        setVisible(true);
     }
 
     @Override
@@ -44,5 +56,9 @@ public class MainForm extends BaseForm
     @Override
     public int getFormHeight() {
         return 300;
+    }
+
+    public UserEntity getAuthedUser() {
+        return authedUser;
     }
 }
