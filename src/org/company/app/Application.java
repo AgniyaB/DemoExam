@@ -40,6 +40,11 @@ public class Application
     private void initUi()
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр трубочист");
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public MysqlDatabase getDatabase() {
