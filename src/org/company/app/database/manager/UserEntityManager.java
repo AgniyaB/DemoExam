@@ -1,5 +1,6 @@
 package org.company.app.database.manager;
 
+import org.company.app.database.entity.GenderEnum;
 import org.company.app.database.entity.UserEntity;
 import org.company.app.util.MysqlDatabase;
 
@@ -19,13 +20,14 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "INSERT users_small(login, password, age, job) values(?,?,?,?)";
+            String sql = "INSERT users(login, password, gender, age, job) values(?,?,?,?,?)";
 
             PreparedStatement ps = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getPassword());
-            ps.setInt(3, user.getAge());
-            ps.setString(4, user.getJob());
+            ps.setString(3, user.getGender().name());
+            ps.setInt(4, user.getAge());
+            ps.setString(5, user.getJob());
             ps.executeUpdate();
 
             ResultSet keys = ps.getGeneratedKeys();
@@ -42,7 +44,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users_small WHERE id=?";
+            String sql = "SELECT * FROM users WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -52,6 +54,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 );
@@ -65,7 +68,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users_small WHERE login=? AND password=?";
+            String sql = "SELECT * FROM users WHERE login=? AND password=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, login);
             ps.setString(2, password);
@@ -76,6 +79,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 );
@@ -89,7 +93,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "SELECT * FROM users_small";
+            String sql = "SELECT * FROM users";
             Statement s = c.createStatement();
             ResultSet resultSet = s.executeQuery(sql);
 
@@ -100,6 +104,7 @@ public class UserEntityManager
                         resultSet.getInt("id"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
+                        GenderEnum.valueOf(resultSet.getString("gender")),
                         resultSet.getInt("age"),
                         resultSet.getString("job")
                 ));
@@ -113,13 +118,14 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users_small SET login=?, password=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users_small SET login=?, password=?, gender=?, age=?, job=? WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getPassword());
-            ps.setInt(3, user.getAge());
-            ps.setString(4, user.getJob());
-            ps.setInt(5, user.getId());
+            ps.setString(3, user.getGender().name());
+            ps.setInt(4, user.getAge());
+            ps.setString(5, user.getJob());
+            ps.setInt(6, user.getId());
 
             return ps.executeUpdate();
         }
@@ -129,7 +135,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "DELETE FROM users_small WHERE id=?";
+            String sql = "DELETE FROM users WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setInt(1, id);
 
