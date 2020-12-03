@@ -6,10 +6,13 @@ import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
+import org.orgname.app.util.ObjectTableModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -19,7 +22,7 @@ import java.util.List;
 public class TableForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
-    private DefaultTableModel tableModel;
+    private ObjectTableModel<UserEntity> tableModel;
 
     private JPanel mainPanel;
     private JTable table;
@@ -50,12 +53,32 @@ public class TableForm extends BaseForm
 
     private void initTable()
     {
-        tableModel = new DefaultTableModel() {
+        tableModel = new ObjectTableModel<UserEntity>() {
             @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
+            protected UserEntity getEntityFromData(Object[] columns) {
+                return new UserEntity(
+                        (int)columns[0],
+                        (String)columns[1],
+                        (String)columns[2],
+                        (GenderEnum)columns[3],
+                        (int)columns[4],
+                        (String)columns[5]
+                );
+            }
+
+            @Override
+            protected Object[] getDataFromEntity(UserEntity entity) {
+                return new Object[]{
+                        entity.getId(),
+                        entity.getLogin(),
+                        entity.getPassword(),
+                        entity.getGender(),
+                        entity.getAge(),
+                        entity.getJob()
+                };
             }
         };
+
         table.setModel(tableModel);
         table.getTableHeader().setReorderingAllowed(false);
 
@@ -71,29 +94,32 @@ public class TableForm extends BaseForm
         {
             public void mousePressed(MouseEvent mouseEvent)
             {
-                JTable table =(JTable) mouseEvent.getSource();
-                Point point = mouseEvent.getPoint();
-                int row = table.rowAtPoint(point);
-                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1)
-                {
-                    Object[] rowValues = new Object[tableModel.getColumnCount()];
-                    for(int i=0; i<tableModel.getColumnCount(); i++) {
-                        rowValues[i] = tableModel.getValueAt(row, i);
-                    }
-
-                    UserEntity user = new UserEntity(
-                            (int)rowValues[0],
-                            (String)rowValues[1],
-                            (String)rowValues[2],
-                            (GenderEnum)rowValues[3],
-                            (int)rowValues[4],
-                            (String)rowValues[5]
-                    );
-                    new EditUserForm(TableForm.this, user, row);
+                int row = table.rowAtPoint(mouseEvent.getPoint());
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+                    new EditUserForm(TableForm.this, tableModel.getRowEntity(row), row);
                 }
 
                 //установка значение по адресу
                 //tableModel.setValueAt("new Login", 0, 1);
+            }
+        });
+
+        table.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int row = table.getSelectedRow();
+                if(e.getKeyCode() == KeyEvent.VK_DELETE && row != -1) {
+                    if(DialogUtil.showConfirm(TableForm.this, "Вы точно хотите удалить данную запись?"))
+                    {
+                        try {
+                            userEntityManager.delete(tableModel.getRowEntity(row));
+                            tableModel.removeRow(table.getSelectedRow());
+
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+                    }
+                }
             }
         });
     }
@@ -102,22 +128,10 @@ public class TableForm extends BaseForm
     {
         try {
             List<UserEntity> users = userEntityManager.getAll();
-
             while (tableModel.getRowCount() > 0) {
                 tableModel.removeRow(0);
             }
-
-            for(UserEntity u : users)
-            {
-                tableModel.addRow(new Object[]{
-                        u.getId(),
-                        u.getLogin(),
-                        u.getPassword(),
-                        u.getGender(),
-                        u.getAge(),
-                        u.getJob()
-                });
-            }
+            tableModel.addRowEntities(users);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -127,11 +141,7 @@ public class TableForm extends BaseForm
 
     public void updateRow(int rowNumber, UserEntity user)
     {
-        tableModel.setValueAt(user.getLogin(), rowNumber, 1);
-        tableModel.setValueAt(user.getPassword(), rowNumber, 2);
-        tableModel.setValueAt(user.getGender(), rowNumber, 3);
-        tableModel.setValueAt(user.getAge(), rowNumber, 4);
-        tableModel.setValueAt(user.getJob(), rowNumber, 5);
+        tableModel.setRowEntity(rowNumber, user);
     }
 
     @Override
