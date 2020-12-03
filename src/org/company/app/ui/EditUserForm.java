@@ -66,11 +66,13 @@ public class EditUserForm extends BaseSubForm<MainForm>
                     new String(passwordField.getPassword()),
                     (GenderEnum) genderBox.getSelectedItem(),
                     Integer.parseInt(ageField.getText()),
-                    jobField.getText()
+                    jobField.getText(),
+                    userEntity.getNotes()
             );
 
             try {
                 userEntityManager.update(newUser);
+                mainForm.setUserEntity(newUser);
                 mainForm.loadUserData();
                 closeSubForm();
 

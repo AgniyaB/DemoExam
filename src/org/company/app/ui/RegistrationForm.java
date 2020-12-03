@@ -52,7 +52,8 @@ public class RegistrationForm extends BaseForm
                     new String(passwordField.getPassword()),
                     (GenderEnum) genderBox.getSelectedItem(),
                     Integer.parseInt(ageField.getText()),
-                    jobField.getText()
+                    jobField.getText(),
+                    null
             );
 
             //GenderEnum genderEnum = (GenderEnum) genderBox.getSelectedItem();
