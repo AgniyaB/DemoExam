@@ -3,6 +3,7 @@ package org.orgname.app;
 import org.orgname.app.ui.TableForm;
 import org.orgname.app.util.*;
 
+import javax.swing.*;
 import java.sql.Connection;
 
 public class Application
@@ -54,6 +55,12 @@ public class Application
             e.printStackTrace();
             DialogUtil.showError("Не удалось загрузить иконку приложения");
         }*/
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public MysqlDatabase getDatabase() {

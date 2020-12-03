@@ -3,11 +3,11 @@ package org.orgname.app.util;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public abstract class BaseSubForm extends BaseForm
+public abstract class BaseSubForm<T extends BaseForm> extends BaseForm
 {
-    protected final BaseForm mainForm;
+    protected final T mainForm;
 
-    public BaseSubForm(BaseForm mainForm, String title)
+    public BaseSubForm(T mainForm, String title)
     {
         this.mainForm = mainForm;
 
@@ -26,7 +26,7 @@ public abstract class BaseSubForm extends BaseForm
         mainForm.setEnabled(false);
     }
 
-    public BaseSubForm(BaseForm mainForm)
+    public BaseSubForm(T mainForm)
     {
         this(mainForm, null);
     }

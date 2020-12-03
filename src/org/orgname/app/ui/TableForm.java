@@ -1,6 +1,7 @@
 package org.orgname.app.ui;
 
 import org.orgname.app.Application;
+import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
@@ -79,7 +80,16 @@ public class TableForm extends BaseForm
                     for(int i=0; i<tableModel.getColumnCount(); i++) {
                         rowValues[i] = tableModel.getValueAt(row, i);
                     }
-                    System.out.println(Arrays.toString(rowValues));
+
+                    UserEntity user = new UserEntity(
+                            (int)rowValues[0],
+                            (String)rowValues[1],
+                            (String)rowValues[2],
+                            (GenderEnum)rowValues[3],
+                            (int)rowValues[4],
+                            (String)rowValues[5]
+                    );
+                    new EditUserForm(TableForm.this, user, row);
                 }
 
                 //установка значение по адресу
@@ -92,6 +102,11 @@ public class TableForm extends BaseForm
     {
         try {
             List<UserEntity> users = userEntityManager.getAll();
+
+            while (tableModel.getRowCount() > 0) {
+                tableModel.removeRow(0);
+            }
+
             for(UserEntity u : users)
             {
                 tableModel.addRow(new Object[]{
@@ -110,14 +125,23 @@ public class TableForm extends BaseForm
         }
     }
 
+    public void updateRow(int rowNumber, UserEntity user)
+    {
+        tableModel.setValueAt(user.getLogin(), rowNumber, 1);
+        tableModel.setValueAt(user.getPassword(), rowNumber, 2);
+        tableModel.setValueAt(user.getGender(), rowNumber, 3);
+        tableModel.setValueAt(user.getAge(), rowNumber, 4);
+        tableModel.setValueAt(user.getJob(), rowNumber, 5);
+    }
+
     @Override
     public int getFormWidth() {
-        return 500;
+        return 800;
     }
 
     @Override
     public int getFormHeight() {
-        return 300;
+        return 400;
     }
 
     public DefaultTableModel getTableModel() {
