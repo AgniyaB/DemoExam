@@ -1,15 +1,11 @@
 package org.company.app;
 
-import org.company.app.database.entity.UserEntity;
-import org.company.app.database.manager.UserEntityManager;
-import org.company.app.ui.TestForm;
+import org.company.app.ui.StartForm;
 import org.company.app.util.BaseForm;
-import org.company.app.util.DialogUtil;
 import org.company.app.util.MysqlDatabase;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class Application
 {
@@ -34,18 +30,7 @@ public class Application
         initDatabase();
         initUi();
 
-        /*JOptionPane.showMessageDialog(
-                null,
-                "Тестовое сообщение",
-                "тайтл",
-                JOptionPane.INFORMATION_MESSAGE
-        );*/
-        //DialogUtil.showError("тестовое сообщение 2");
-        /*if(DialogUtil.showConfirm("Тебя отчислить?")) {
-            System.out.println("ты отчислен");
-        }*/
-
-        new TestForm();
+        new StartForm();
     }
 
     private void initDatabase()
@@ -61,6 +46,12 @@ public class Application
     private void initUi()
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public MysqlDatabase getDatabase() {

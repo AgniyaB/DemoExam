@@ -12,10 +12,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseForm
+public class RegisterForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
-    private final TestForm mainForm;
 
     private JPanel mainPanel;
     private JTextField loginField;
@@ -26,9 +25,8 @@ public class AddUserForm extends BaseForm
     private JButton backButton;
     private JComboBox genderBox;
 
-    public AddUserForm(TestForm mainForm)
+    public RegisterForm()
     {
-        this.mainForm = mainForm;
         setContentPane(mainPanel);
 
         initElements();
@@ -39,21 +37,6 @@ public class AddUserForm extends BaseForm
 
     private void initElements()
     {
-        /*genderBox.addItem("34324");
-        genderBox.addItem(44524);
-        genderBox.addItem(GenderEnum.FEMALE);
-
-        genderBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println(e.getStateChange() + " " + e.getItem());
-            }
-        });
-
-        Object o = genderBox.getSelectedItem();
-        int i = genderBox.getSelectedIndex();
-        genderBox.setSelectedItem(44524);*/
-
         genderBox.addItem(GenderEnum.MALE);
         genderBox.addItem(GenderEnum.FEMALE);
     }
@@ -62,7 +45,8 @@ public class AddUserForm extends BaseForm
     {
         backButton.addActionListener(e -> {
             if(DialogUtil.showConfirm(this, "Вы точно хотите вернуться назад?")) {
-                back();
+                dispose();
+                new StartForm();
             }
         });
 
@@ -102,19 +86,13 @@ public class AddUserForm extends BaseForm
 
             try {
                 userEntityManager.add(user);
-                mainForm.update();
-                back();
+                dispose();
+                new MainForm(user);
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         });
-    }
-
-    private void back()
-    {
-        dispose();
-        mainForm.setVisible(true);
     }
 
     @Override
@@ -124,6 +102,6 @@ public class AddUserForm extends BaseForm
 
     @Override
     public int getFormHeight() {
-        return 250;
+        return 300;
     }
 }
