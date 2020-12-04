@@ -118,7 +118,7 @@ public class UserEntityManager
     {
         try(Connection c = database.getConnection())
         {
-            String sql = "UPDATE users_small SET login=?, password=?, gender=?, age=?, job=? WHERE id=?";
+            String sql = "UPDATE users SET login=?, password=?, gender=?, age=?, job=? WHERE id=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, user.getLogin());
             ps.setString(2, user.getPassword());
