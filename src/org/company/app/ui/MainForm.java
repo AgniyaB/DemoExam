@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class MainForm extends BaseForm
 {
-    private final UserEntity userEntity;
+    private UserEntity userEntity;
 
     private JPanel mainPanel;
     private JTextArea textArea;
@@ -55,19 +55,26 @@ public class MainForm extends BaseForm
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new EditUserForm(userEntity);
+                new EditUserForm(MainForm.this);
             }
         });
     }
 
     @Override
     public int getFormWidth() {
-        return 400;
+        return 600;
     }
 
     @Override
     public int getFormHeight() {
-        return 400;
+        return 600;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 }

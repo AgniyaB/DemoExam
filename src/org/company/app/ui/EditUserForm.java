@@ -5,6 +5,7 @@ import org.company.app.database.entity.GenderEnum;
 import org.company.app.database.entity.UserEntity;
 import org.company.app.database.manager.UserEntityManager;
 import org.company.app.util.BaseForm;
+import org.company.app.util.BaseSubForm;
 import org.company.app.util.DialogUtil;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class EditUserForm extends BaseForm
+public class EditUserForm extends BaseSubForm<MainForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -28,9 +29,10 @@ public class EditUserForm extends BaseForm
     private JButton saveButton;
     private JButton cancelButton;
 
-    public EditUserForm(UserEntity userEntity)
+    public EditUserForm(MainForm mainForm)
     {
-        this.userEntity = userEntity;
+        super(mainForm);
+        this.userEntity = mainForm.getUserEntity();
         setContentPane(mainPanel);
 
         initFields();
@@ -57,8 +59,7 @@ public class EditUserForm extends BaseForm
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new MainForm(userEntity);
+                closeSubForm();
             }
         });
 
@@ -77,8 +78,9 @@ public class EditUserForm extends BaseForm
 
                 try {
                     userEntityManager.update(newUser);
-                    dispose();
-                    new MainForm(newUser);
+                    mainForm.setUserEntity(newUser);
+                    mainForm.initUserData();
+                    closeSubForm();
 
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
