@@ -5,20 +5,18 @@ import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.ObjectTableModel;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 
 public class TableForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
-    private DefaultTableModel model;
+    private ObjectTableModel<UserEntity> model;
 
     private JPanel mainPanel;
     private JTable table;
@@ -43,30 +41,34 @@ public class TableForm extends BaseForm
                 if(e.getClickCount() == 2 && table.getSelectedRow() != -1)
                 {
                     int row = table.rowAtPoint(e.getPoint());
-
-                    Object[] rowValues = new Object[table.getColumnCount()];
-                    for(int i=0; i<rowValues.length; i++) {
-                        rowValues[i] = table.getValueAt(row, i);
-                    }
-
-                    UserEntity user = new UserEntity(
-                            (int)rowValues[0],
-                            (String)rowValues[1],
-                            (String)rowValues[2],
-                            (GenderEnum)rowValues[3],
-                            (int)rowValues[4],
-                            (String)rowValues[5]
-                    );
-
-                    System.out.println(user);
+                    System.out.println(model.getRowEntity(row));
                 }
             }
         });
 
-        model = new DefaultTableModel() {
+        model = new ObjectTableModel<UserEntity>() {
             @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
+            public UserEntity getEntityFromRowData(Object[] rowData) {
+                return new UserEntity(
+                        (int)rowData[0],
+                        (String)rowData[1],
+                        (String)rowData[2],
+                        (GenderEnum)rowData[3],
+                        (int)rowData[4],
+                        (String)rowData[5]
+                );
+            }
+
+            @Override
+            public Object[] getRowDataFromEntity(UserEntity entity) {
+                return new Object[] {
+                        entity.getId(),
+                        entity.getLogin(),
+                        entity.getPass(),
+                        entity.getGender(),
+                        entity.getAge(),
+                        entity.getJob()
+                };
             }
         };
         table.setModel(model);
@@ -79,18 +81,7 @@ public class TableForm extends BaseForm
         model.addColumn("Работа");
 
         try {
-            List<UserEntity> users = userEntityManager.getAll();
-            users.forEach(u -> {
-                model.addRow(new Object[] {
-                        u.getId(),
-                        u.getLogin(),
-                        u.getPass(),
-                        u.getGender(),
-                        u.getAge(),
-                        u.getJob()
-                });
-            });
-
+            model.addRowEntities(userEntityManager.getAll());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
