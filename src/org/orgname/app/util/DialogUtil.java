@@ -28,6 +28,7 @@ public class DialogUtil
     public static void showInfo(Component parentComponent, String text)
     {
         JOptionPane.showMessageDialog(parentComponent, text, " Информация", JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public static void showInfo(String text)
