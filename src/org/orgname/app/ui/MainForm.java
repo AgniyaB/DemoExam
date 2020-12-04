@@ -24,10 +24,7 @@ public class MainForm extends BaseForm
             new StartForm();
         });
 
-        editButton.addActionListener(e -> {
-            setVisible(false);
-            new EditUserForm(this);
-        });
+        editButton.addActionListener(e -> new EditUserForm(this));
 
         textArea.setEditable(false);
         initUserData();
@@ -50,12 +47,12 @@ public class MainForm extends BaseForm
 
     @Override
     public int getFormWidth() {
-        return 300;
+        return 600;
     }
 
     @Override
     public int getFormHeight() {
-        return 300;
+        return 600;
     }
 
     public UserEntity getAuthedUser() {

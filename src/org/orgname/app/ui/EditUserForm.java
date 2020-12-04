@@ -5,15 +5,16 @@ import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.BaseSubForm;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class EditUserForm extends BaseForm
+public class EditUserForm extends BaseSubForm<MainForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
-    private final MainForm mainForm;
     private final UserEntity userEntity;
 
     private JPanel mainPanel;
@@ -28,7 +29,7 @@ public class EditUserForm extends BaseForm
 
     public EditUserForm(MainForm mainForm)
     {
-        this.mainForm = mainForm;
+        super(mainForm);
         this.userEntity = mainForm.getAuthedUser();
         setContentPane(mainPanel);
 
@@ -57,8 +58,7 @@ public class EditUserForm extends BaseForm
     private void initButtons()
     {
         backButton.addActionListener(e -> {
-            dispose();
-            mainForm.setVisible(true);
+            closeSubForm();
         });
 
         saveButton.addActionListener(e -> {
@@ -71,8 +71,7 @@ public class EditUserForm extends BaseForm
             try {
                 userEntityManager.update(userEntity);
                 mainForm.initUserData();
-                dispose();
-                mainForm.setVisible(true);
+                closeSubForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
