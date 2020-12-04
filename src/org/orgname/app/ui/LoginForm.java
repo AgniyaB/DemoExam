@@ -4,6 +4,7 @@ import org.orgname.app.Application;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class LoginForm extends BaseForm
             try {
                 UserEntity user = userEntityManager.getByLoginAndPassword(loginField.getText(), new String(passwordField.getPassword()));
                 if(user == null) {
-                    System.out.println("Нет такого пользователя");
+                    DialogUtil.showError(this,"Неверный логин/пароль");
                 } else {
                     dispose();
                     new MainForm(user);

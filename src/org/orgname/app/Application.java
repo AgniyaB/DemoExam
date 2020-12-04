@@ -2,8 +2,10 @@ package org.orgname.app;
 
 import org.orgname.app.ui.StartForm;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
 
+import javax.swing.*;
 import java.sql.Connection;
 
 public class Application
@@ -16,8 +18,8 @@ public class Application
     {
         instance = this;
 
-        initDatabase();
         initUi();
+        initDatabase();
 
         new StartForm();
     }
@@ -26,8 +28,8 @@ public class Application
     {
         try(Connection c = database.getConnection()) {
         } catch (Exception e) {
-            System.out.println("Ошибка подключения к бд");
             e.printStackTrace();
+            DialogUtil.showError("Ошибка подключения к бд");
             System.exit(-1);
         }
     }
@@ -35,6 +37,12 @@ public class Application
     private void initUi()
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public MysqlDatabase getDatabase() {
