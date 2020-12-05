@@ -5,89 +5,78 @@ import java.util.Arrays;
 public class Main
 {
     /*
-    Student
-    - String surname
-    - String firstname
-    - int level //класс
+    Page
+    - int number
+    - String[] words
 
-    Teacher
-    - String surname
-    - String firstname
-    - int exp //стаж
-
-    School
+    Chapter
     - int number
     - String title
-    - Teacher[] teacher //всегда длина 3
-    - Student[] student //всегда длина 3
+    - Page[] pages
+
+    Book
+    - String title
+    - String author
+    - Chapter[] chapters
 
     у всех классов переопределен метод toString()
     все поля приватные + геттеры и сеттеры
-    создать объект школы с 3 студертам и 3 учителями
+    создать объект книги с парой глав с парой слов в каждой
     вывести его в консоль
      */
 
     public static void main(String[] args)
     {
-        /*Teacher[] teachers = new Teacher[2];
-        teachers[0] = new Teacher("Vasiliy", "Vasylievi4", "pp", 15);
-        teachers[1] = new Teacher("Vasiliy", "Vasylievi4", "coding", 21);
-
-        Student[] students = new Student[2];
-        students[0] = new Student("vasya", "lopatkin", 10);
-        students[1] = new Student("petya", "shishkin", 11);
-
-        School school = new School(
-                1,
-                "fspo",
-                teachers,
-                students
-        );*/
-
-
-        /*School school = new School(
-                1,
-                "fspo",
-                new Teacher[]{
-                        new Teacher("Vasiliy", "Vasylievi4", "pp", 15),
-                        new Teacher("Vasiliy", "Vasylievi4", "coding", 21)
-                },
-                new Student[]{
-                        new Student("vasya", "lopatkin", 10),
-                        new Student("petya", "shishkin", 11)
+        /*Book voinaImir = new Book(
+                "война и мир",
+                "пушкин",
+                new Chapter[]{
+                        new Chapter(
+                                1,
+                                "глава 1",
+                                new Page[]{
+                                        new Page(
+                                                1,
+                                                new String[] {
+                                                    "wor[wkdqw", "oefjoief", "oewfhoqhwdq"
+                                                }
+                                        ),
+                                        new Page(
+                                                2,
+                                                new String[] {
+                                                        "wor[wkdqw", "oefjoief", "oewfhoqhwdq"
+                                                }
+                                        )
+                                }
+                        ),
+                        new Chapter(
+                                1,
+                                "глава 2",
+                                new Page[]{
+                                        new Page(
+                                                3,
+                                                new String[] {
+                                                        "wor[wkdqw", "oefjoief", "oewfhoqhwdq"
+                                                }
+                                        ),
+                                        new Page(
+                                                4,
+                                                new String[] {
+                                                        "wor[wkdqw", "oefjoief", "oewfhoqhwdq"
+                                                }
+                                        )
+                                }
+                        )
                 }
         );*/
 
-        School school = new School(
-                1,
-                "fspo"
-        );
+        Book voinaImir = new Book("война и мир", "пушкин");
 
-        school.getTeachers()[0] = new Teacher("Vasiliy", "Vasylievi4", "pp", 15);
-        school.getStudents()[0] = new Student("vasya", "lopatkin", 10);
+        System.out.println(voinaImir);
 
-        System.out.println(school);
-    }
-}
+        voinaImir.getChapters()[0] = new Chapter(1, "глава 1 ,война");
+        voinaImir.getChapters()[1] = new Chapter(2, "глава 2, мир");
 
-//примеры инициализии массивов в качество вложенных объектов
-class Test
-{
-    private String[] arr;// = new String[2];
-
-    public Test(String[] arr) {
-        this.arr = arr;
-    }
-
-    public Test() {
-        this.arr = new String[2];
-    }
-
-    public String[] getArr() {
-        return arr;
-    }
-
-    public void setArr(String[] arr) {
-        this.arr = arr;
+        System.out.println(voinaImir);
     }
 }
