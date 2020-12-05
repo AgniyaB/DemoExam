@@ -57,7 +57,7 @@ public class EditUserForm extends BaseSubForm<TableForm>
     {
         backButton.addActionListener(e -> closeSubForm());
 
-        saveButton.addActionListener(e -> {
+        /*saveButton.addActionListener(e -> {
             UserEntity newUser = new UserEntity(
                     userEntity.getId(),
                     loginField.getText(),
@@ -77,7 +77,7 @@ public class EditUserForm extends BaseSubForm<TableForm>
                 DialogUtil.showError(this, "Не удалось сохранить данные");
             }
 
-        });
+        });*/
     }
 
     @Override

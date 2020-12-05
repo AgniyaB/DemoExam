@@ -2,7 +2,9 @@ package org.orgname.app.ui;
 
 import org.orgname.app.Application;
 import org.orgname.app.database.GenderEnum;
+import org.orgname.app.database.entity.ClientEntity;
 import org.orgname.app.database.entity.UserEntity;
+import org.orgname.app.database.manager.ClientEntityManager;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
@@ -17,12 +19,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class TableForm extends BaseForm
 {
-    private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
-    private ObjectTableModel<UserEntity> tableModel;
+    private final ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
+    private ObjectTableModel<ClientEntity> tableModel;
 
     private JPanel mainPanel;
     private JTable table;
@@ -53,28 +56,36 @@ public class TableForm extends BaseForm
 
     private void initTable()
     {
-        tableModel = new ObjectTableModel<UserEntity>() {
+        tableModel = new ObjectTableModel<ClientEntity>() {
             @Override
-            protected UserEntity getEntityFromData(Object[] columns) {
-                return new UserEntity(
+            protected ClientEntity getEntityFromData(Object[] columns) {
+                return new ClientEntity(
                         (int)columns[0],
                         (String)columns[1],
                         (String)columns[2],
-                        (GenderEnum)columns[3],
-                        (int)columns[4],
-                        (String)columns[5]
+                        (String)columns[3],
+                        (Date)columns[4],
+                        (Date)columns[5],
+                        (String)columns[6],
+                        (String)columns[7],
+                        (char)columns[8],
+                        (String)columns[9]
                 );
             }
 
             @Override
-            protected Object[] getDataFromEntity(UserEntity entity) {
+            protected Object[] getDataFromEntity(ClientEntity entity) {
                 return new Object[]{
                         entity.getId(),
-                        entity.getLogin(),
-                        entity.getPassword(),
-                        entity.getGender(),
-                        entity.getAge(),
-                        entity.getJob()
+                        entity.getFirstname(),
+                        entity.getLastname(),
+                        entity.getPatronymic(),
+                        entity.getBirthday(),
+                        entity.getRegDate(),
+                        entity.getEmail(),
+                        entity.getPhone(),
+                        entity.getGenderCode(),
+                        entity.getPhotoPath()
                 };
             }
         };
@@ -83,13 +94,17 @@ public class TableForm extends BaseForm
         table.getTableHeader().setReorderingAllowed(false);
 
         tableModel.addColumn("id");
-        tableModel.addColumn("login");
-        tableModel.addColumn("password");
-        tableModel.addColumn("gender");
-        tableModel.addColumn("age");
-        tableModel.addColumn("job");
+        tableModel.addColumn("FirstName");
+        tableModel.addColumn("LastName");
+        tableModel.addColumn("Patronymic");
+        tableModel.addColumn("Birthday");
+        tableModel.addColumn("RegistrationDate");
+        tableModel.addColumn("Email");
+        tableModel.addColumn("Phone");
+        tableModel.addColumn("GenderCode");
+        tableModel.addColumn("PhotoPath");
 
-        //получение записи по двойному клику
+        /*//получение записи по двойному клику
         table.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent mouseEvent)
@@ -98,11 +113,8 @@ public class TableForm extends BaseForm
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     new EditUserForm(TableForm.this, tableModel.getRowEntity(row), row);
                 }
-
-                //установка значение по адресу
-                //tableModel.setValueAt("new Login", 0, 1);
             }
-        });
+        });*/
 
         table.addKeyListener(new KeyAdapter() {
             @Override
@@ -112,7 +124,7 @@ public class TableForm extends BaseForm
                     if(DialogUtil.showConfirm(TableForm.this, "Вы точно хотите удалить данную запись?"))
                     {
                         try {
-                            userEntityManager.delete(tableModel.getRowEntity(row));
+                            clientEntityManager.delete(tableModel.getRowEntity(row));
                             tableModel.removeRow(table.getSelectedRow());
 
                         } catch (SQLException throwables) {
@@ -127,7 +139,7 @@ public class TableForm extends BaseForm
     private void loadTableData()
     {
         try {
-            List<UserEntity> users = userEntityManager.getAll();
+            List<ClientEntity> users = clientEntityManager.getAll();
             while (tableModel.getRowCount() > 0) {
                 tableModel.removeRow(0);
             }
@@ -139,10 +151,10 @@ public class TableForm extends BaseForm
         }
     }
 
-    public void updateRow(int rowNumber, UserEntity user)
+    /*public void updateRow(int rowNumber, UserEntity user)
     {
         tableModel.setRowEntity(rowNumber, user);
-    }
+    }*/
 
     @Override
     public int getFormWidth() {

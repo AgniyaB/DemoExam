@@ -8,10 +8,10 @@ public class UserEntity
     private String login;
     private String password;
     private GenderEnum gender;
-    private int age;
+    private Integer age;
     private String job;
 
-    public UserEntity(int id, String login, String password, GenderEnum gender, int age, String job) {
+    public UserEntity(int id, String login, String password, GenderEnum gender, Integer age, String job) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -20,7 +20,7 @@ public class UserEntity
         this.job = job;
     }
 
-    public UserEntity(String login, String password, GenderEnum gender, int age, String job) {
+    public UserEntity(String login, String password, GenderEnum gender, Integer age, String job) {
         this(-1, login, password, gender, age, job);
     }
 
@@ -85,11 +85,11 @@ public class UserEntity
         this.password = password;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

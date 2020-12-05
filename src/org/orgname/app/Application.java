@@ -5,6 +5,8 @@ import org.orgname.app.util.*;
 
 import javax.swing.*;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Date;
 
 public class Application
 {
@@ -23,7 +25,8 @@ public class Application
 
     private static Application instance;
 
-    private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    //private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    private final MysqlDatabase database = new MysqlDatabase("nleontnr.beget.tech", "nleontnr_docker", "nleontnr_docker", "8udwX&9bdw");
 
     private Application()
     {
