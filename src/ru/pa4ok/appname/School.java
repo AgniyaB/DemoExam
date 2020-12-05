@@ -15,6 +15,19 @@ public class School
         this.title = title;
     }
 
+    public void addEntity(Human hunan)
+    {
+        if(hunan instanceof Student) {
+            students.add((Student) hunan);
+            System.out.println("Это студент: " + hunan);
+        } else if(hunan instanceof Teacher) {
+            teachers.add((Teacher) hunan);
+            System.out.println("Это преподаватель: " + hunan);
+        } else {
+            System.out.println("Это левый чел: " + hunan);
+        }
+    }
+
     @Override
     public String toString() {
         return "School{" +
