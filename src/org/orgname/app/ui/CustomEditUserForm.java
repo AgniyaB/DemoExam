@@ -4,13 +4,14 @@ import org.orgname.app.Application;
 import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
+import org.orgname.app.ui.ObjectTableForm;
 import org.orgname.app.util.BaseSubForm;
 import org.orgname.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class EditUserForm extends BaseSubForm<ObjectTableForm>
+public class CustomEditUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
     private final UserEntity userEntity;
@@ -26,7 +27,7 @@ public class EditUserForm extends BaseSubForm<ObjectTableForm>
     private JButton backButton;
     private JButton saveButton;
 
-    public EditUserForm(ObjectTableForm mainForm, UserEntity userEntity, int rowIndex)
+    public CustomEditUserForm(CustomTableForm mainForm, UserEntity userEntity, int rowIndex)
     {
         super(mainForm);
         this.userEntity = userEntity;
@@ -66,7 +67,8 @@ public class EditUserForm extends BaseSubForm<ObjectTableForm>
 
             try {
                 userEntityManager.update(userEntity);
-                mainForm.getModel().setRowEntity(rowIndex, userEntity);
+                mainForm.getModel().getValues().set(rowIndex, userEntity);
+                mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
