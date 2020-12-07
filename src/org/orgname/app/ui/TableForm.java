@@ -5,9 +5,12 @@ import org.orgname.app.database.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.ObjectTableModel;
 
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -41,7 +44,27 @@ public class TableForm extends BaseForm
                 if(e.getClickCount() == 2 && table.getSelectedRow() != -1)
                 {
                     int row = table.rowAtPoint(e.getPoint());
-                    System.out.println(model.getRowEntity(row));
+                    new EditUserForm(TableForm.this, model.getRowEntity(row), row);
+                }
+            }
+        });
+
+        table.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int row = table.getSelectedRow();
+                if(e.getKeyCode() == KeyEvent.VK_DELETE && row != -1)
+                {
+                    if(DialogUtil.showConfirm(TableForm.this, "Вы точно хотите удалить данную запись?"))
+                    {
+                        UserEntity userEntity = model.getRowEntity(row);
+                        try {
+                            userEntityManager.deleteById(userEntity.getId());
+                            model.removeRow(row);
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+                    }
                 }
             }
         });
@@ -100,5 +123,9 @@ public class TableForm extends BaseForm
     @Override
     public int getFormHeight() {
         return 600;
+    }
+
+    public ObjectTableModel<UserEntity> getModel() {
+        return model;
     }
 }
