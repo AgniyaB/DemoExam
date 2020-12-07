@@ -2,6 +2,7 @@ package org.orgname.app;
 
 import org.orgname.app.database.entity.DateEntity;
 import org.orgname.app.database.manager.DateEntityManager;
+import org.orgname.app.ui.ClientTableForm;
 import org.orgname.app.ui.UsersTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.MysqlDatabase;
@@ -16,7 +17,8 @@ public class Application
 {
     private static Application instance;
 
-    private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    //private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    private final MysqlDatabase database = new MysqlDatabase("nleontnr.beget.tech", "nleontnr_docker", "nleontnr_docker", "8udwX&9bdw");
 
     private Application()
     {
@@ -25,13 +27,13 @@ public class Application
         initDatabase();
         initUi();
 
-        try {
+        /*try {
             test();
         } catch (ParseException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        //new UsersTableForm();
+        new ClientTableForm();
     }
 
     private void test() throws ParseException, SQLException
