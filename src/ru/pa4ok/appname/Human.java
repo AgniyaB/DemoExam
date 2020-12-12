@@ -14,6 +14,11 @@ public class Human
         this.age = age;
     }
 
+    public void work()
+    {
+        System.out.println("work from Human");
+    }
+
     @Override
     public String toString() {
         return "Human{" +

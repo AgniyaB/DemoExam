@@ -10,6 +10,13 @@ public class Student extends Human //наследуем класс Human
     }
 
     @Override
+    public void work()
+    {
+        super.work(); //вызов родительской реализации метода work()
+        System.out.println("work from Student");
+    }
+
+    @Override
     public String toString() {
         return "Student{" +
                 "level=" + level +
