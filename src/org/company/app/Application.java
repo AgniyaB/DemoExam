@@ -1,7 +1,7 @@
 package org.company.app;
 
 import org.company.app.data.manager.UserEntityManager;
-import org.company.app.ui.StartForm;
+import org.company.app.ui.TableForm;
 import org.company.app.util.BaseForm;
 import org.company.app.util.DialogUtil;
 import org.company.app.util.MysqlDatabase;
@@ -24,7 +24,8 @@ public class Application
         initDatabase();
         initUi();
 
-        new StartForm();
+        new TableForm();
+        //new StartForm();
     }
 
     private void initDatabase()
@@ -40,7 +41,6 @@ public class Application
     private void initUi()
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр трубочист");
-
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {

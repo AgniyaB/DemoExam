@@ -4,22 +4,21 @@ import org.company.app.Application;
 import org.company.app.data.entity.UserEntity;
 import org.company.app.data.manager.UserEntityManager;
 import org.company.app.util.BaseSubForm;
-import org.company.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class UserNotesForm extends BaseSubForm<MainForm>
+public class UserNotesForm// extends BaseSubForm<MainForm>
 {
-    private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
-    private final UserEntity userEntity;
+    //private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
+    //private final UserEntity userEntity;
 
     private JPanel mainPanel;
     private JTextArea textArea;
     private JButton backButton;
     private JButton saveButton;
 
-    public UserNotesForm(MainForm mainForm)
+    /*public UserNotesForm(MainForm mainForm)
     {
         super(mainForm);
         this.userEntity = mainForm.getUserEntity();
@@ -38,10 +37,11 @@ public class UserNotesForm extends BaseSubForm<MainForm>
 
     private void initButtons()
     {
-        backButton.addActionListener(e -> closeSubForm());
+        backButton.addActionListener(e -> {
+            closeSubForm();
+        });
 
-        saveButton.addActionListener(e ->
-        {
+        saveButton.addActionListener(e -> {
             userEntity.setNotes(textArea.getText());
 
             try {
@@ -51,7 +51,6 @@ public class UserNotesForm extends BaseSubForm<MainForm>
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
-                DialogUtil.showError("Ошибка сохранения заметок");
             }
         });
     }
@@ -64,5 +63,5 @@ public class UserNotesForm extends BaseSubForm<MainForm>
     @Override
     public int getFormHeight() {
         return 400;
-    }
+    }*/
 }
