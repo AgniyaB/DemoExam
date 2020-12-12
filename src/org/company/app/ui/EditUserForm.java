@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-public class EditUserForm extends BaseSubForm<TableForm>
+public class EditUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
     private final UserEntity userEntity;
@@ -27,7 +27,7 @@ public class EditUserForm extends BaseSubForm<TableForm>
     private JButton cancelButton;
     private JButton saveButton;
 
-    public EditUserForm(TableForm mainForm, UserEntity userEntity, int row)
+    public EditUserForm(CustomTableForm mainForm, UserEntity userEntity, int row)
     {
         super(mainForm);
         this.userEntity = userEntity;
@@ -75,21 +75,8 @@ public class EditUserForm extends BaseSubForm<TableForm>
 
             try {
                 userEntityManager.update(newUser);
-
-                Object[] rowData = new Object[] {
-                        newUser.getId(),
-                        newUser.getLogin(),
-                        newUser.getPassword(),
-                        newUser.getGender(),
-                        newUser.getAge(),
-                        newUser.getJob(),
-                        newUser.getNotes()
-                };
-
-                for(int i=0; i<rowData.length; i++) {
-                    mainForm.getModel().setValueAt(rowData[i], row, i);
-                }
-
+                mainForm.getModel().getValues().set(row, newUser);
+                mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
 
             } catch (SQLException throwables) {

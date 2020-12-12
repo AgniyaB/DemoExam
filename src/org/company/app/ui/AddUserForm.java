@@ -10,7 +10,7 @@ import org.company.app.util.BaseSubForm;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseSubForm<TableForm>
+public class AddUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
 
@@ -23,7 +23,7 @@ public class AddUserForm extends BaseSubForm<TableForm>
     private JTextField ageField;
     private JComboBox genderBox;
 
-    public AddUserForm(TableForm mainForm)
+    public AddUserForm(CustomTableForm mainForm)
     {
         super(mainForm);
         setContentPane(mainPanel);
@@ -61,17 +61,8 @@ public class AddUserForm extends BaseSubForm<TableForm>
 
             try {
                 userEntityManager.add(user);
-
-                mainForm.getModel().addRow(new Object[] {
-                        user.getId(),
-                        user.getLogin(),
-                        user.getPassword(),
-                        user.getGender(),
-                        user.getAge(),
-                        user.getJob(),
-                        user.getNotes()
-                });
-
+                mainForm.getModel().getValues().add(user);
+                mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
 
             } catch (SQLException throwables) {
