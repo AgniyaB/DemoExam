@@ -1,7 +1,5 @@
 package ru.pa4ok.appname;
 
-import sun.security.krb5.SCDynamicStoreConfig;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,17 +54,16 @@ public class Main
         Student student = new Student("petya", "okewfife", false, 15, 7);
         Teacher teacher = new Teacher("oshurok", "okefwfeewf", false, 30, "pp", 10);
 
-        /*School school = new School(1, "первая");
+        School school = new School(1, "первая");
         System.out.println(school);
         System.out.println();
         school.addEntity(human);
         school.addEntity(student);
         school.addEntity(teacher);
         System.out.println();
-        System.out.println(school);*/
-
-        //human.work();
-        student.work();
-        //teacher.work();
+        System.out.println(school);
+        school.nextYearAll();
+        school.nextYearAll();
+        System.out.println(school);
     }
 }

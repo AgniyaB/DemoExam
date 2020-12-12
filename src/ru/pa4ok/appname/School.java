@@ -28,6 +28,16 @@ public class School
         }
     }
 
+    public void nextYearAll()
+    {
+        for(Teacher t : teachers) {
+            t.nextYear();
+        }
+        for(Student s : students) {
+            s.nextYear();
+        }
+    }
+
     @Override
     public String toString() {
         return "School{" +

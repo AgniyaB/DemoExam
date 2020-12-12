@@ -12,9 +12,9 @@ public class Teacher extends Human
     }
 
     @Override
-    public void work()
-    {
-        System.out.println("work from Teacher");
+    public void nextYear() {
+        super.nextYear();
+        exp++;
     }
 
     @Override

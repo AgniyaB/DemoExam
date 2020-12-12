@@ -14,9 +14,9 @@ public class Human
         this.age = age;
     }
 
-    public void work()
+    public void nextYear()
     {
-        System.out.println("work from Human");
+        age++;
     }
 
     @Override
