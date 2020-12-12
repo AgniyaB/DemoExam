@@ -8,17 +8,17 @@ import org.company.app.util.BaseSubForm;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class UserNotesForm extends BaseSubForm<MainForm>
+public class UserNotesForm// extends BaseSubForm<MainForm>
 {
-    private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
-    private final UserEntity userEntity;
+    //private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
+    //private final UserEntity userEntity;
 
     private JPanel mainPanel;
     private JTextArea textArea;
     private JButton backButton;
     private JButton saveButton;
 
-    public UserNotesForm(MainForm mainForm)
+    /*public UserNotesForm(MainForm mainForm)
     {
         super(mainForm);
         this.userEntity = mainForm.getUserEntity();
@@ -63,5 +63,5 @@ public class UserNotesForm extends BaseSubForm<MainForm>
     @Override
     public int getFormHeight() {
         return 400;
-    }
+    }*/
 }

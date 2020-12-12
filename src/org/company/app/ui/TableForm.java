@@ -23,6 +23,7 @@ public class TableForm extends BaseForm
     private JPanel mainPanel;
     private JTable table;
     private JButton loadButton;
+    private JButton addbutton;
 
     public TableForm()
     {
@@ -42,9 +43,7 @@ public class TableForm extends BaseForm
         {
             public void mousePressed(MouseEvent mouseEvent)
             {
-                JTable table = (JTable)mouseEvent.getSource();
-                Point point = mouseEvent.getPoint();
-                int row = table.rowAtPoint(point);
+                int row = table.rowAtPoint(mouseEvent.getPoint());
 
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1)
                 {
@@ -62,12 +61,14 @@ public class TableForm extends BaseForm
                             (String)rowValues[5],
                             (String)rowValues[6]
                     );
-                    System.out.println();
-                    System.out.println("Row: " + row);
-                    System.out.println("Entity: " + userEntity);
+
+                    new EditUserForm(TableForm.this, userEntity, row);
                 }
             }
         });
+
+
+        //DefaultTableModel model1 = (DefaultTableModel)table.getModel();
 
         model = new DefaultTableModel() {
             @Override
@@ -85,6 +86,11 @@ public class TableForm extends BaseForm
         model.addColumn("Работа");
         model.addColumn("Заметки");
 
+        loadUsers();
+    }
+
+    private void loadUsers()
+    {
         try {
             List<UserEntity> users = userEntityManager.getAll();
             users.forEach(user -> {
@@ -107,7 +113,14 @@ public class TableForm extends BaseForm
     private void initButtons()
     {
         loadButton.addActionListener(e -> {
+            while(model.getRowCount() > 1) {
+                model.removeRow(0);
+            }
+            loadUsers();
+        });
 
+        addbutton.addActionListener(e -> {
+            new AddUserForm(this);
         });
     }
 
@@ -119,5 +132,13 @@ public class TableForm extends BaseForm
     @Override
     public int getFormHeight() {
         return 400;
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
     }
 }

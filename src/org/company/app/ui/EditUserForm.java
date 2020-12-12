@@ -9,11 +9,13 @@ import org.company.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.Arrays;
 
-public class EditUserForm extends BaseSubForm<MainForm>
+public class EditUserForm extends BaseSubForm<TableForm>
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
     private final UserEntity userEntity;
+    private final int row;
 
     private JPanel mainPanel;
     private JTextField idField;
@@ -25,10 +27,11 @@ public class EditUserForm extends BaseSubForm<MainForm>
     private JButton cancelButton;
     private JButton saveButton;
 
-    public EditUserForm(MainForm mainForm)
+    public EditUserForm(TableForm mainForm, UserEntity userEntity, int row)
     {
         super(mainForm);
-        this.userEntity = mainForm.getUserEntity();
+        this.userEntity = userEntity;
+        this.row = row;
         setContentPane(mainPanel);
 
         initFields();
@@ -72,7 +75,21 @@ public class EditUserForm extends BaseSubForm<MainForm>
 
             try {
                 userEntityManager.update(newUser);
-                mainForm.loadUserData();
+
+                Object[] rowData = new Object[] {
+                        newUser.getId(),
+                        newUser.getLogin(),
+                        newUser.getPassword(),
+                        newUser.getGender(),
+                        newUser.getAge(),
+                        newUser.getJob(),
+                        newUser.getNotes()
+                };
+
+                for(int i=0; i<rowData.length; i++) {
+                    mainForm.getModel().setValueAt(rowData[i], row, i);
+                }
+
                 closeSubForm();
 
             } catch (SQLException throwables) {

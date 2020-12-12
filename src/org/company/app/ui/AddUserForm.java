@@ -5,11 +5,12 @@ import org.company.app.data.GenderEnum;
 import org.company.app.data.entity.UserEntity;
 import org.company.app.data.manager.UserEntityManager;
 import org.company.app.util.BaseForm;
+import org.company.app.util.BaseSubForm;
 
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class RegistrationForm extends BaseForm
+public class AddUserForm extends BaseSubForm<TableForm>
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
 
@@ -22,8 +23,9 @@ public class RegistrationForm extends BaseForm
     private JTextField ageField;
     private JComboBox genderBox;
 
-    public RegistrationForm()
+    public AddUserForm(TableForm mainForm)
     {
+        super(mainForm);
         setContentPane(mainPanel);
 
         initElements();
@@ -41,8 +43,7 @@ public class RegistrationForm extends BaseForm
     private void initButtons()
     {
         backButton.addActionListener(e -> {
-            dispose();
-            new StartForm();
+            closeSubForm();
         });
 
         addButton.addActionListener(e -> {
@@ -60,8 +61,18 @@ public class RegistrationForm extends BaseForm
 
             try {
                 userEntityManager.add(user);
-                dispose();
-                new MainForm(user);
+
+                mainForm.getModel().addRow(new Object[] {
+                        user.getId(),
+                        user.getLogin(),
+                        user.getPassword(),
+                        user.getGender(),
+                        user.getAge(),
+                        user.getJob(),
+                        user.getNotes()
+                });
+
+                closeSubForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -71,7 +82,7 @@ public class RegistrationForm extends BaseForm
 
     @Override
     public int getFormWidth() {
-        return 500;
+        return 400;
     }
 
     @Override
