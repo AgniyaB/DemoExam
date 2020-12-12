@@ -1,6 +1,7 @@
 package org.orgname.app;
 
 import org.orgname.app.ui.StartForm;
+import org.orgname.app.ui.UsersTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
@@ -26,7 +27,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new StartForm();
+        new UsersTableForm();
     }
 
     private void initDatabase()
@@ -41,6 +42,12 @@ public class Application
 
     private void initUi()
     {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
     }
 
