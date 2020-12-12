@@ -1,9 +1,5 @@
 package ru.pa4ok.appname;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Main
 {
     /*
@@ -12,40 +8,28 @@ public class Main
     - String firstname
     - boolean isWoman
     - int age
-    - public void nextYear() //age++
 
-    Student extends Human
-    - int level //класс
-    - public void nextYear() //вызывать родительскую реализации и level++
+    abstract WorkerHuman extends Human
+    - String workTitle
+    - int salary
+    - public abstract void work()
 
-    Teacher extends Human
-    - int exp //стаж
-    - public void nextYear() //вызывать родительскую реализации и exp++
+    //несколько классов различных профессий
+    Miner extends WorkerHuman
+    - public void work() //реализованная абстрактная функция
+    //
 
-    School
-    - int number
-    - String title
-    - List<Teacher> teachers
-    - List<Student> students
-    - void addEntity(Human human)
-        функция принимает любого Hunan
-        если приходит Student - добавить в список студентов
-        если приходит Teacher - добавить в список преподавателей
-        если и не то, и не то - вывести в консоль "Not a school entity"
-    - void nextYearAll()
-        перебирать всех студетов и преподавателей
-        и вызывать у них метод nextYear()
+    LaborExchange (биржа труда)
+    - String address
+    - List<Human> needWorksPeople
+    - public void needWork(Human human)
+        проверить если Human реализует класс WorkerHuman
+        то вывести, что у него уже есть работа
+        если у Human нет работы - добавить в needWorksPeople
 
-
-    у всех классов переопределен метод toString()
-    у классов которые наследуются поля protected
-    у отсальных классов все поля private
-    везде есть геттеры и сеттеры
-    создать объект школы с инициализированными пустимы списками
-    добавить пару студентов и преподавателей через метод addEntit
-    вывести объект школы в консоль
-    вызвать метод nextYearAll()
-    вывести объект школы в консоль
+     Создать объект LaborExchange
+     добавить туда несколько разных работающих и обычных людей
+     вывести в консоль
      */
 
     public static void main(String[] args)
