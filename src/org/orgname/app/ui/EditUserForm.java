@@ -14,8 +14,7 @@ import java.sql.SQLException;
 public class EditUserForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
-    private final MainForm mainForm;
-    private final UserEntity userEntity;
+    private UserEntity userEntity;
 
     private JPanel mainPanel;
     private JTextField idField;
@@ -27,14 +26,11 @@ public class EditUserForm extends BaseForm
     private JButton backButton;
     private JButton saveButton;
 
-    public EditUserForm(MainForm mainForm)
+    public EditUserForm()
     {
-        this.mainForm = mainForm;
-        this.userEntity = mainForm.getUserEntity();
         setContentPane(mainPanel);
 
-        initElements();
-        initButtons();
+
 
         setVisible(true);
     }
@@ -76,7 +72,7 @@ public class EditUserForm extends BaseForm
 
                 try {
                     userEntityManager.update(userEntity);
-                    mainForm.loadUserData();
+
                     back();
 
                 } catch (SQLException throwables) {
@@ -88,8 +84,6 @@ public class EditUserForm extends BaseForm
 
     private void back()
     {
-        dispose();
-        mainForm.setVisible(true);
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class RegisterForm extends BaseForm
+public class AddUserForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -24,7 +24,7 @@ public class RegisterForm extends BaseForm
     private JButton nextButton;
     private JComboBox genderBox;
 
-    public RegisterForm()
+    public AddUserForm()
     {
         setContentPane(mainPanel);
 
@@ -38,24 +38,13 @@ public class RegisterForm extends BaseForm
     {
         genderBox.addItem(GenderEnum.MALE);
         genderBox.addItem(GenderEnum.FEMALE);
-
-        //ивент смены элемента
-        /*genderBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println(e.getStateChange() + " " + e.getItem());
-            }
-        });*/
-
-        //получение разлиной информации из комбо бокса
-        //System.out.println(genderBox.getSelectedIndex() + "/" + genderBox.getItemCount() + genderBox.getSelectedItem());
     }
 
     private void initButtons()
     {
         backButton.addActionListener(e -> {
             dispose();
-            new StartForm();
+            new UsersTableForm();
         });
 
         nextButton.addActionListener(e -> {
@@ -71,7 +60,7 @@ public class RegisterForm extends BaseForm
             try {
                 userEntityManager.add(user);
                 dispose();
-                new MainForm(user);
+                new UsersTableForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

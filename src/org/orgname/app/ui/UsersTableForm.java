@@ -4,9 +4,14 @@ import org.orgname.app.Application;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.DialogUtil;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,12 +21,14 @@ public class UsersTableForm extends BaseForm
 
     private JPanel mainPanel;
     private JTable table;
+    private JButton addUserButton;
 
     public UsersTableForm()
     {
         setContentPane(mainPanel);
 
         initTable();
+        initButtons();
 
         setVisible(true);
     }
@@ -63,6 +70,36 @@ public class UsersTableForm extends BaseForm
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        table.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int rowIndex = table.getSelectedRow();
+                if(e.getKeyCode() == KeyEvent.VK_DELETE && rowIndex != -1)
+                {
+                    if(DialogUtil.showConfirm(UsersTableForm.this, "Вы точно хотите удалить данную запись?")) {
+                        try {
+                            userEntityManager.deleteById((int) model.getValueAt(rowIndex, 0));
+                            model.removeRow(rowIndex);
+
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    private void initButtons()
+    {
+        addUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new AddUserForm();
+            }
+        });
     }
 
     @Override
