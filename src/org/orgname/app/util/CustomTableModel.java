@@ -2,13 +2,15 @@ package org.orgname.app.util;
 
 import javax.swing.table.AbstractTableModel;
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CustomTableModel<T> extends AbstractTableModel
 {
     private final Class<T> cls; //объект который описывает тип данных
     private final String[] columnNames; //массив который хранит названия колонок
-    private final List<T> values; //коллекция хранящая сущности таблицы
+    private List<T> values; //коллекция хранящая сущности таблицы
 
     public CustomTableModel(Class<T> cls, String[] columnNames, List<T> values)
     {
@@ -58,7 +60,16 @@ public class CustomTableModel<T> extends AbstractTableModel
         }
     }
 
+    public void sort(Comparator<T> comparator) {
+        Collections.sort(values, comparator);
+        fireTableDataChanged();
+    }
+
     public List<T> getValues() {
         return values;
+    }
+
+    public void setValues(List<T> values) {
+        this.values = values;
     }
 }
