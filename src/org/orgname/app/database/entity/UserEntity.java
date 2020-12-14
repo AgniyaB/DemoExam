@@ -4,6 +4,7 @@ import org.orgname.app.database.GenderEnum;
 
 public class UserEntity
 {
+
     private int id;
     private String login;
     private String pass;
