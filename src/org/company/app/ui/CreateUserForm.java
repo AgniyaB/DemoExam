@@ -5,14 +5,16 @@ import org.company.app.database.entity.GenderEnum;
 import org.company.app.database.entity.UserEntity;
 import org.company.app.database.manager.UserEntityManager;
 import org.company.app.util.BaseForm;
+import org.company.app.util.BaseSubForm;
 import org.company.app.util.DialogUtil;
 
+import javax.jws.soap.SOAPBinding;
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class RegisterForm extends BaseForm
+public class CreateUserForm extends BaseSubForm<UsersTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -25,8 +27,9 @@ public class RegisterForm extends BaseForm
     private JButton backButton;
     private JComboBox genderBox;
 
-    public RegisterForm()
+    public CreateUserForm(UsersTableForm mainForm)
     {
+        super(mainForm);
         setContentPane(mainPanel);
 
         initElements();
@@ -45,8 +48,7 @@ public class RegisterForm extends BaseForm
     {
         backButton.addActionListener(e -> {
             if(DialogUtil.showConfirm(this, "Вы точно хотите вернуться назад?")) {
-                dispose();
-                new StartForm();
+                closeSubForm();
             }
         });
 
@@ -86,8 +88,15 @@ public class RegisterForm extends BaseForm
 
             try {
                 userEntityManager.add(user);
-                dispose();
-                new MainForm(user);
+                mainForm.getModel().addRow(new Object[]{
+                        user.getId(),
+                        user.getLogin(),
+                        user.getPassword(),
+                        user.getGender(),
+                        user.getAge(),
+                        user.getJob()
+                });
+                closeSubForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
