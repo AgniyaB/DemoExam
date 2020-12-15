@@ -42,7 +42,7 @@ public class CustomTableForm extends BaseForm
             model = new CustomTableModel<>(
                     UserEntity.class,
                     new String[] {
-                            "ID", "Логин", "Пароль", "Гендер", "Возраст", "Работа", "Заметки", "markBoolean"
+                            "ID", "Логин", "Пароль", "Гендер", "Возраст", "Работа", "Заметки"
                     },
                     userEntityManager.getAll()
             );
@@ -54,6 +54,7 @@ public class CustomTableForm extends BaseForm
 
         table.addMouseListener(new MouseAdapter()
         {
+            @Override
             public void mousePressed(MouseEvent mouseEvent)
             {
                 int row = table.rowAtPoint(mouseEvent.getPoint());

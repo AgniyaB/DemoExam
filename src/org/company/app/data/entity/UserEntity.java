@@ -11,7 +11,6 @@ public class UserEntity
     private int age;
     private String job;
     private String notes;
-    private Boolean markBoolean = true;
 
     public UserEntity(int id, String login, String password, GenderEnum gender, int age, String job, String notes) {
         this.id = id;
