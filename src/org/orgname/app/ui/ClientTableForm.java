@@ -20,14 +20,17 @@ public class ClientTableForm extends BaseForm {
     private final ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
     private CustomTableModel<ClientEntity> model;
 
-    private boolean idSort;
-    private boolean regDateSort;
+    private boolean idSort = true;
+    private boolean regDateSort = true;
+    private boolean birthdaySort = true;
 
     private JPanel mainPanel;
     private JTable table;
     private JButton regDateSortButton;
     private JButton idSortButton;
     private JComboBox genderSortBox;
+    private JButton birthdaySortButton;
+    private JButton clearButton;
 
     public ClientTableForm() {
         setContentPane(mainPanel);
@@ -39,14 +42,15 @@ public class ClientTableForm extends BaseForm {
         setVisible(true);
     }
 
-    private void initTable() {
+    private void initTable()
+    {
         table.getTableHeader().setReorderingAllowed(false);
 
         try {
             model = new CustomTableModel<>(
                     ClientEntity.class,
                     new String[]{
-                            "ID", "FirstName", "LastName", "Patronymic", "Birthday", "RegistrationDate", "Email", "Phone", "GenderCode", "PhotoPath"
+                            "ID", "FirstName", "LastName", "Patronymic", "Birthday", "RegistrationDate", "Email", "Phone", "GenderCode", "Test Boolean", "PhotoPath"
                     },
                     clientEntityManager.getAll()
             );
@@ -54,6 +58,13 @@ public class ClientTableForm extends BaseForm {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        int i=0;
+        for(ClientEntity c : model.getValues())
+        {
+            table.setRowHeight(i, c.getIcon().getIconHeight());
+            i++;
         }
 
         //вешаем слушатель нажатия мышки
@@ -111,6 +122,21 @@ public class ClientTableForm extends BaseForm {
             model.fireTableDataChanged();
         });
 
+        birthdaySortButton.addActionListener(e -> {
+            Collections.sort(model.getValues(), new Comparator<ClientEntity>() {
+                @Override
+                public int compare(ClientEntity o1, ClientEntity o2) {
+                    if (!birthdaySort) {
+                        return o1.getBirthday().compareTo(o2.getBirthday());
+                    } else {
+                        return o2.getBirthday().compareTo(o1.getBirthday());
+                    }
+                }
+            });
+            birthdaySort = !birthdaySort;
+            model.fireTableDataChanged();
+        });
+
         idSortButton.addActionListener(e -> {
             //тоже самое только меньше кода
             //можно еще больше сократить используя лямбды
@@ -135,6 +161,13 @@ public class ClientTableForm extends BaseForm {
 
         //тот же вариант только используя нашу функцию в CustomTableModel
         //model.sort((o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
+
+        clearButton.addActionListener(e -> {
+            idSort = true;
+            regDateSort = true;
+            birthdaySort = true;
+            genderSortBox.setSelectedIndex(0);
+        });
     }
 
     private void initBoxes() {

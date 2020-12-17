@@ -1,6 +1,11 @@
 package org.orgname.app.database.entity;
 
+import org.orgname.app.Application;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Date;
+import java.util.Random;
 
 public class ClientEntity
 {
@@ -13,7 +18,9 @@ public class ClientEntity
     private String email;
     private String phone;
     private char genderCode;
+    private Boolean testBoolean;
     private String photoPath;
+    private ImageIcon icon;
 
     public ClientEntity(int id, String firstname, String lastname, String patronymic, Date birthday, Date regDate, String email, String phone, char genderCode, String photoPath) {
         this.id = id;
@@ -26,6 +33,11 @@ public class ClientEntity
         this.phone = phone;
         this.genderCode = genderCode;
         this.photoPath = photoPath;
+
+        Random rand = new Random();
+        this.testBoolean = rand.nextBoolean();
+
+        this.icon = new ImageIcon(Application.class.getClassLoader().getResource(photoPath));
     }
 
     public ClientEntity(String firstname, String lastname, String patronymic, Date birthday, Date regDate, String email, String phone, char genderCode, String photoPath) {
@@ -39,6 +51,8 @@ public class ClientEntity
         this.phone = phone;
         this.genderCode = genderCode;
         this.photoPath = photoPath;
+
+        this.icon = new ImageIcon(Application.class.getClassLoader().getResource(photoPath));
     }
 
     @Override
@@ -135,5 +149,21 @@ public class ClientEntity
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public Boolean getTestBoolean() {
+        return testBoolean;
+    }
+
+    public void setTestBoolean(Boolean testBoolean) {
+        this.testBoolean = testBoolean;
+    }
+
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
     }
 }

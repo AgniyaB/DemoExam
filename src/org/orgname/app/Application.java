@@ -5,8 +5,12 @@ import org.orgname.app.database.manager.DateEntityManager;
 import org.orgname.app.ui.ClientTableForm;
 import org.orgname.app.ui.UsersTableForm;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.FontUtil;
 import org.orgname.app.util.MysqlDatabase;
 
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -59,6 +63,18 @@ public class Application
     private void initUi()
     {
         BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
+
+        BaseForm.setBaseApplicationIcon(
+                Toolkit.getDefaultToolkit().getImage(Application.class.getClassLoader().getResource("icon.jpg"))
+        );
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FontUtil.changeAllFonts(new FontUIResource("Comic Sans", Font.TRUETYPE_FONT, 14));
     }
 
     public MysqlDatabase getDatabase() {
