@@ -8,7 +8,7 @@ public class CustomTableModel<T> extends AbstractTableModel
 {
     private final Class<T> cls;
     private String[] columnNames;
-    private final List<T> values;
+    private List<T> values;
 
     public CustomTableModel(Class<T> cls, String[] columnNames, List<T> initialValues)
     {
@@ -51,5 +51,9 @@ public class CustomTableModel<T> extends AbstractTableModel
 
     public List<T> getValues() {
         return values;
+    }
+
+    public void setValues(List<T> values) {
+        this.values = values;
     }
 }
