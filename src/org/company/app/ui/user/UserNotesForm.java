@@ -1,4 +1,4 @@
-package org.company.app.ui;
+package org.company.app.ui.user;
 
 import org.company.app.Application;
 import org.company.app.data.entity.UserEntity;

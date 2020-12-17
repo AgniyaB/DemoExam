@@ -1,7 +1,8 @@
 package org.company.app;
 
 import org.company.app.data.manager.UserEntityManager;
-import org.company.app.ui.CustomTableForm;
+import org.company.app.ui.service.ServiceTableForm;
+import org.company.app.ui.user.CustomTableForm;
 import org.company.app.util.BaseForm;
 import org.company.app.util.DialogUtil;
 import org.company.app.util.MysqlDatabase;
@@ -14,7 +15,9 @@ public class Application
 {
     private static Application instance;
 
-    private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    //private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    private final MysqlDatabase database = new MysqlDatabase("nleontnr.beget.tech", "nleontnr_docker", "nleontnr_docker", "8udwX&9bdw");
+
     private final UserEntityManager userEntityManager = new UserEntityManager(database);
 
     public Application()
@@ -24,7 +27,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new CustomTableForm();
+        new ServiceTableForm();
         //new StartForm();
     }
 

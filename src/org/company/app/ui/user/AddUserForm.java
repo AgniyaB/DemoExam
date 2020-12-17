@@ -1,87 +1,71 @@
-package org.company.app.ui;
+package org.company.app.ui.user;
 
 import org.company.app.Application;
 import org.company.app.data.GenderEnum;
 import org.company.app.data.entity.UserEntity;
 import org.company.app.data.manager.UserEntityManager;
 import org.company.app.util.BaseSubForm;
-import org.company.app.util.DialogUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
-import java.util.Arrays;
 
-public class EditUserForm extends BaseSubForm<CustomTableForm>
+public class AddUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = Application.getInstance().getUserEntityManager();
-    private final UserEntity userEntity;
-    private final int row;
 
     private JPanel mainPanel;
-    private JTextField idField;
     private JTextField loginField;
-    private JPasswordField passwordField;
-    private JComboBox genderBox;
-    private JTextField ageField;
     private JTextField jobField;
-    private JButton cancelButton;
-    private JButton saveButton;
+    private JPasswordField passwordField;
+    private JButton backButton;
+    private JButton addButton;
+    private JTextField ageField;
+    private JComboBox genderBox;
 
-    public EditUserForm(CustomTableForm mainForm, UserEntity userEntity, int row)
+    public AddUserForm(CustomTableForm mainForm)
     {
         super(mainForm);
-        this.userEntity = userEntity;
-        this.row = row;
         setContentPane(mainPanel);
 
-        initFields();
+        initElements();
         initButtons();
 
         setVisible(true);
     }
 
-    private void initFields()
+    private void initElements()
     {
-        idField.setEnabled(false);
-        idField.setText(String.valueOf(userEntity.getId()));
-
-        loginField.setText(userEntity.getLogin());
-        passwordField.setText(userEntity.getPassword());
-
         genderBox.addItem(GenderEnum.MALE);
         genderBox.addItem(GenderEnum.FEMALE);
-        genderBox.setSelectedItem(userEntity.getGender());
-
-        ageField.setText(String.valueOf(userEntity.getAge()));
-        jobField.setText(userEntity.getJob());
     }
 
     private void initButtons()
     {
-        cancelButton.addActionListener(e -> {
+        backButton.addActionListener(e -> {
             closeSubForm();
         });
 
-        saveButton.addActionListener(e -> {
-            UserEntity newUser = new UserEntity(
-                    userEntity.getId(),
+        addButton.addActionListener(e -> {
+            //тут должны быть проверки полей на корректноть, но мне лень
+            UserEntity user = new UserEntity(
                     loginField.getText(),
                     new String(passwordField.getPassword()),
                     (GenderEnum) genderBox.getSelectedItem(),
                     Integer.parseInt(ageField.getText()),
                     jobField.getText(),
-                    userEntity.getNotes()
+                    null
             );
 
+            //GenderEnum genderEnum = (GenderEnum) genderBox.getSelectedItem();
+
             try {
-                userEntityManager.update(newUser);
-                mainForm.getModel().getValues().set(row, newUser);
+                userEntityManager.add(user);
+                mainForm.getModel().getValues().add(user);
                 mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
-                DialogUtil.showError("Ошибка сохранения данных");
             }
         });
     }
@@ -93,6 +77,6 @@ public class EditUserForm extends BaseSubForm<CustomTableForm>
 
     @Override
     public int getFormHeight() {
-        return 275;
+        return 250;
     }
 }
