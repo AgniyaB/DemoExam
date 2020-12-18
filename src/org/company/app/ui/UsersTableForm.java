@@ -19,7 +19,7 @@ public class UsersTableForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
-    DefaultTableModel model;
+    private DefaultTableModel model;
 
     private JPanel mainPanel;
     private JTable table;

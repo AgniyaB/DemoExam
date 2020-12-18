@@ -1,5 +1,6 @@
 package org.company.app;
 
+import org.company.app.ui.CustomTableForm;
 import org.company.app.ui.UsersTableForm;
 import org.company.app.util.BaseForm;
 import org.company.app.util.MysqlDatabase;
@@ -30,7 +31,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new UsersTableForm();
+        new CustomTableForm();
     }
 
     private void initDatabase()
