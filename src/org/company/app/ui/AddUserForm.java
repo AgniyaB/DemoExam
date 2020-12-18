@@ -14,7 +14,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class CreateUserForm extends BaseSubForm<UsersTableForm>
+public class AddUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -27,7 +27,7 @@ public class CreateUserForm extends BaseSubForm<UsersTableForm>
     private JButton backButton;
     private JComboBox genderBox;
 
-    public CreateUserForm(UsersTableForm mainForm)
+    public AddUserForm(CustomTableForm mainForm)
     {
         super(mainForm);
         setContentPane(mainPanel);
@@ -88,14 +88,9 @@ public class CreateUserForm extends BaseSubForm<UsersTableForm>
 
             try {
                 userEntityManager.add(user);
-                mainForm.getModel().addRow(new Object[]{
-                        user.getId(),
-                        user.getLogin(),
-                        user.getPassword(),
-                        user.getGender(),
-                        user.getAge(),
-                        user.getJob()
-                });
+                mainForm.getModel().getValues().add(user);
+                //чтобы таблица обновилась (графически) после добавления элемента нужно вызвать этот метод
+                mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
 
             } catch (SQLException throwables) {
