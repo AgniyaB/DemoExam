@@ -1,17 +1,12 @@
 package org.orgname.app;
 
-import org.orgname.app.database.entity.DateEntity;
-import org.orgname.app.database.manager.DateEntityManager;
-import org.orgname.app.ui.CustomTableForm;
-import org.orgname.app.ui.ObjectTableForm;
+import org.orgname.app.ui.ClientTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Date;
 
 public class Application
 {
@@ -23,20 +18,10 @@ public class Application
     {
         instance = this;
 
-        initUi();
         initDatabase();
+        initUi();
 
-        /*DateEntity dateEntity = new DateEntity(new Date());
-        DateEntityManager dateEntityManager = new DateEntityManager(database);
-        try {
-            dateEntityManager.add(dateEntity);
-            System.out.println(dateEntity);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-
-        new CustomTableForm();
-        //new ObjectTableForm();
+        new ClientTableForm();
     }
 
     private void initDatabase()
