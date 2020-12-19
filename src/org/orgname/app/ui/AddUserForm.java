@@ -5,13 +5,14 @@ import org.orgname.app.database.entity.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.BaseSubForm;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseForm
+public class AddUserForm extends BaseSubForm<UsersTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -24,8 +25,9 @@ public class AddUserForm extends BaseForm
     private JButton nextButton;
     private JComboBox genderBox;
 
-    public AddUserForm()
+    public AddUserForm(UsersTableForm mainForm)
     {
+        super(mainForm);
         setContentPane(mainPanel);
 
         initElements();
@@ -43,8 +45,7 @@ public class AddUserForm extends BaseForm
     private void initButtons()
     {
         backButton.addActionListener(e -> {
-            dispose();
-            new UsersTableForm();
+            closeSubForm();
         });
 
         nextButton.addActionListener(e -> {
@@ -59,8 +60,18 @@ public class AddUserForm extends BaseForm
 
             try {
                 userEntityManager.add(user);
-                dispose();
-                new UsersTableForm();
+                mainForm.getModel().addRow(
+                        new Object[] {
+                                user.getId(),
+                                user.getLogin(),
+                                user.getPassword(),
+                                user.getGender(),
+                                user.getAge(),
+                                user.getJob(),
+                                user.getNotes()
+                        }
+                );
+                closeSubForm();
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

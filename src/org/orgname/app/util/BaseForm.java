@@ -5,7 +5,7 @@ import java.awt.*;
 
 public abstract class BaseForm extends JFrame
 {
-    private static String baseApplicationTitle;
+    private static String baseApplicationTitle = "Application";
 
     public BaseForm()
     {
@@ -15,7 +15,7 @@ public abstract class BaseForm extends JFrame
                 Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getFormWidth() / 2,
                 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - getFormHeight() / 2
         );
-        setTitle(baseApplicationTitle == null ? "Application" : baseApplicationTitle);
+        setTitle(baseApplicationTitle);
     }
 
     public abstract int getFormWidth();
