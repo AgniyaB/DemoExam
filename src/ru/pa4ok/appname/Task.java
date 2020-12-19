@@ -1,5 +1,7 @@
 package ru.pa4ok.appname;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Task
@@ -7,8 +9,8 @@ public class Task
     /*
     Book
     - int id
-    - String title
-    - String author
+    - String title (от 3 до 20 символов)
+    - String author (от 5 до 30 символов)
 
     BookReadException extends RuntimeException
 
@@ -24,18 +26,48 @@ public class Task
 
     public static void main(String[] args)
     {
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
+        List<Book> books = new ArrayList<>();
 
-        int i;
-        try {
-            i = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-            i = 13;
+        for(int i=0; i<2; i++) {
+            try {
+                Book book = readBook();
+                books.add(book);
+                System.out.println("Книги успешно добавлена: " + book);
+            } catch (BookReadException e) {
+                System.out.println("Ошибка при чтении книги");
+                e.printStackTrace();
+            }
         }
 
-        i += 10;
-        i *= 5;
-        System.out.println("new i " + i);
+        System.out.println(books);
+    }
+
+    private static Book readBook()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.printf("Введите id книги: ");
+        String idString = scanner.nextLine();
+        System.out.printf("Введите название книги: ");
+        String title = scanner.nextLine();
+        System.out.printf("Введите автора книги: ");
+        String author = scanner.nextLine();
+
+        int id;
+        try {
+            id = Integer.parseInt(idString);
+        } catch (NumberFormatException e) {
+            throw new BookReadException("Введен некорректный id", e);
+        }
+
+        if(title.length() < 3 || title.length() > 20) {
+            throw new BookReadException("Название книги введено неверно");
+        }
+
+        if(author.length() < 5 || author.length() > 30) {
+            throw new BookReadException("Автор книги введен неверно");
+        }
+
+        return new Book(id, title, author);
     }
 }
