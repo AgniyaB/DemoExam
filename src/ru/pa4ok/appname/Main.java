@@ -1,114 +1,111 @@
 package ru.pa4ok.appname;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Main
 {
-    public static void main(String[] args)
+    /*
+    Ошибки/исключения делятся на 2 типа
+    обязательные к обработки и нет
+
+    если класс ошибки наслелует RuntimeException - то она не обязательна к обработке
+    если не наследует то обязаетельна
+     */
+    public static void main(String[] args) //если выбросить ошибку из метода main то программа завершит работу
     {
-        //List<String> list = new ArrayList<>();
+        /*try {
 
-        Container<String> stringContainer = new Container<>("wdhuwdhuwd");
-        System.out.println(stringContainer);
+            int i = Integer.parseInt("43435");
+            System.out.println(i);
 
-        Container<Integer> integerContainer = new Container<>(344343);
-        System.out.println(integerContainer);
+            String s = null;
+            test(s);
 
-        NumberContainer<Integer> integerNumberContainer = new NumberContainer<>(322332);
-        NumberContainer<Double> doubleNumberContainer = new NumberContainer<>(3432434D);
-        //так как String не наследует Number сделать такой генерик нельзя
-        //NumberContainer<String> stringNumberContainer = new NumberContainer<String>("32323232");
-    }
-}
+        } catch (NumberFormatException | NullPointerException e) {
+            System.out.println("ошибка обработана 1");
+            e.printStackTrace();
+        } */
 
-//генерик объявляется 1 раз после названия класса
-//и дальше может использоваться почти в любых метах класса
-class Container<T>
-{
-    private T value;
+        //readFile();
 
-    public Container(T value) {
-        this.value = value;
-    }
+        /*try {
+            readFile2();
+        } catch (FileNotFoundException e) {
+            System.out.println("ошибка обработана");
+            e.printStackTrace();
+        }*/
 
-    @Override
-    public String toString() {
-        return "Container{" +
-                "value=" + value +
-                '}';
-    }
+        System.out.println(checkString("2v9kfnrvre0"));
 
-    //генерик можно проверять на принадлежноть к типу
-    public void test()
-    {
-        if(value instanceof String) {
-            String s = (String)value;
-            //...
+        //System.out.println(checkString(null));
+
+        //System.out.println(checkString2(null));
+
+        try {
+            System.out.println(checkString3(null));
+        } catch (MyException e) {
+            System.out.println("ошибка обработана");
+            e.printStackTrace();
         }
     }
 
-    public T getValue() {
-        return value;
+    private static void readFile()
+    {
+        try {
+            FileReader fr = new FileReader("test.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("ошибка обработана");
+            e.printStackTrace();
+        }
     }
 
-    public Container<T> setValue(T value) {
-        this.value = value;
-        return this;
+    private static void readFile2() throws FileNotFoundException
+    {
+        FileReader fr = new FileReader("test.txt");
     }
-}
 
-//аналогичное использование в интерфейсах
-interface ITestInterface<T>
-{
-    public T generateValue(int a);
-}
+    private static boolean checkString(String s)
+    {
+        if(s == null) {
+            throw new NullPointerException("ппришла нулевая строка");
+        }
 
-//генерик можно ограничить до какого типа данных
-//те в него можно будет положить объект класса Number
-//или объекты классов которые наследуют Number
-class NumberContainer<T extends Number>
-{
-    public T number;
-
-    public NumberContainer(T number) {
-        this.number = number;
+        if(s.charAt(2) == '9') {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
-//в классе может быть несколько генериков
-class DoubleContainer<T,K>
-{
-    T value1;
-    K value2;
+    private static boolean checkString2(String s)
+    {
+        if(s == null) {
+            throw new MyRuntimeException("ппришла нулевая строка");
+        }
 
-    public DoubleContainer(T value1, K value2) {
-        this.value1 = value1;
-        this.value2 = value2;
+        if(s.charAt(2) == '9') {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
-//можно унаследовать и задать постоянный тип
-class SuperIntegerContainer extends Container<Integer>
-{
-    public SuperIntegerContainer(Integer value) {
-        super(value);
+    private static boolean checkString3(String s) throws MyException
+    {
+        if(s == null) {
+            throw new MyException("ппришла нулевая строка");
+        }
+
+        if(s.charAt(2) == '9') {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
-//можно унаследовать и оставить генерик
-class SuperContainer<T> extends Container<T>
-{
-    public SuperContainer(T value) {
-        super(value);
-    }
-}
-
-//при наследовании ограниченного генерика необходимо учитывать ограничения
-class SuperNumberContainer<T extends Number> extends NumberContainer<T>
-{
-    public SuperNumberContainer(T number) {
-        super(number);
+    private static boolean test(String s) {
+        return s.equals("oehefwhfew");
     }
 }
 
