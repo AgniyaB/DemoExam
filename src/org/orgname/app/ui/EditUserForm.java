@@ -5,16 +5,18 @@ import org.orgname.app.database.entity.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
+import org.orgname.app.util.BaseSubForm;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class EditUserForm extends BaseForm
+public class EditUserForm extends BaseSubForm<UsersTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
     private UserEntity userEntity;
+    private int rowIndex;
 
     private JPanel mainPanel;
     private JTextField idField;
@@ -26,11 +28,15 @@ public class EditUserForm extends BaseForm
     private JButton backButton;
     private JButton saveButton;
 
-    public EditUserForm()
+    public EditUserForm(UsersTableForm mainForm, UserEntity userEntity, int rowIndex)
     {
+        super(mainForm);
+        this.userEntity = userEntity;
+        this.rowIndex = rowIndex;
         setContentPane(mainPanel);
 
-
+        initElements();
+        initButtons();
 
         setVisible(true);
     }
@@ -56,7 +62,7 @@ public class EditUserForm extends BaseForm
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                back();
+                closeSubForm();
             }
         });
 
@@ -73,17 +79,26 @@ public class EditUserForm extends BaseForm
                 try {
                     userEntityManager.update(userEntity);
 
-                    back();
+                    Object[] rowValues = new Object[] {
+                            userEntity.getId(),
+                            userEntity.getLogin(),
+                            userEntity.getPassword(),
+                            userEntity.getGender(),
+                            userEntity.getAge(),
+                            userEntity.getJob(),
+                            userEntity.getNotes()
+                    };
+                    for(int i=0; i<mainForm.getModel().getColumnCount(); i++) {
+                        mainForm.getModel().setValueAt(rowValues[i], rowIndex, i);
+                    }
+
+                    closeSubForm();
 
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             }
         });
-    }
-
-    private void back()
-    {
     }
 
     @Override

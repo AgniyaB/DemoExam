@@ -1,6 +1,7 @@
 package org.orgname.app.ui;
 
 import org.orgname.app.Application;
+import org.orgname.app.database.entity.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
 import org.orgname.app.util.BaseForm;
@@ -8,16 +9,15 @@ import org.orgname.app.util.DialogUtil;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UsersTableForm extends BaseForm
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
+
+    private DefaultTableModel model;
 
     private JPanel mainPanel;
     private JTable table;
@@ -37,7 +37,7 @@ public class UsersTableForm extends BaseForm
     {
         table.getTableHeader().setReorderingAllowed(false);
 
-        DefaultTableModel model = new DefaultTableModel() {
+        model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -89,6 +89,32 @@ public class UsersTableForm extends BaseForm
                 }
             }
         });
+
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = table.rowAtPoint(e.getPoint());
+                if(e.getClickCount() == 2 && row != -1)
+                {
+                    Object[] rowValues = new Object[table.getColumnCount()];
+                    for(int i=0; i<table.getColumnCount(); i++) {
+                        rowValues[i] = table.getValueAt(row, i);
+                    }
+
+                    UserEntity userEntity = new UserEntity(
+                            (int)rowValues[0],
+                            (String)rowValues[1],
+                            (String)rowValues[2],
+                            (GenderEnum)rowValues[3],
+                            (int)rowValues[4],
+                            (String)rowValues[5],
+                            (String)rowValues[6]
+                    );
+
+                    new EditUserForm(UsersTableForm.this, userEntity, row);
+                }
+            }
+        });
     }
 
     private void initButtons()
@@ -96,8 +122,7 @@ public class UsersTableForm extends BaseForm
         addUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new AddUserForm();
+                new AddUserForm(UsersTableForm.this);
             }
         });
     }
@@ -110,5 +135,9 @@ public class UsersTableForm extends BaseForm
     @Override
     public int getFormHeight() {
         return 400;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
     }
 }
