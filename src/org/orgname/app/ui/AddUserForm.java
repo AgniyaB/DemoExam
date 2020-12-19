@@ -12,7 +12,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
 
-public class AddUserForm extends BaseSubForm<UsersTableForm>
+public class AddUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
 
@@ -25,7 +25,7 @@ public class AddUserForm extends BaseSubForm<UsersTableForm>
     private JButton nextButton;
     private JComboBox genderBox;
 
-    public AddUserForm(UsersTableForm mainForm)
+    public AddUserForm(CustomTableForm mainForm)
     {
         super(mainForm);
         setContentPane(mainPanel);
@@ -60,17 +60,8 @@ public class AddUserForm extends BaseSubForm<UsersTableForm>
 
             try {
                 userEntityManager.add(user);
-                mainForm.getModel().addRow(
-                        new Object[] {
-                                user.getId(),
-                                user.getLogin(),
-                                user.getPassword(),
-                                user.getGender(),
-                                user.getAge(),
-                                user.getJob(),
-                                user.getNotes()
-                        }
-                );
+                mainForm.getModel().getValues().add(user);
+                mainForm.getModel().fireTableDataChanged();
                 closeSubForm();
 
             } catch (SQLException throwables) {

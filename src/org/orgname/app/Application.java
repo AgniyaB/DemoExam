@@ -1,6 +1,6 @@
 package org.orgname.app;
 
-import org.orgname.app.ui.UsersTableForm;
+import org.orgname.app.ui.CustomTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
@@ -26,7 +26,7 @@ public class Application
         initDatabase();
         initUi();
 
-        new UsersTableForm();
+        new CustomTableForm();
     }
 
     private void initDatabase()
