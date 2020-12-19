@@ -4,7 +4,6 @@ import org.orgname.app.Application;
 import org.orgname.app.database.entity.GenderEnum;
 import org.orgname.app.database.entity.UserEntity;
 import org.orgname.app.database.manager.UserEntityManager;
-import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.BaseSubForm;
 
 import javax.swing.*;
@@ -12,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class EditUserForm extends BaseSubForm<UsersTableForm>
+public class EditUserForm extends BaseSubForm<CustomTableForm>
 {
     private final UserEntityManager userEntityManager = new UserEntityManager(Application.getInstance().getDatabase());
     private UserEntity userEntity;
@@ -28,7 +27,7 @@ public class EditUserForm extends BaseSubForm<UsersTableForm>
     private JButton backButton;
     private JButton saveButton;
 
-    public EditUserForm(UsersTableForm mainForm, UserEntity userEntity, int rowIndex)
+    public EditUserForm(CustomTableForm mainForm, UserEntity userEntity, int rowIndex)
     {
         super(mainForm);
         this.userEntity = userEntity;
@@ -78,20 +77,8 @@ public class EditUserForm extends BaseSubForm<UsersTableForm>
 
                 try {
                     userEntityManager.update(userEntity);
-
-                    Object[] rowValues = new Object[] {
-                            userEntity.getId(),
-                            userEntity.getLogin(),
-                            userEntity.getPassword(),
-                            userEntity.getGender(),
-                            userEntity.getAge(),
-                            userEntity.getJob(),
-                            userEntity.getNotes()
-                    };
-                    for(int i=0; i<mainForm.getModel().getColumnCount(); i++) {
-                        mainForm.getModel().setValueAt(rowValues[i], rowIndex, i);
-                    }
-
+                    mainForm.getModel().getValues().set(rowIndex, userEntity);
+                    mainForm.getModel().fireTableDataChanged();
                     closeSubForm();
 
                 } catch (SQLException throwables) {
