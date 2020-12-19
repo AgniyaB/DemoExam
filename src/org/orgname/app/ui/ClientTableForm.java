@@ -15,9 +15,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class TableForm extends BaseForm
+public class ClientTableForm extends BaseForm
 {
-    private ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
+    private ClientEntityManager clientEntityManager = Application.getInstance().clientEntityManager;
 
     private CustomTableModel<ClientEntity> model;
 
@@ -29,7 +29,7 @@ public class TableForm extends BaseForm
     private JButton bithdaySortButton;
     private JComboBox genderSortBox;
 
-    public TableForm()
+    public ClientTableForm()
     {
         setContentPane(mainPanel);
 
@@ -71,7 +71,7 @@ public class TableForm extends BaseForm
                     int row = table.getSelectedRow();
                     if(e.getKeyCode() == KeyEvent.VK_DELETE && row != -1)
                     {
-                        if(!DialogUtil.showConfirm(TableForm.this, "ВЫ точно хоиите удалить данную запись?")) {
+                        if(!DialogUtil.showConfirm(ClientTableForm.this, "ВЫ точно хоиите удалить данную запись?")) {
                             return;
                         }
 
