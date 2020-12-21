@@ -14,6 +14,8 @@ public class Application
     private static Application instance;
 
     private final MysqlDatabase database = new MysqlDatabase("116.202.236.174", "DemoExam", "DemoExam", "DemoExam");
+    private static final String ADMIN_PASS = "0000";
+    private static boolean adminMode = false;
 
     private Application()
     {
@@ -21,6 +23,7 @@ public class Application
 
         initDatabase();
         initUi();
+        checkAdminMode();
 
         new ClientTableForm();
     }
@@ -55,6 +58,16 @@ public class Application
         FontUtil.changeAllFonts(new FontUIResource("Lobster", Font.TRUETYPE_FONT, 16));
     }
 
+    private void checkAdminMode()
+    {
+        adminMode = ADMIN_PASS.equals(JOptionPane.showInputDialog(
+                null,
+                "Введите пароль администратора если знаете",
+                "Режим администратора",
+                JOptionPane.QUESTION_MESSAGE
+        ));
+    }
+
     public MysqlDatabase getDatabase() {
         return database;
     }
@@ -66,5 +79,13 @@ public class Application
     public static void main(String[] args)
     {
         new Application();
+    }
+
+    public static boolean isAdminMode() {
+        return adminMode;
+    }
+
+    public static void setAdminMode(boolean adminMode) {
+        Application.adminMode = adminMode;
     }
 }

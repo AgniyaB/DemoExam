@@ -1,6 +1,9 @@
 package org.orgname.app.database.entity;
 
+import org.orgname.app.util.ResourceUtil;
+
 import javax.swing.*;
+import java.awt.*;
 import java.util.Date;
 import java.util.Random;
 
@@ -30,6 +33,17 @@ public class ClientEntity
         this.phone = phone;
         this.genderCode = genderCode;
         this.photoPath = photoPath;
+        try {
+            Image image = ResourceUtil.getImage(photoPath);
+            if(image != null) {
+                this.icon = new ImageIcon(image);
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            System.out.println("не удалось загрузить картику пользователя");
+            e.printStackTrace();
+        }
     }
 
     public ClientEntity(String firstname, String lastname, String patronymic, Date birthday, Date register, String email, String phone, char genderCode, String photoPath) {

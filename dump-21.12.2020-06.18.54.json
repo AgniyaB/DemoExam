@@ -1,0 +1,1982 @@
+[
+  {
+    "id": 1,
+    "firstname": "Иосиф",
+    "lastname": "Голубев",
+    "patronymic": "Тимофеевич",
+    "birthday": "May 6, 1982 4:00:00 AM",
+    "register": "Aug 18, 2018 3:00:00 AM",
+    "email": "smcnabb@att.net",
+    "phone": "7(78)972-73-11",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m18.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 2,
+    "firstname": "Алла",
+    "lastname": "Ермакова",
+    "patronymic": "Мироновна",
+    "birthday": "Jan 22, 1976 3:00:00 AM",
+    "register": "Feb 9, 2017 3:00:00 AM",
+    "email": "whimsy@aol.com",
+    "phone": "7(06)437-13-73",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\48.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 3,
+    "firstname": "Глеб",
+    "lastname": "Селиверстов",
+    "patronymic": "Максимович",
+    "birthday": "Jun 20, 1999 4:00:00 AM",
+    "register": "Jan 7, 2016 3:00:00 AM",
+    "email": "jigsaw@sbcglobal.net",
+    "phone": "7(20)554-28-68",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m37.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 4,
+    "firstname": "Юстиниан",
+    "lastname": "Агафонов",
+    "patronymic": "Олегович",
+    "birthday": "Feb 2, 1997 3:00:00 AM",
+    "register": "Jun 8, 2016 3:00:00 AM",
+    "email": "staffelb@sbcglobal.net",
+    "phone": "7(303)810-28-78",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m1.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 5,
+    "firstname": "Злата",
+    "lastname": "Колобова",
+    "patronymic": "Романовна",
+    "birthday": "Aug 25, 1994 4:00:00 AM",
+    "register": "Dec 3, 2016 3:00:00 AM",
+    "email": "sinkou@aol.com",
+    "phone": "7(50)884-07-35",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\18.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 6,
+    "firstname": "Дарина",
+    "lastname": "Сысоева",
+    "patronymic": "Ярославовна",
+    "birthday": "Feb 3, 1982 3:00:00 AM",
+    "register": "May 13, 2016 3:00:00 AM",
+    "email": "treit@verizon.net",
+    "phone": "7(0698)387-96-04",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\32.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 7,
+    "firstname": "Варлам",
+    "lastname": "Некрасов",
+    "patronymic": "Михайлович",
+    "birthday": "Nov 12, 2000 3:00:00 AM",
+    "register": "Dec 3, 2017 3:00:00 AM",
+    "email": "dogdude@verizon.net",
+    "phone": "7(019)258-06-35",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m42.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 8,
+    "firstname": "Наум",
+    "lastname": "Крюков",
+    "patronymic": "Ильяович",
+    "birthday": "Nov 17, 1993 3:00:00 AM",
+    "register": "Feb 1, 2017 3:00:00 AM",
+    "email": "floxy@hotmail.com",
+    "phone": "7(81)657-88-92",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m30.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 9,
+    "firstname": "Татьяна",
+    "lastname": "Сидорова",
+    "patronymic": "Михайловна",
+    "birthday": "Apr 24, 1974 3:00:00 AM",
+    "register": "Oct 3, 2018 3:00:00 AM",
+    "email": "tbeck@mac.com",
+    "phone": "7(51)732-91-79",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\42.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 10,
+    "firstname": "Альжбета",
+    "lastname": "Трофимова",
+    "patronymic": "Якововна",
+    "birthday": "Oct 22, 1988 3:00:00 AM",
+    "register": "Sep 21, 2017 3:00:00 AM",
+    "email": "gbacon@mac.com",
+    "phone": "7(1084)658-92-95",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\25.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 11,
+    "firstname": "Адриан",
+    "lastname": "Новиков",
+    "patronymic": "Аркадьевич",
+    "birthday": "Jan 15, 1974 3:00:00 AM",
+    "register": "Nov 23, 2018 3:00:00 AM",
+    "email": "multiplx@verizon.net",
+    "phone": "7(70)572-33-62",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m40.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 12,
+    "firstname": "Иветта",
+    "lastname": "Мишина",
+    "patronymic": "Андреевна",
+    "birthday": "Oct 5, 2002 4:00:00 AM",
+    "register": "Jan 24, 2016 3:00:00 AM",
+    "email": "aukjan@yahoo.com",
+    "phone": "7(3926)244-81-96",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\30.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 13,
+    "firstname": "Геннадий",
+    "lastname": "Шестаков",
+    "patronymic": "Рубенович",
+    "birthday": "Jul 1, 2001 4:00:00 AM",
+    "register": "Dec 8, 2018 3:00:00 AM",
+    "email": "tokuhirom@live.com",
+    "phone": "7(2066)037-11-60",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m41.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 14,
+    "firstname": "Матвей",
+    "lastname": "Зуев",
+    "patronymic": "Иванович",
+    "birthday": "Mar 28, 1981 3:00:00 AM",
+    "register": "Dec 18, 2018 3:00:00 AM",
+    "email": "brickbat@verizon.net",
+    "phone": "7(5383)893-04-66",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m38.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 15,
+    "firstname": "Георгина",
+    "lastname": "Турова",
+    "patronymic": "Семёновна",
+    "birthday": "May 28, 1974 3:00:00 AM",
+    "register": "Feb 22, 2018 3:00:00 AM",
+    "email": "yruan@optonline.net",
+    "phone": "7(555)321-42-99",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\27.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 16,
+    "firstname": "Валентин",
+    "lastname": "Анисимов",
+    "patronymic": "Пантелеймонович",
+    "birthday": "Dec 10, 2000 3:00:00 AM",
+    "register": "Jan 20, 2018 3:00:00 AM",
+    "email": "aaribaud@hotmail.com",
+    "phone": "7(700)326-70-24",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m99.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 17,
+    "firstname": "Тамара",
+    "lastname": "Анисимова",
+    "patronymic": "Витальевна",
+    "birthday": "Jun 16, 1988 4:00:00 AM",
+    "register": "Feb 25, 2016 3:00:00 AM",
+    "email": "schwaang@mac.com",
+    "phone": "7(66)128-04-10",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\2.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 18,
+    "firstname": "Орест",
+    "lastname": "Колобов",
+    "patronymic": "Юлианович",
+    "birthday": "Jul 14, 2001 4:00:00 AM",
+    "register": "Jan 1, 2017 3:00:00 AM",
+    "email": "parkes@verizon.net",
+    "phone": "7(1680)508-58-26",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m27.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 19,
+    "firstname": "Аристарх",
+    "lastname": "Филатов",
+    "patronymic": "Дмитриевич",
+    "birthday": "May 29, 1989 4:00:00 AM",
+    "register": "Jan 11, 2017 3:00:00 AM",
+    "email": "hampton@att.net",
+    "phone": "7(696)235-29-24",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m43.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 20,
+    "firstname": "Влада",
+    "lastname": "Орлова",
+    "patronymic": "Мартыновна",
+    "birthday": "Jun 26, 1990 4:00:00 AM",
+    "register": "Mar 21, 2016 3:00:00 AM",
+    "email": "rnelson@yahoo.ca",
+    "phone": "7(2506)433-38-35",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\22.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 21,
+    "firstname": "Элина",
+    "lastname": "Алексеева",
+    "patronymic": "Матвеевна",
+    "birthday": "May 7, 2002 4:00:00 AM",
+    "register": "Mar 28, 2018 3:00:00 AM",
+    "email": "pthomsen@verizon.net",
+    "phone": "7(8086)245-64-81",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\1.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 22,
+    "firstname": "Агафон",
+    "lastname": "Бобров",
+    "patronymic": "Лаврентьевич",
+    "birthday": "Jul 29, 1995 4:00:00 AM",
+    "register": "May 9, 2017 3:00:00 AM",
+    "email": "petersen@comcast.net",
+    "phone": "7(2159)507-39-57",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m35.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 23,
+    "firstname": "Инара",
+    "lastname": "Бирюкова",
+    "patronymic": "Улебовна",
+    "birthday": "Jul 21, 1978 3:00:00 AM",
+    "register": "Oct 1, 2017 3:00:00 AM",
+    "email": "smpeters@hotmail.com",
+    "phone": "7(098)346-50-58",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\5.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 24,
+    "firstname": "Марк",
+    "lastname": "Панфилов",
+    "patronymic": "Рудольфович",
+    "birthday": "Apr 13, 1991 3:00:00 AM",
+    "register": "Feb 23, 2016 3:00:00 AM",
+    "email": "cremonini@optonline.net",
+    "phone": "7(764)282-55-22",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m45.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 25,
+    "firstname": "Алина",
+    "lastname": "Колесникова",
+    "patronymic": "Еремеевна",
+    "birthday": "Apr 19, 2001 4:00:00 AM",
+    "register": "Jan 18, 2017 3:00:00 AM",
+    "email": "gfxguy@outlook.com",
+    "phone": "7(74)977-39-71",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\40.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 26,
+    "firstname": "Наум",
+    "lastname": "Морозов",
+    "patronymic": "Валерьянович",
+    "birthday": "Jul 4, 1985 4:00:00 AM",
+    "register": "May 2, 2016 3:00:00 AM",
+    "email": "salesgeek@mac.com",
+    "phone": "7(636)050-96-13",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m49.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 27,
+    "firstname": "Давид",
+    "lastname": "Горбачёв",
+    "patronymic": "Тимурович",
+    "birthday": "May 22, 1983 4:00:00 AM",
+    "register": "Dec 17, 2018 3:00:00 AM",
+    "email": "hedwig@att.net",
+    "phone": "7(53)602-85-41",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m36.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 28,
+    "firstname": "Оскар",
+    "lastname": "Васильев",
+    "patronymic": "Богданович",
+    "birthday": "Jan 30, 1971 3:00:00 AM",
+    "register": "May 28, 2017 3:00:00 AM",
+    "email": "miturria@verizon.net",
+    "phone": "7(585)801-94-29",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m15.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 29,
+    "firstname": "Номи",
+    "lastname": "Ершова",
+    "patronymic": "Андреевна",
+    "birthday": "Sep 13, 2001 4:00:00 AM",
+    "register": "Jun 30, 2016 3:00:00 AM",
+    "email": "miltchev@mac.com",
+    "phone": "7(7757)315-90-99",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\14.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 30,
+    "firstname": "Святослав",
+    "lastname": "Медведев",
+    "patronymic": "Юлианович",
+    "birthday": "Oct 4, 1972 3:00:00 AM",
+    "register": "Oct 13, 2018 3:00:00 AM",
+    "email": "hllam@comcast.net",
+    "phone": "7(3520)435-21-20",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m13.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 31,
+    "firstname": "Эльмира",
+    "lastname": "Баранова",
+    "patronymic": "Дмитриевна",
+    "birthday": "Jan 15, 1977 3:00:00 AM",
+    "register": "Jul 8, 2016 3:00:00 AM",
+    "email": "jgmyers@comcast.net",
+    "phone": "7(9240)643-15-50",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\4.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 32,
+    "firstname": "Харита",
+    "lastname": "Попова",
+    "patronymic": "Якуновна",
+    "birthday": "Dec 16, 1997 3:00:00 AM",
+    "register": "Jul 5, 2016 3:00:00 AM",
+    "email": "firstpr@verizon.net",
+    "phone": "7(335)386-81-06",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\36.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 33,
+    "firstname": "Аверкий",
+    "lastname": "Кудряшов",
+    "patronymic": "Константинович",
+    "birthday": "Jul 26, 1991 3:00:00 AM",
+    "register": "Mar 8, 2018 3:00:00 AM",
+    "email": "nanop@msn.com",
+    "phone": "7(88)732-96-30",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m33.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 34,
+    "firstname": "Марта",
+    "lastname": "Горшкова",
+    "patronymic": "Иосифовна",
+    "birthday": "Feb 13, 2001 3:00:00 AM",
+    "register": "Aug 4, 2016 3:00:00 AM",
+    "email": "gbacon@mac.com",
+    "phone": "7(544)650-59-03 ",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\9.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 35,
+    "firstname": "Богдан",
+    "lastname": "Кудрявцев",
+    "patronymic": "Христофорович",
+    "birthday": "Feb 27, 1988 3:00:00 AM",
+    "register": "Oct 7, 2016 3:00:00 AM",
+    "email": "lukka@hotmail.com",
+    "phone": "7(20)131-84-09",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m31.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 36,
+    "firstname": "Яков",
+    "lastname": "Гусев",
+    "patronymic": "Авксентьевич",
+    "birthday": "Dec 10, 1995 3:00:00 AM",
+    "register": "Nov 20, 2017 3:00:00 AM",
+    "email": "jdhedden@icloud.com",
+    "phone": "7(0972)781-11-37",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m20.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 37,
+    "firstname": "Авигея",
+    "lastname": "Крюкова",
+    "patronymic": "Святославовна",
+    "birthday": "Aug 10, 2000 4:00:00 AM",
+    "register": "Jan 3, 2018 3:00:00 AM",
+    "email": "simone@gmail.com",
+    "phone": "7(499)318-88-53",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\19.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 38,
+    "firstname": "Амелия",
+    "lastname": "Степанова",
+    "patronymic": "Робертовна",
+    "birthday": "Jun 6, 1970 3:00:00 AM",
+    "register": "Sep 27, 2017 3:00:00 AM",
+    "email": "rasca@hotmail.com",
+    "phone": "7(1217)441-28-42",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\15.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 39,
+    "firstname": "Божена",
+    "lastname": "Суворова",
+    "patronymic": "Анатольевна",
+    "birthday": "Mar 9, 1981 3:00:00 AM",
+    "register": "Jan 28, 2016 3:00:00 AM",
+    "email": "attwood@aol.com",
+    "phone": "7(347)895-86-57",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\34.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 40,
+    "firstname": "Аввакум",
+    "lastname": "Борисов",
+    "patronymic": "Артемович",
+    "birthday": "Apr 25, 1974 3:00:00 AM",
+    "register": "Mar 11, 2017 3:00:00 AM",
+    "email": "chlim@live.com",
+    "phone": "7(2296)930-08-88",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m12.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 41,
+    "firstname": "Георгий",
+    "lastname": "Бобылёв",
+    "patronymic": "Витальевич",
+    "birthday": "Dec 19, 1983 3:00:00 AM",
+    "register": "Apr 6, 2018 3:00:00 AM",
+    "email": "csilvers@mac.com",
+    "phone": "7(88)685-13-51",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m11.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 42,
+    "firstname": "Вольдемар",
+    "lastname": "Дроздов",
+    "patronymic": "Артемович",
+    "birthday": "Feb 7, 1976 3:00:00 AM",
+    "register": "Jul 18, 2017 3:00:00 AM",
+    "email": "smpeters@me.com",
+    "phone": "7(307)456-99-05",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m21.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 43,
+    "firstname": "Сабрина",
+    "lastname": "Беляева",
+    "patronymic": "Федосеевна",
+    "birthday": "Jul 26, 1972 3:00:00 AM",
+    "register": "Jun 14, 2017 3:00:00 AM",
+    "email": "agapow@gmail.com",
+    "phone": "7(6580)534-32-58",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\47.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 44,
+    "firstname": "Пантелеймон",
+    "lastname": "Блохин",
+    "patronymic": "Феликсович",
+    "birthday": "Mar 6, 1978 3:00:00 AM",
+    "register": "Feb 14, 2018 3:00:00 AM",
+    "email": "balchen@comcast.net",
+    "phone": "7(9524)556-48-98",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m8.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 45,
+    "firstname": "Гелла",
+    "lastname": "Шашкова",
+    "patronymic": "Эдуардовна",
+    "birthday": "Feb 24, 1979 3:00:00 AM",
+    "register": "Nov 16, 2016 3:00:00 AM",
+    "email": "jadavis@mac.com",
+    "phone": "7(57)446-21-04",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\43.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 46,
+    "firstname": "Артур",
+    "lastname": "Калашников",
+    "patronymic": "Юрьевич",
+    "birthday": "Dec 13, 1972 3:00:00 AM",
+    "register": "Aug 20, 2017 3:00:00 AM",
+    "email": "oevans@aol.com",
+    "phone": "7(147)947-47-21",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m10.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 47,
+    "firstname": "Анэля",
+    "lastname": "Корнилова",
+    "patronymic": "Михайловна",
+    "birthday": "Apr 2, 1973 3:00:00 AM",
+    "register": "May 22, 2016 3:00:00 AM",
+    "email": "jonathan@aol.com",
+    "phone": "7(20)980-01-60",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\26.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 48,
+    "firstname": "Янита",
+    "lastname": "Гущина",
+    "patronymic": "Федоровна",
+    "birthday": "Mar 2, 1999 3:00:00 AM",
+    "register": "Feb 1, 2018 3:00:00 AM",
+    "email": "lishoy@att.net",
+    "phone": "7(4544)716-68-96",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\11.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 49,
+    "firstname": "Людвиг",
+    "lastname": "Волков",
+    "patronymic": "Витальевич",
+    "birthday": "Dec 27, 1977 3:00:00 AM",
+    "register": "Apr 27, 2016 3:00:00 AM",
+    "email": "jrkorson@msn.com",
+    "phone": "7(8459)592-05-58",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m50.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 50,
+    "firstname": "Терентий",
+    "lastname": "Князев",
+    "patronymic": "Валерьевич",
+    "birthday": "Jun 19, 1991 3:00:00 AM",
+    "register": "Jun 25, 2018 3:00:00 AM",
+    "email": "rjones@aol.com",
+    "phone": "7(98)397-23-23",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m26.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 51,
+    "firstname": "Гаянэ",
+    "lastname": "Силин",
+    "patronymic": "Анатольевич",
+    "birthday": "May 27, 1976 3:00:00 AM",
+    "register": "May 5, 2017 3:00:00 AM",
+    "email": "multiplx@comcast.net",
+    "phone": "7(4547)615-22-69",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m46.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 52,
+    "firstname": "Дмитрий",
+    "lastname": "Казаков",
+    "patronymic": "Русланович",
+    "birthday": "Dec 15, 1978 3:00:00 AM",
+    "register": "May 21, 2016 3:00:00 AM",
+    "email": "ozawa@verizon.net",
+    "phone": "7(51)682-19-40",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m44.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 53,
+    "firstname": "Роза",
+    "lastname": "Гусева",
+    "patronymic": "Дмитриевна",
+    "birthday": "Feb 13, 1999 3:00:00 AM",
+    "register": "Dec 12, 2017 3:00:00 AM",
+    "email": "martyloo@live.com",
+    "phone": "7(23)064-51-84",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\10.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 54,
+    "firstname": "Марфа",
+    "lastname": "Мамонтова",
+    "patronymic": "Мироновна",
+    "birthday": "Oct 19, 1984 3:00:00 AM",
+    "register": "Feb 27, 2018 3:00:00 AM",
+    "email": "rfoley@verizon.net",
+    "phone": "7(38)095-64-18",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\29.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 55,
+    "firstname": "Эрик",
+    "lastname": "Галкин",
+    "patronymic": "Онисимович",
+    "birthday": "Jan 18, 1975 3:00:00 AM",
+    "register": "Jul 19, 2016 3:00:00 AM",
+    "email": "snunez@verizon.net",
+    "phone": "7(759)873-77-39",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m16.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 56,
+    "firstname": "Прасковья",
+    "lastname": "Архипова",
+    "patronymic": "Валерьевна",
+    "birthday": "Jan 9, 1979 3:00:00 AM",
+    "register": "Jul 23, 2018 3:00:00 AM",
+    "email": "cgcra@live.com",
+    "phone": "7(86)540-10-21",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\33.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 57,
+    "firstname": "Лаура",
+    "lastname": "Овчинникова",
+    "patronymic": "Еремеевна",
+    "birthday": "Apr 3, 1992 4:00:00 AM",
+    "register": "Nov 24, 2018 3:00:00 AM",
+    "email": "carcus@yahoo.ca",
+    "phone": "7(85)829-33-79",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\35.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 58,
+    "firstname": "Патрисия",
+    "lastname": "Андреева",
+    "patronymic": "Валерьевна",
+    "birthday": "Nov 18, 1993 3:00:00 AM",
+    "register": "Jul 17, 2016 3:00:00 AM",
+    "email": "jigsaw@aol.com",
+    "phone": "7(9648)953-81-26",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\37.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 59,
+    "firstname": "Самуил",
+    "lastname": "Авдеев",
+    "patronymic": "Улебович",
+    "birthday": "Jul 4, 1996 4:00:00 AM",
+    "register": "Feb 11, 2016 3:00:00 AM",
+    "email": "cliffordj@mac.com",
+    "phone": "7(3168)043-63-31",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m96.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 60,
+    "firstname": "Светлана",
+    "lastname": "Бурова",
+    "patronymic": "Лукьевна",
+    "birthday": "Jan 4, 1979 3:00:00 AM",
+    "register": "Oct 13, 2016 3:00:00 AM",
+    "email": "wsnyder@aol.com",
+    "phone": "7(358)173-82-21",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\39.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 61,
+    "firstname": "Глеб",
+    "lastname": "Ершов",
+    "patronymic": "Федорович",
+    "birthday": "Jun 14, 1970 3:00:00 AM",
+    "register": "Sep 14, 2016 3:00:00 AM",
+    "email": "sjava@aol.com",
+    "phone": "7(2608)298-40-82",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m23.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 62,
+    "firstname": "Захар",
+    "lastname": "Игнатов",
+    "patronymic": "Павлович",
+    "birthday": "Oct 7, 1998 4:00:00 AM",
+    "register": "Nov 10, 2017 3:00:00 AM",
+    "email": "dieman@icloud.com",
+    "phone": "7(578)574-73-36",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m98.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 63,
+    "firstname": "Амалия",
+    "lastname": "Комиссарова",
+    "patronymic": "Робертовна",
+    "birthday": "Aug 18, 1971 3:00:00 AM",
+    "register": "Aug 4, 2017 3:00:00 AM",
+    "email": "jorgb@msn.com",
+    "phone": "7(22)647-46-32",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\17.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 64,
+    "firstname": "Трофим",
+    "lastname": "Быков",
+    "patronymic": "Константинович",
+    "birthday": "Dec 20, 1994 3:00:00 AM",
+    "register": "Apr 17, 2016 3:00:00 AM",
+    "email": "jguyer@aol.com",
+    "phone": "7(3414)460-12-05",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m14.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 65,
+    "firstname": "Леонтий",
+    "lastname": "Кузьмин",
+    "patronymic": "Валерьянович",
+    "birthday": "May 5, 2000 4:00:00 AM",
+    "register": "Oct 12, 2017 3:00:00 AM",
+    "email": "msloan@hotmail.com",
+    "phone": "7(1340)148-90-68",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m17.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 66,
+    "firstname": "Диана",
+    "lastname": "Белозёрова",
+    "patronymic": "Антоновна",
+    "birthday": "Feb 27, 1989 3:00:00 AM",
+    "register": "Jan 30, 2017 3:00:00 AM",
+    "email": "dialworld@aol.com",
+    "phone": "7(9900)174-59-87",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\7.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 67,
+    "firstname": "Евгений",
+    "lastname": "Блинов",
+    "patronymic": "Мэлсович",
+    "birthday": "Jan 5, 1994 3:00:00 AM",
+    "register": "May 7, 2017 3:00:00 AM",
+    "email": "moxfulder@outlook.com",
+    "phone": "7(0852)321-82-64",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m7.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 68,
+    "firstname": "Алексей",
+    "lastname": "Лазарев",
+    "patronymic": "Богданович",
+    "birthday": "Mar 10, 1977 3:00:00 AM",
+    "register": "Jan 2, 2017 3:00:00 AM",
+    "email": "claesjac@me.com",
+    "phone": "7(0055)737-37-48",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m48.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 69,
+    "firstname": "Розалия",
+    "lastname": "Афанасьева",
+    "patronymic": "Макаровна",
+    "birthday": "May 1, 1977 3:00:00 AM",
+    "register": "Sep 6, 2017 3:00:00 AM",
+    "email": "malattia@hotmail.com",
+    "phone": "7(0661)413-23-32",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\31.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 70,
+    "firstname": "Эдита",
+    "lastname": "Дементьева",
+    "patronymic": "Онисимовна",
+    "birthday": "Sep 17, 1975 3:00:00 AM",
+    "register": "Nov 24, 2018 3:00:00 AM",
+    "email": "frosal@hotmail.com",
+    "phone": "7(198)922-28-76",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\38.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 71,
+    "firstname": "Петр",
+    "lastname": "Калинин",
+    "patronymic": "Иванович",
+    "birthday": "Sep 8, 1993 4:00:00 AM",
+    "register": "May 26, 2016 3:00:00 AM",
+    "email": "aschmitz@hotmail.com",
+    "phone": "7(90)316-07-17",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m47.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 72,
+    "firstname": "Станислав",
+    "lastname": "Андреев",
+    "patronymic": "Максович",
+    "birthday": "Oct 10, 1975 3:00:00 AM",
+    "register": "Dec 26, 2017 3:00:00 AM",
+    "email": "budinger@mac.com",
+    "phone": "7(02)993-91-28",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m3.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 73,
+    "firstname": "Устин",
+    "lastname": "Киселёв",
+    "patronymic": "Яковлевич",
+    "birthday": "Jan 8, 1985 3:00:00 AM",
+    "register": "Jun 21, 2018 3:00:00 AM",
+    "email": "dalamb@verizon.net",
+    "phone": "7(83)334-52-76",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m25.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 74,
+    "firstname": "Павел",
+    "lastname": "Гордеев",
+    "patronymic": "Семенович",
+    "birthday": "Sep 6, 1984 4:00:00 AM",
+    "register": "Jul 19, 2016 3:00:00 AM",
+    "email": "dawnsong@verizon.net",
+    "phone": "7(5243)599-66-72",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m19.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 75,
+    "firstname": "Никки",
+    "lastname": "Горбачёва",
+    "patronymic": "Еремеевна",
+    "birthday": "Apr 21, 1987 4:00:00 AM",
+    "register": "Aug 16, 2018 3:00:00 AM",
+    "email": "chinthaka@att.net",
+    "phone": "7(94)789-69-20",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\8.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 76,
+    "firstname": "Касьян",
+    "lastname": "Копылов",
+    "patronymic": "Робертович",
+    "birthday": "Aug 4, 1983 4:00:00 AM",
+    "register": "Mar 18, 2018 3:00:00 AM",
+    "email": "crobles@sbcglobal.net",
+    "phone": "7(5774)679-82-06",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m29.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 77,
+    "firstname": "Витольд",
+    "lastname": "Ефремов",
+    "patronymic": "Авксентьевич",
+    "birthday": "Dec 2, 1975 3:00:00 AM",
+    "register": "Apr 9, 2018 3:00:00 AM",
+    "email": "kwilliams@yahoo.ca",
+    "phone": "7(93)922-14-03",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m28.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 78,
+    "firstname": "Михаил",
+    "lastname": "Баранов",
+    "patronymic": "Романович",
+    "birthday": "Jul 12, 1997 4:00:00 AM",
+    "register": "Oct 7, 2018 3:00:00 AM",
+    "email": "bigmauler@outlook.com",
+    "phone": "7(750)985-94-13",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m5.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 79,
+    "firstname": "Элина",
+    "lastname": "Дмитриева",
+    "patronymic": "Даниловна",
+    "birthday": "Dec 10, 1988 3:00:00 AM",
+    "register": "Feb 11, 2017 3:00:00 AM",
+    "email": "vmalik@live.com",
+    "phone": "7(787)140-48-84",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\12.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 80,
+    "firstname": "Осип",
+    "lastname": "Федотов",
+    "patronymic": "Анатольевич",
+    "birthday": "Apr 13, 1971 3:00:00 AM",
+    "register": "Jul 23, 2018 3:00:00 AM",
+    "email": "breegster@hotmail.com",
+    "phone": "7(590)702-33-06",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m9.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 81,
+    "firstname": "Тала",
+    "lastname": "Быкова",
+    "patronymic": "Георгьевна",
+    "birthday": "Feb 22, 2000 3:00:00 AM",
+    "register": "Aug 13, 2016 3:00:00 AM",
+    "email": "ganter@optonline.net",
+    "phone": "7(13)915-53-53",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\6.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 82,
+    "firstname": "Вадим",
+    "lastname": "Дементьев",
+    "patronymic": "Ростиславович",
+    "birthday": "Jul 10, 1993 4:00:00 AM",
+    "register": "Mar 5, 2018 3:00:00 AM",
+    "email": "jacks@aol.com",
+    "phone": "7(79)330-46-15",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m39.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 83,
+    "firstname": "Макар",
+    "lastname": "Евсеев",
+    "patronymic": "Васильевич",
+    "birthday": "Sep 13, 1977 3:00:00 AM",
+    "register": "Dec 5, 2018 3:00:00 AM",
+    "email": "parsimony@sbcglobal.net",
+    "phone": "7(2141)077-85-70",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m22.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 84,
+    "firstname": "Станислав",
+    "lastname": "Абрамов",
+    "patronymic": "Филатович",
+    "birthday": "May 18, 1989 4:00:00 AM",
+    "register": "Dec 8, 2016 3:00:00 AM",
+    "email": "solomon@att.net",
+    "phone": "7(6545)478-87-79",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m32.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 85,
+    "firstname": "Лиза",
+    "lastname": "Артемьева",
+    "patronymic": "Максимовна",
+    "birthday": "May 17, 1996 4:00:00 AM",
+    "register": "Oct 7, 2018 3:00:00 AM",
+    "email": "snunez@yahoo.ca",
+    "phone": "7(696)972-70-21",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\3.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 86,
+    "firstname": "Дэнна",
+    "lastname": "Кузьмина",
+    "patronymic": "Витальевна",
+    "birthday": "Aug 24, 1993 4:00:00 AM",
+    "register": "Mar 27, 2016 3:00:00 AM",
+    "email": "nichoj@mac.com",
+    "phone": "7(9940)977-45-73",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\20.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 87,
+    "firstname": "Магда",
+    "lastname": "Ефимова",
+    "patronymic": "Платоновна",
+    "birthday": "Aug 16, 1995 4:00:00 AM",
+    "register": "Aug 1, 2017 3:00:00 AM",
+    "email": "rbarreira@me.com",
+    "phone": "7(9261)386-15-92",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\16.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 88,
+    "firstname": "Альберт",
+    "lastname": "Ефимов",
+    "patronymic": "Проклович",
+    "birthday": "Oct 29, 1997 3:00:00 AM",
+    "register": "Jun 21, 2018 3:00:00 AM",
+    "email": "houle@live.com",
+    "phone": "7(416)375-97-19",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m6.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 89,
+    "firstname": "Эльвина",
+    "lastname": "Лазарева",
+    "patronymic": "Робертовна",
+    "birthday": "Feb 16, 1996 3:00:00 AM",
+    "register": "Apr 11, 2018 3:00:00 AM",
+    "email": "ahuillet@comcast.net",
+    "phone": "7(5564)609-81-37",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\28.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 90,
+    "firstname": "Изабелла",
+    "lastname": "Воронова",
+    "patronymic": "Вячеславовна",
+    "birthday": "Sep 24, 1999 4:00:00 AM",
+    "register": "Dec 21, 2017 3:00:00 AM",
+    "email": "kildjean@sbcglobal.net",
+    "phone": "7(17)433-44-98",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\21.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 92,
+    "firstname": "Амалия",
+    "lastname": "Егорова",
+    "patronymic": "Дамировна",
+    "birthday": "Sep 28, 1999 4:00:00 AM",
+    "register": "Jun 30, 2016 3:00:00 AM",
+    "email": "drezet@yahoo.com",
+    "phone": "7(7486)408-12-26",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\13.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 93,
+    "firstname": "Станислав",
+    "lastname": "Александров",
+    "patronymic": "Эдуардович",
+    "birthday": "Jul 4, 1981 4:00:00 AM",
+    "register": "Nov 8, 2018 3:00:00 AM",
+    "email": "bigmauler@aol.com",
+    "phone": "7(18)164-05-12",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m2.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 94,
+    "firstname": "Демьян",
+    "lastname": "Цветков",
+    "patronymic": "Львович",
+    "birthday": "Mar 29, 1996 3:00:00 AM",
+    "register": "Feb 12, 2016 3:00:00 AM",
+    "email": "hauma@icloud.com",
+    "phone": "7(93)546-43-73",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m4.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 95,
+    "firstname": "Юнона",
+    "lastname": "Устинова",
+    "patronymic": "Валентиновна",
+    "birthday": "Aug 8, 1982 4:00:00 AM",
+    "register": "May 28, 2017 3:00:00 AM",
+    "email": "kempsonc@live.com",
+    "phone": "7(33)367-13-07",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\44.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 96,
+    "firstname": "Любава",
+    "lastname": "Костина",
+    "patronymic": "Авксентьевна",
+    "birthday": "Jul 13, 1972 3:00:00 AM",
+    "register": "Feb 26, 2016 3:00:00 AM",
+    "email": "gordonjcp@hotmail.com",
+    "phone": "7(6419)959-21-87",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\41.jpg",
+    "markBoolean": true,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 97,
+    "firstname": "Мартын",
+    "lastname": "Смирнов",
+    "patronymic": "Арсеньевич",
+    "birthday": "Jun 25, 1996 4:00:00 AM",
+    "register": "Feb 7, 2017 3:00:00 AM",
+    "email": "haddawy@live.com",
+    "phone": "7(6251)589-02-43",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m34.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 98,
+    "firstname": "Сандра",
+    "lastname": "Федотова",
+    "patronymic": "Владленовна",
+    "birthday": "Mar 29, 1985 3:00:00 AM",
+    "register": "Nov 8, 2016 3:00:00 AM",
+    "email": "penna@verizon.net",
+    "phone": "7(126)195-25-86",
+    "genderCode": "ж",
+    "photoPath": "Клиенты\\24.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 99,
+    "firstname": "Леонтий",
+    "lastname": "Журавлёв",
+    "patronymic": "Яковлевич",
+    "birthday": "Mar 2, 2000 3:00:00 AM",
+    "register": "Jan 15, 2018 3:00:00 AM",
+    "email": "cmdrgravy@me.com",
+    "phone": "7(4403)308-56-96",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m24.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  },
+  {
+    "id": 100,
+    "firstname": "Вадим",
+    "lastname": "Большаков",
+    "patronymic": "Данилович",
+    "birthday": "May 15, 1970 3:00:00 AM",
+    "register": "Aug 4, 2018 3:00:00 AM",
+    "email": "uncle@gmail.com",
+    "phone": "7(386)641-13-37",
+    "genderCode": "м",
+    "photoPath": "Клиенты\\m97.jpg",
+    "markBoolean": false,
+    "icon": {
+      "imageObserver": null,
+      "description": null,
+      "width": 128,
+      "height": 128,
+      "accessibleContext": null
+    }
+  }
+]
