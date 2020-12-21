@@ -42,7 +42,7 @@ public class CustomTableModel<T> extends AbstractTableModel
         /*//так названием колонки будет название поля в ващей сущгости
         return cls.getDeclaredFields()[column].getName();*/
 
-        return columnNames[column];
+        return column >= columnNames.length ? "NAME" : columnNames[column];
     }
 
     @Override

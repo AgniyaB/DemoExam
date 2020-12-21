@@ -1,11 +1,12 @@
 package org.orgname.app;
 
 import org.orgname.app.ui.ClientTableForm;
-import org.orgname.app.util.BaseForm;
-import org.orgname.app.util.DialogUtil;
-import org.orgname.app.util.MysqlDatabase;
+import org.orgname.app.util.*;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
+import java.io.IOException;
 import java.sql.Connection;
 
 public class Application
@@ -39,10 +40,19 @@ public class Application
         BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
 
         try {
+            BaseForm.setBaseApplicationIcon(ResourceUtil.getImage("icon.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            DialogUtil.showError("Не удалось загрузить иконку приложения");
+        }
+
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        FontUtil.changeAllFonts(new FontUIResource("Lobster", Font.TRUETYPE_FONT, 16));
     }
 
     public MysqlDatabase getDatabase() {
