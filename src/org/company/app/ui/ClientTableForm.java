@@ -6,12 +6,10 @@ import org.company.app.data.manager.ClientEntityManager;
 import org.company.app.util.BaseForm;
 import org.company.app.util.CustomTableModel;
 
-import javax.print.DocFlavor.READER;
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,6 +18,8 @@ public class ClientTableForm extends BaseForm
     private final ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
 
     private CustomTableModel<ClientEntity> model;
+
+    private boolean blockFilter = false;
 
     private boolean idSort = true;
     private boolean birthdaySort = false;
@@ -31,6 +31,7 @@ public class ClientTableForm extends BaseForm
     private JComboBox genderSortBox;
     private JButton clearSortButton;
     private JComboBox testSecondSortBox;
+    private JLabel rowCountLabel;
 
     public ClientTableForm()
     {
@@ -56,6 +57,7 @@ public class ClientTableForm extends BaseForm
                     clientEntityManager.getAll()
             );
             table.setModel(model);
+            updateRowCountLabel(model.getValues().size());
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -92,7 +94,10 @@ public class ClientTableForm extends BaseForm
         });
 
         clearSortButton.addActionListener(e -> {
+            blockFilter = true;
             genderSortBox.setSelectedIndex(0);
+            blockFilter = false;
+            testSecondSortBox.setSelectedIndex(0);
         });
     }
 
@@ -106,27 +111,68 @@ public class ClientTableForm extends BaseForm
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED) {
-                    try {
-                        List<ClientEntity> allClients = clientEntityManager.getAll();
-
-                        if(genderSortBox.getSelectedIndex() == 1) {
-                            allClients.removeIf(clientEntity -> clientEntity.getGenderCode() == 'ж');
-                        } else if(genderSortBox.getSelectedIndex() == 2) {
-                            allClients.removeIf(clientEntity -> clientEntity.getGenderCode() == 'м');
-                        }
-
-                        model.setValues(allClients);
-                        model.fireTableDataChanged();
-
-                        idSort = true;
-                        birthdaySort = false;
-
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
+                    if(!blockFilter) {
+                        filterBoxes();
                     }
                 }
             }
         });
+
+        testSecondSortBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED) {
+                    if(!blockFilter) {
+                        filterBoxes();
+                    }
+                }
+            }
+        });
+
+        testSecondSortBox.addItem("Все");
+        testSecondSortBox.addItem("Начинаются на А");
+    }
+
+    private void filterBoxes()
+    {
+        try {
+            List<ClientEntity> allClients = clientEntityManager.getAll();
+            int max = allClients.size();
+
+            if(genderSortBox.getSelectedIndex() == 1) {
+                allClients.removeIf(clientEntity -> clientEntity.getGenderCode() == 'ж');
+            } else if(genderSortBox.getSelectedIndex() == 2) {
+                allClients.removeIf(clientEntity -> clientEntity.getGenderCode() == 'м');
+            }
+
+            if(testSecondSortBox.getSelectedIndex() == 1) {
+                allClients.removeIf(clientEntity -> clientEntity.getFirstname().charAt(0) != 'А');
+            }
+
+            model.setValues(allClients);
+            model.fireTableDataChanged();
+            updateRowCountLabel(max);
+
+            idSort = true;
+            birthdaySort = false;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void updateRowCountLabel()
+    {
+        try {
+            updateRowCountLabel(clientEntityManager.getAll().size());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void updateRowCountLabel(int newMax)
+    {
+        rowCountLabel.setText("( " + model.getValues().size() + " / " + newMax + " )");
     }
 
     @Override
