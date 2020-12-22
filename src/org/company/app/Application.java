@@ -3,6 +3,7 @@ package org.company.app;
 import org.company.app.data.entity.DateEntity;
 import org.company.app.data.manager.DateEntityManager;
 import org.company.app.data.manager.UserEntityManager;
+import org.company.app.ui.ClientTableForm;
 import org.company.app.ui.CustomTableForm;
 import org.company.app.util.BaseForm;
 import org.company.app.util.DialogUtil;
@@ -27,18 +28,7 @@ public class Application
         initDatabase();
         initUi();
 
-        /*try {
-            DateEntityManager dateEntityManager = new DateEntityManager(database);
-            DateEntity dateEntity = new DateEntity(new Date());
-            dateEntityManager.add(dateEntity);
-            System.out.println(dateEntity);
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-
-        new CustomTableForm();
-        //new StartForm();
+        new ClientTableForm();
     }
 
     private void initDatabase()
