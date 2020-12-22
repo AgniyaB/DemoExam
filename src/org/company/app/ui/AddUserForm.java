@@ -91,6 +91,11 @@ public class AddUserForm extends BaseSubForm<CustomTableForm>
                 mainForm.getModel().getValues().add(user);
                 //чтобы таблица обновилась (графически) после добавления элемента нужно вызвать этот метод
                 mainForm.getModel().fireTableDataChanged();
+
+                mainForm.setActualRows(mainForm.getActualRows() + 1);
+                mainForm.setMaxRows(mainForm.getMaxRows() + 1);
+                mainForm.setRowCountInfo();
+
                 closeSubForm();
 
             } catch (SQLException throwables) {
