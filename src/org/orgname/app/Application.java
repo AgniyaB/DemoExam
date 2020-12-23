@@ -1,18 +1,12 @@
 package org.orgname.app;
 
-import org.orgname.app.database.entity.DateEntity;
-import org.orgname.app.database.manager.DateEntityManager;
-import org.orgname.app.ui.CustomTableForm;
-import org.orgname.app.ui.ServiceTableForm;
+import org.orgname.app.ui.ClientTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
 import org.orgname.app.util.MysqlDatabase;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class Application
 {
@@ -32,7 +26,7 @@ public class Application
         initDatabase();
         initUi();
 
-        DateEntityManager dateEntityManager = new DateEntityManager(database);
+        /*DateEntityManager dateEntityManager = new DateEntityManager(database);
         String s = "13.01.1999";
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         try {
@@ -44,9 +38,9 @@ public class Application
 
         } catch (ParseException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        //new ServiceTableForm();
+        new ClientTableForm();
     }
 
     private void initDatabase()
