@@ -53,13 +53,22 @@ public class AddClientForm extends BaseSubForm<ClientTableForm>
         });
 
         saveButton.addActionListener(e -> {
+            Date newDate = null;
+            try {
+                newDate = format.parse(birthdayField.getText());
+            } catch (ParseException parseException) {
+                parseException.printStackTrace();
+                DialogUtil.showError(this, "Неверный формат даты");
+                return;
+            }
+
             try {
                 //тут должны проверки на корректность полей
                 ClientEntity newClient = new ClientEntity(
                         firstnameField.getText(),
                         surnameField.getText(),
                         patronymicField.getText(),
-                        format.parse(birthdayField.getText()),
+                        newDate,
                         new Date(),
                         emailField.getText(),
                         phoneField.getText(),
@@ -73,7 +82,7 @@ public class AddClientForm extends BaseSubForm<ClientTableForm>
 
                 closeSubForm();
 
-            } catch (SQLException | ParseException ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
                 DialogUtil.showError(AddClientForm.this, "Не удалось добавить клиента");
             }

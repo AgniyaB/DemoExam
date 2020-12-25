@@ -10,6 +10,8 @@ import org.orgname.app.util.DialogUtil;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
 public class ClientTableForm extends BaseForm
@@ -66,6 +68,16 @@ public class ClientTableForm extends BaseForm
                             throwables.printStackTrace();
                         }
                     }
+                }
+            }
+        });
+
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int row = table.rowAtPoint(e.getPoint());
+                if(e.getClickCount() == 2 && row != -1) {
+                    new EditClientForm(ClientTableForm.this, model.getValues().get(row), row);
                 }
             }
         });
