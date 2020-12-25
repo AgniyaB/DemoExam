@@ -3,9 +3,13 @@ package org.orgname.app;
 import org.orgname.app.ui.ClientTableForm;
 import org.orgname.app.util.BaseForm;
 import org.orgname.app.util.DialogUtil;
+import org.orgname.app.util.FontUtil;
 import org.orgname.app.util.MysqlDatabase;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
+import java.net.URL;
 import java.sql.Connection;
 
 public class Application
@@ -26,20 +30,6 @@ public class Application
         initDatabase();
         initUi();
 
-        /*DateEntityManager dateEntityManager = new DateEntityManager(database);
-        String s = "13.01.1999";
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        try {
-            DateEntity dateEntity = new DateEntity(format.parse(s));
-            dateEntityManager.add(dateEntity);
-            System.out.println(dateEntity);
-
-            System.out.println(dateEntityManager.getById(3));
-
-        } catch (ParseException | SQLException e) {
-            e.printStackTrace();
-        }*/
-
         new ClientTableForm();
     }
 
@@ -55,13 +45,21 @@ public class Application
 
     private void initUi()
     {
+        BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
+
+        BaseForm.setBaseApplicationImage(
+                Toolkit.getDefaultToolkit().getImage(
+                        Application.class.getClassLoader().getResource("icom.jpg")
+                )
+        );
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        BaseForm.setBaseApplicationTitle("Медицинский центр ТРУБОЧИСТ");
+        FontUtil.changeAllFonts(new FontUIResource("Comic Sans MS", Font.TRUETYPE_FONT, 16));
     }
 
     public MysqlDatabase getDatabase() {

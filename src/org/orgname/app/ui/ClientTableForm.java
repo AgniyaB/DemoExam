@@ -38,6 +38,8 @@ public class ClientTableForm extends BaseForm
     {
         table.getTableHeader().setReorderingAllowed(false);
 
+        table.setRowHeight(128);
+
         try {
             model = new CustomTableModel<>(
                 ClientEntity.class,
