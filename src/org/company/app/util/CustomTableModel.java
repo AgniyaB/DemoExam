@@ -2,6 +2,8 @@ package org.company.app.util;
 
 import javax.swing.table.AbstractTableModel;
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CustomTableModel<T> extends AbstractTableModel
@@ -66,6 +68,11 @@ public class CustomTableModel<T> extends AbstractTableModel
             e.printStackTrace();
             return "ERROR";
         }
+    }
+
+    public void sort(Comparator<T> comparator) {
+        Collections.sort(this.values, comparator);
+        fireTableDataChanged();
     }
 
     public List<T> getValues() {
