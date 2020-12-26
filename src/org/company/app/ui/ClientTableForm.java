@@ -34,6 +34,9 @@ public class ClientTableForm extends BaseForm
     private JComboBox firstCharSortBox;
     private JButton registerSortButton;
     private JComboBox monthSortBox;
+    private JButton helpButton;
+    private JButton dealWithAuthorButton;
+    private JLabel rowCountLabel;
 
     public ClientTableForm()
     {
@@ -50,6 +53,8 @@ public class ClientTableForm extends BaseForm
     {
         table.getTableHeader().setReorderingAllowed(false);
 
+        table.setRowHeight(128);
+
         try {
             model = new CustomTableModel<>(
                 ClientEntity.class,
@@ -60,46 +65,60 @@ public class ClientTableForm extends BaseForm
             );
             table.setModel(model);
 
+            if(model.getValues().isEmpty()) {
+                DialogUtil.showInfo(this, "В базе отсутствуют записи");
+            }
+
+            updateRowCountLabel(model.getValues().size());
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        table.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int row = table.getSelectedRow();
-                if(e.getKeyCode() == KeyEvent.VK_DELETE && row != -1) {
-                    if(DialogUtil.showConfirm(ClientTableForm.this, "Вы точно хотите удалить данную запись?"))
-                    {
-                        try {
-                            clientEntityManager.delete(model.getValues().get(row));
-                            model.getValues().remove(row);
-                            model.fireTableDataChanged();
+        if(Application.isAdminMode())
+        {
+            table.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    int row = table.getSelectedRow();
+                    if(e.getKeyCode() == KeyEvent.VK_DELETE && row != -1) {
+                        if(DialogUtil.showConfirm(ClientTableForm.this, "Вы точно хотите удалить данную запись?"))
+                        {
+                            try {
+                                clientEntityManager.delete(model.getValues().get(row));
+                                model.getValues().remove(row);
+                                model.fireTableDataChanged();
+                                updateRowCountLabel();
 
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                int row = table.rowAtPoint(e.getPoint());
-                if(e.getClickCount() == 2 && row != -1) {
-                    new EditClientForm(ClientTableForm.this, model.getValues().get(row), row);
+            table.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    int row = table.rowAtPoint(e.getPoint());
+                    if(e.getClickCount() == 2 && row != -1) {
+                        new EditClientForm(ClientTableForm.this, model.getValues().get(row), row);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void initButtons()
     {
-        addClientButton.addActionListener(e -> {
-            new AddClientForm(ClientTableForm.this);
-        });
+        if(Application.isAdminMode()) {
+            addClientButton.addActionListener(e -> {
+                new AddClientForm(ClientTableForm.this);
+            });
+        } else {
+            addClientButton.setVisible(false);
+        }
 
         idSortButton.addActionListener(e -> {
             model.sort(new Comparator<ClientEntity>() {
@@ -147,6 +166,14 @@ public class ClientTableForm extends BaseForm
             regDateSort = !regDateSort;
             idSort = false;
             birthdaySort = false;
+        });
+
+        helpButton.addActionListener(e -> {
+            DialogUtil.showInfo(this, "Редактировние по двойному клику, удалние по клику и DELETE");
+        });
+
+        dealWithAuthorButton.addActionListener(e -> {
+            DialogUtil.showInfo(this, "Связаться с разработчиком можно по email student228@itmo.su");
         });
     }
 
@@ -198,6 +225,7 @@ public class ClientTableForm extends BaseForm
     {
         try {
             List<ClientEntity> allClients = clientEntityManager.getAll();
+            int max = allClients.size();
 
             if(genderSortBox.getSelectedIndex() == 1) {
                 allClients.removeIf(clientEntity -> clientEntity.getGenderCode() == 'ж');
@@ -216,10 +244,25 @@ public class ClientTableForm extends BaseForm
 
             model.setValues(allClients);
             model.fireTableDataChanged();
+            updateRowCountLabel(max);
             idSort = true;
             birthdaySort = false;
             regDateSort = false;
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void updateRowCountLabel(int newMax)
+    {
+        rowCountLabel.setText("( " + model.getValues().size() + " / " + newMax + " )");
+    }
+
+    public void updateRowCountLabel()
+    {
+        try {
+            updateRowCountLabel(clientEntityManager.getAll().size());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
