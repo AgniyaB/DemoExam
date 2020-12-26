@@ -1,18 +1,17 @@
 package ru.pa4ok.appname.database.manager;
 
 import ru.pa4ok.appname.database.entity.UserEntity;
+import ru.pa4ok.appname.util.BaseManager;
 import ru.pa4ok.appname.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEntityManager
+public class UserEntityManager extends BaseManager
 {
-    private final MysqlDatabase database;
-
     public UserEntityManager(MysqlDatabase database) {
-        this.database = database;
+        super(database);
     }
 
     /*

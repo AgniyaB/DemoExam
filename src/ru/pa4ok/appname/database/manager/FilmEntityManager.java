@@ -1,18 +1,17 @@
 package ru.pa4ok.appname.database.manager;
 
 import ru.pa4ok.appname.database.entity.FilmEntity;
+import ru.pa4ok.appname.util.BaseManager;
 import ru.pa4ok.appname.util.MysqlDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmEntityManager
+public class FilmEntityManager extends BaseManager
 {
-    private final MysqlDatabase database;
-
     public FilmEntityManager(MysqlDatabase database) {
-        this.database = database;
+        super(database);
     }
 
     public void add(FilmEntity film) throws SQLException
