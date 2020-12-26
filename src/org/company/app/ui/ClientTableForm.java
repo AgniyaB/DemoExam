@@ -9,13 +9,15 @@ import org.company.app.util.CustomTableModel;
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 
 public class ClientTableForm extends BaseForm
 {
-    private final ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
+    private final ClientEntityManager clientEntityManager = Application.getInstance().getClientEntityManager();
 
     private CustomTableModel<ClientEntity> model;
 
@@ -32,6 +34,7 @@ public class ClientTableForm extends BaseForm
     private JButton clearSortButton;
     private JComboBox testSecondSortBox;
     private JLabel rowCountLabel;
+    private JButton addClientButton;
 
     public ClientTableForm()
     {
@@ -48,6 +51,8 @@ public class ClientTableForm extends BaseForm
     {
         table.getTableHeader().setReorderingAllowed(false);
 
+        table.setRowHeight(128);
+
         try {
             model = new CustomTableModel<>(
                     ClientEntity.class,
@@ -61,6 +66,18 @@ public class ClientTableForm extends BaseForm
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+
+        if(Application.isAdminMode()) {
+            table.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    int row = table.getSelectedRow();
+                    if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+                        //...
+                    }
+                }
+            });
         }
     }
 
@@ -99,6 +116,10 @@ public class ClientTableForm extends BaseForm
             blockFilter = false;
             testSecondSortBox.setSelectedIndex(0);
         });
+
+        if(!Application.isAdminMode()) {
+            addClientButton.setVisible(false);
+        }
     }
 
     private void initBoxes()

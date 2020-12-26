@@ -1,6 +1,11 @@
 package org.company.app.data.entity;
 
+import org.company.app.Application;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.Date;
+import java.util.Random;
 
 public class ClientEntity
 {
@@ -14,6 +19,8 @@ public class ClientEntity
     private String phone;
     private char genderCode;
     private String photoPath;
+    private Boolean testBoolean = new Random().nextBoolean();
+    private ImageIcon icon;
 
     public ClientEntity(int id, String firstname, String surname, String patronymic, Date birthday, Date register, String email, String phone, char genderCode, String photoPath) {
         this.id = id;
@@ -26,19 +33,11 @@ public class ClientEntity
         this.phone = phone;
         this.genderCode = genderCode;
         this.photoPath = photoPath;
+        this.icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(ClientEntity.class.getClassLoader().getResource(photoPath)));
     }
 
     public ClientEntity(String firstname, String surname, String patronymic, Date birthday, Date register, String email, String phone, char genderCode, String photoPath) {
-        this.id = -1;
-        this.firstname = firstname;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.birthday = birthday;
-        this.register = register;
-        this.email = email;
-        this.phone = phone;
-        this.genderCode = genderCode;
-        this.photoPath = photoPath;
+        this(-1, firstname, surname, patronymic, birthday, register, email, phone, genderCode, photoPath);
     }
 
     @Override
