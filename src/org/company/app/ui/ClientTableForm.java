@@ -10,18 +10,20 @@ import org.company.app.util.DialogUtil;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class ClientTableForm extends BaseForm
 {
+    private static final SimpleDateFormat MONTH_FORMAT = new SimpleDateFormat("MM");
+
     private final ClientEntityManager clientEntityManager = new ClientEntityManager(Application.getInstance().getDatabase());
 
     private CustomTableModel<ClientEntity> model;
 
     private boolean idSort = true;
     private boolean birthdaySort = false;
+    private boolean regDateSort = false;
 
     private JPanel mainPanel;
     private JTable table;
@@ -30,6 +32,8 @@ public class ClientTableForm extends BaseForm
     private JButton birthdaySortButton;
     private JComboBox genderSortBox;
     private JComboBox firstCharSortBox;
+    private JButton registerSortButton;
+    private JComboBox monthSortBox;
 
     public ClientTableForm()
     {
@@ -98,7 +102,7 @@ public class ClientTableForm extends BaseForm
         });
 
         idSortButton.addActionListener(e -> {
-            Collections.sort(model.getValues(), new Comparator<ClientEntity>() {
+            model.sort(new Comparator<ClientEntity>() {
                 @Override
                 public int compare(ClientEntity o1, ClientEntity o2) {
                     if(idSort) {
@@ -110,11 +114,11 @@ public class ClientTableForm extends BaseForm
             });
             idSort = !idSort;
             birthdaySort = false;
-            model.fireTableDataChanged();
+            regDateSort = false;
         });
 
         birthdaySortButton.addActionListener(e -> {
-            Collections.sort(model.getValues(), new Comparator<ClientEntity>() {
+            model.sort(new Comparator<ClientEntity>() {
                 @Override
                 public int compare(ClientEntity o1, ClientEntity o2) {
                     if(birthdaySort) {
@@ -126,7 +130,23 @@ public class ClientTableForm extends BaseForm
             });
             birthdaySort = !birthdaySort;
             idSort = false;
-            model.fireTableDataChanged();
+            regDateSort = false;
+        });
+
+        registerSortButton.addActionListener(e -> {
+            model.sort(new Comparator<ClientEntity>() {
+                @Override
+                public int compare(ClientEntity o1, ClientEntity o2) {
+                    if(regDateSort) {
+                        return o2.getRegDate().compareTo(o1.getRegDate());
+                    } else {
+                        return o1.getRegDate().compareTo(o2.getRegDate());
+                    }
+                }
+            });
+            regDateSort = !regDateSort;
+            idSort = false;
+            birthdaySort = false;
         });
     }
 
@@ -152,6 +172,26 @@ public class ClientTableForm extends BaseForm
                 updateBoxSort();
             }
         });
+
+        monthSortBox.addItem("Все");
+        monthSortBox.addItem("Январь");
+        monthSortBox.addItem("Февраль");
+        monthSortBox.addItem("Март");
+        monthSortBox.addItem("Апрель");
+        monthSortBox.addItem("Май");
+        monthSortBox.addItem("Июнь");
+        monthSortBox.addItem("Июль");
+        monthSortBox.addItem("Август");
+        monthSortBox.addItem("Сентябрь");
+        monthSortBox.addItem("Октябрь");
+        monthSortBox.addItem("Ноябрь");
+        monthSortBox.addItem("Декабрь");
+
+        monthSortBox.addItemListener(e -> {
+            if(e.getStateChange() == ItemEvent.SELECTED) {
+                updateBoxSort();
+            }
+        });
     }
 
     private void updateBoxSort()
@@ -170,10 +210,15 @@ public class ClientTableForm extends BaseForm
                 allClients.removeIf(clientEntity -> clientEntity.getFirstname().toLowerCase().charAt(0) != c);
             }
 
+            if(monthSortBox.getSelectedIndex() != 0) {
+                allClients.removeIf(clientEntity -> monthSortBox.getSelectedIndex() != Integer.parseInt(MONTH_FORMAT.format(clientEntity.getBirthday())));
+            }
+
             model.setValues(allClients);
             model.fireTableDataChanged();
             idSort = true;
             birthdaySort = false;
+            regDateSort = false;
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
