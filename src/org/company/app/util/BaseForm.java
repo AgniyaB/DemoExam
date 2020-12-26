@@ -7,9 +7,14 @@ public abstract class BaseForm extends JFrame
 {
     private static String baseApplicationTitle = "Заголовок приложения";
 
+    private static Image baseApplicationIcon = null;
+
     public BaseForm()
     {
         setTitle(baseApplicationTitle);
+        if(baseApplicationIcon != null) {
+            setIconImage(baseApplicationIcon);
+        }
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(getFormWidth(), getFormHeight()));
         setLocation(
@@ -29,5 +34,13 @@ public abstract class BaseForm extends JFrame
 
     public static void setBaseApplicationTitle(String baseApplicationTitle) {
         BaseForm.baseApplicationTitle = baseApplicationTitle;
+    }
+
+    public static Image getBaseApplicationIcon() {
+        return baseApplicationIcon;
+    }
+
+    public static void setBaseApplicationIcon(Image baseApplicationIcon) {
+        BaseForm.baseApplicationIcon = baseApplicationIcon;
     }
 }
