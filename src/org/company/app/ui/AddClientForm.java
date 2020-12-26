@@ -79,6 +79,7 @@ public class AddClientForm extends BaseSubForm<ClientTableForm>
                 clientEntityManager.add(newClient);
                 mainForm.getModel().getValues().add(newClient);
                 mainForm.getModel().fireTableDataChanged();
+                mainForm.updateRowCountLabel();
 
                 closeSubForm();
 
