@@ -14,7 +14,8 @@ public class CustomTableModel<T> extends AbstractTableModel
     private final Class<T> cls;
 
     private final String[] columnNames;
-    private final List<T> values;
+
+    private List<T> values;
 
     public CustomTableModel(Class<T> cls, String[] columnNames, List<T> values)
     {
@@ -44,7 +45,7 @@ public class CustomTableModel<T> extends AbstractTableModel
 
     @Override
     public String getColumnName(int columnIndex) {
-        return columnNames[columnIndex];
+        return columnIndex >= columnNames.length ? cls.getDeclaredFields()[columnIndex].getName() : columnNames[columnIndex];
     }
 
     @Override
@@ -69,5 +70,9 @@ public class CustomTableModel<T> extends AbstractTableModel
 
     public List<T> getValues() {
         return values;
+    }
+
+    public void setValues(List<T> values) {
+        this.values = values;
     }
 }

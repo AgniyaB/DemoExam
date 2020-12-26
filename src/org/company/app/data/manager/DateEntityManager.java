@@ -1,8 +1,6 @@
 package org.company.app.data.manager;
 
-import org.company.app.data.GenderEnum;
 import org.company.app.data.entity.DateEntity;
-import org.company.app.data.entity.UserEntity;
 import org.company.app.util.BaseManager;
 import org.company.app.util.MysqlDatabase;
 
