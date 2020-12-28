@@ -19,8 +19,8 @@ public class ClientEntity
     private String phone;
     private char genderCode;
     private String photoPath;
-    private Boolean markBoolean = new Random().nextBoolean();
-    private ImageIcon icon;
+    //private Boolean markBoolean = new Random().nextBoolean();
+    //private ImageIcon icon;
 
     public ClientEntity(int id, String firstname, String lastname, String patronymic, Date birthday, Date register, String email, String phone, char genderCode, String photoPath) {
         this.id = id;
@@ -33,7 +33,7 @@ public class ClientEntity
         this.phone = phone;
         this.genderCode = genderCode;
         this.photoPath = photoPath;
-        try {
+        /*try {
             Image image = ResourceUtil.getImage(photoPath);
             if(image != null) {
                 this.icon = new ImageIcon(image);
@@ -43,7 +43,7 @@ public class ClientEntity
         } catch (Exception e) {
             System.out.println("не удалось загрузить картику пользователя");
             e.printStackTrace();
-        }
+        }*/
     }
 
     public ClientEntity(String firstname, String lastname, String patronymic, Date birthday, Date register, String email, String phone, char genderCode, String photoPath) {

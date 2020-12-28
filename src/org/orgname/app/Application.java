@@ -55,17 +55,17 @@ public class Application
             e.printStackTrace();
         }
 
-        FontUtil.changeAllFonts(new FontUIResource("Lobster", Font.TRUETYPE_FONT, 16));
+        //FontUtil.changeAllFonts(new FontUIResource("Lobster", Font.TRUETYPE_FONT, 16));
     }
 
     private void checkAdminMode()
     {
-        adminMode = ADMIN_PASS.equals(JOptionPane.showInputDialog(
+        adminMode = true; /*ADMIN_PASS.equals(JOptionPane.showInputDialog(
                 null,
                 "Введите пароль администратора если знаете",
                 "Режим администратора",
                 JOptionPane.QUESTION_MESSAGE
-        ));
+        ));*/
     }
 
     public MysqlDatabase getDatabase() {

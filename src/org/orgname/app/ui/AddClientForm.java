@@ -74,6 +74,9 @@ public class AddClientForm extends BaseSubForm<ClientTableForm>
                 mainForm.getModel().getValues().add(clientEntity);
                 //указываем таблице на то что данные обновились
                 mainForm.getModel().fireTableDataChanged();
+
+                mainForm.updateRowCountLabel();
+
                 //закрываем второе окно
                 closeSubForm();
 
